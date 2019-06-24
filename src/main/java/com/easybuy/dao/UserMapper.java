@@ -1,0 +1,39 @@
+package com.easybuy.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.easybuy.entity.User;
+/**
+ * 用户Dao
+ * @author ?
+ */
+public interface UserMapper {
+	/**
+	 * @param loginName 登录用户名
+	 * @param password 密码
+	 * @return 用户对象
+	 */
+	User login(@Param("loginName")String loginName,@Param("password")String password);
+	
+	/**
+	 * 用户注册
+	 */
+	int regist(User user);
+	
+	/**
+	 * 查询用户信息
+	 */
+	List<User> selectUser();
+	
+	/**
+	 * 修改用户信息
+	 */
+	int updateUser(User user);
+	
+	/**
+	 * 删除用户
+	 */
+	int deleteUserByID(int id);
+}
