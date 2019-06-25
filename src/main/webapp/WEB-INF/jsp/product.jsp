@@ -4,33 +4,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
     
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
             
-	<script type="text/javascript" src="js/lrscroll_1.js"></script>   
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>   
      
     
-	<script type="text/javascript" src="js/n_nav.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/n_nav.js"></script>
     
-    <link rel="stylesheet" type="text/css" href="css/ShopShow.css" />
-    <link rel="stylesheet" type="text/css" href="css/MagicZoom.css" />
-    <script type="text/javascript" src="js/MagicZoom.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ShopShow.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/MagicZoom.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/MagicZoom.js"></script>
     
-    <script type="text/javascript" src="js/num.js">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/num.js">
     	var jq = jQuery.noConflict();
     </script>
         
-    <script type="text/javascript" src="js/p_tab.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/p_tab.js"></script>
     
-    <script type="text/javascript" src="js/shade.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/shade.js"></script>
     
 <title>商品详情页</title>
 </head>
@@ -157,12 +157,12 @@
             </span>
             <span class="fl">|&nbsp;å³æ³¨æä»¬ï¼</span>
             <span class="s_sh"><a href="#" class="sh1">æ°æµª</a><a href="#" class="sh2">å¾®ä¿¡</a></span>
-            <span class="fr">|&nbsp;<a href="#">ææºç&nbsp;<img src="images/s_tel.png" align="absmiddle" /></a></span>
+            <span class="fr">|&nbsp;<a href="#">ææºç&nbsp;<img src="${pageContext.request.contextPath}/images/s_tel.png" align="absmiddle" /></a></span>
         </span>
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
+    <div class="logo"><a href="Index.html"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     <div class="search">
     	<form>
         	<input type="text" value="" class="s_ipt" />
@@ -179,17 +179,17 @@
             <!--Begin è´­ç©è½¦å·²ç»å½ Begin-->
             <ul class="cars">
             	<li>
-                	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car1.jpg" width="58" height="58" /></a></div>
                     <div class="name"><a href="#">æ³é¢æµªæ¼«æ¢¦å¢50ML é¦æ°´å¥³å£«æä¹æ¸æ°æ·¡é¦ é2MLå°æ ·3åª</a></div>
                     <div class="price"><font color="#ff4e00">ï¿¥399</font> X1</div>
                 </li>
                 <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
                     <div class="name"><a href="#">é¦å¥å¿ï¼Chanelï¼ééæ´»åæ·¡é¦æ°´50ml</a></div>
                     <div class="price"><font color="#ff4e00">ï¿¥399</font> X1</div>
                 </li>
                 <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
                     <div class="name"><a href="#">é¦å¥å¿ï¼Chanelï¼ééæ´»åæ·¡é¦æ°´50ml</a></div>
                     <div class="price"><font color="#ff4e00">ï¿¥399</font> X1</div>
                 </li>
@@ -211,7 +211,7 @@
                 <ul>      
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav1.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav1.png" /></span>
                             <span class="fl">è¿å£é£åãçé²</span>
                         </div>
                         <div class="zj">
@@ -254,14 +254,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav2.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav2.png" /></span>
                             <span class="fl">é£åãé¥®æãé</span>
                         </div>
                         <div class="zj" style="top:-40px;">
@@ -280,14 +280,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav3.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav3.png" /></span>
                             <span class="fl">æ¯å©´ãç©å·ãç«¥è£</span>
                         </div>
                         <div class="zj" style="top:-80px;">
@@ -300,14 +300,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav4.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav4.png" /></span>
                             <span class="fl">å®¶å±ãå®¶åº­æ¸æ´ãçº¸å</span>
                         </div>
                         <div class="zj" style="top:-120px;">
@@ -320,14 +320,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav5.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav5.png" /></span>
                             <span class="fl">ç¾å¦ãä¸ªäººæ¤çãæ´æ¤</span>
                         </div>
                         <div class="zj" style="top:-160px;">
@@ -340,14 +340,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav6.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav6.png" /></span>
                             <span class="fl">å¥³è£ãåè¡£ãä¸­èå¹´</span>
                         </div>
                         <div class="zj" style="top:-200px;">
@@ -360,14 +360,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav7.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav7.png" /></span>
                             <span class="fl">éé´ãç®±åãèè¡¨éé¥°</span>
                         </div>
                         <div class="zj" style="top:-240px;">
@@ -380,14 +380,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav8.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav8.png" /></span>
                             <span class="fl">ç·è£ãè¿å¨</span>
                         </div>
                         <div class="zj" style="top:-280px;">
@@ -400,14 +400,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav9.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav9.png" /></span>
                             <span class="fl">ææºãå°å®¶çµãçµè</span>
                         </div>
                         <div class="zj" style="top:-320px;">
@@ -420,14 +420,14 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>                    
                     <li>
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav10.png" /></span>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav10.png" /></span>
                             <span class="fl">ç¤¼åãåå¼</span>
                         </div>
                         <div class="zj" style="top:-360px;">
@@ -440,8 +440,8 @@
                                 </div>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>                    	
@@ -470,24 +470,24 @@
     <div class="content">
     	                    
         <div id="tsShopContainer">
-            <div id="tsImgS"><a href="images/p_big.jpg" title="Images" class="MagicZoom" id="MagicZoom"><img src="images/p_big.jpg" width="390" height="390" /></a></div>
+            <div id="tsImgS"><a href="${pageContext.request.contextPath}/images/p_big.jpg" title="Images" class="MagicZoom" id="MagicZoom"><img src="${pageContext.request.contextPath}/images/p_big.jpg" width="390" height="390" /></a></div>
             <div id="tsPicContainer">
                 <div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
                 <div id="tsImgSCon">
                     <ul>
-                        <li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img src="images/ps1.jpg" tsImgS="images/ps1.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(1)" rel="MagicZoom"><img src="images/ps2.jpg" tsImgS="images/ps2.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(2)" rel="MagicZoom"><img src="images/ps3.jpg" tsImgS="images/ps3.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(3)" rel="MagicZoom"><img src="images/ps4.jpg" tsImgS="images/ps4.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(4)" rel="MagicZoom"><img src="images/ps1.jpg" tsImgS="images/ps1.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(5)" rel="MagicZoom"><img src="images/ps2.jpg" tsImgS="images/ps2.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(6)" rel="MagicZoom"><img src="images/ps3.jpg" tsImgS="images/ps3.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(7)" rel="MagicZoom"><img src="images/ps4.jpg" tsImgS="images/ps4.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img src="${pageContext.request.contextPath}/images/ps1.jpg" tsImgS="${pageContext.request.contextPath}/images/ps1.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(1)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps2.jpg" tsImgS="${pageContext.request.contextPath}/images/ps2.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(2)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps3.jpg" tsImgS="${pageContext.request.contextPath}/images/ps3.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(3)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps4.jpg" tsImgS="${pageContext.request.contextPath}/images/ps4.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(4)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps1.jpg" tsImgS="${pageContext.request.contextPath}/images/ps1.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(5)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps2.jpg" tsImgS="${pageContext.request.contextPath}/images/ps2.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(6)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps3.jpg" tsImgS="${pageContext.request.contextPath}/images/ps3.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(7)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps4.jpg" tsImgS="${pageContext.request.contextPath}/images/ps4.jpg" width="79" height="79" /></li>
                     </ul>
                 </div>
                 <div id="tsImgSArrR" onclick="tsScrollArrRight()"></div>
             </div>
-            <img class="MagicZoomLoading" width="16" height="16" src="images/loading.gif" alt="Loading..." />				
+            <img class="MagicZoomLoading" width="16" height="16" src="${pageContext.request.contextPath}/images/loading.gif" alt="Loading..." />				
         </div>
         
         <div class="pro_des">
@@ -519,11 +519,11 @@
             	<div class="d_sh">
                 	åäº«
                     <div class="d_sh_bg">
-                    	<a href="#"><img src="images/sh_1.gif" /></a>
-                        <a href="#"><img src="images/sh_2.gif" /></a>
-                        <a href="#"><img src="images/sh_3.gif" /></a>
-                        <a href="#"><img src="images/sh_4.gif" /></a>
-                        <a href="#"><img src="images/sh_5.gif" /></a>
+                    	<a href="#"><img src="${pageContext.request.contextPath}/images/sh_1.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_2.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_3.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_4.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_5.gif" /></a>
                     </div>
                 </div>
                 <div class="d_care"><a onclick="ShowDiv('MyDiv','fade')">å³æ³¨åå</a></div>
@@ -534,12 +534,12 @@
                     <input type="button" value="" onclick="addUpdate(jq(this));" class="n_btn_1" />
                     <input type="button" value="" onclick="jianUpdate(jq(this));" class="n_btn_2" />   
                 </div>
-                <span class="fl"><a onclick="ShowDiv_1('MyDiv1','fade1')"><img src="images/j_car.png" /></a></span>
+                <span class="fl"><a onclick="ShowDiv_1('MyDiv1','fade1')"><img src="${pageContext.request.contextPath}/images/j_car.png" /></a></span>
             </div>            
         </div>    
         
         <div class="s_brand">
-        	<div class="s_brand_img"><img src="images/sbrand.jpg" width="188" height="132" /></div>
+        	<div class="s_brand_img"><img src="${pageContext.request.contextPath}/images/sbrand.jpg" width="188" height="132" /></div>
             <div class="s_brand_c"><a href="#">è¿å¥åçä¸åº</a></div>
         </div>    
         
@@ -550,35 +550,35 @@
         	<div class="fav_t">ç¨æ·è¿åæ¬¢</div>
         	<ul>
             	<li>
-                    <div class="img"><a href="#"><img src="images/his_1.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_1.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
                     <div class="price">
                     	<font>ï¿¥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_2.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_2.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
                     <div class="price">
                     	<font>ï¿¥<span>768.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_3.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_3.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
                     <div class="price">
                     	<font>ï¿¥<span>680.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_4.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_4.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
                     <div class="price">
                     	<font>ï¿¥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_5.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_5.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
                     <div class="price">
                     	<font>ï¿¥<span>368.00</span></font> &nbsp; 18R
@@ -594,36 +594,36 @@
                     </ul>
                 </div>
                 <div class="team_list">
-                	<div class="img"><a href="#"><img src="images/mat_1.jpg" width="160" height="140" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/mat_1.jpg" width="160" height="140" /></a></div>
                 	<div class="name"><a href="#">å©ç¢§è¡¥æ°´ç»åå¥è£8æä¿é</a></div>
                     <div class="price">
                     	<div class="checkbox"><input type="checkbox" name="zuhe" checked="checked" /></div>
                     	<font>ï¿¥<span>768.00</span></font> &nbsp; 18R
                     </div>
                 </div>
-                <div class="team_icon"><img src="images/jia_b.gif" /></div>
+                <div class="team_icon"><img src="${pageContext.request.contextPath}/images/jia_b.gif" /></div>
                 <div class="team_list">
-                	<div class="img"><a href="#"><img src="images/mat_2.jpg" width="160" height="140" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/mat_2.jpg" width="160" height="140" /></a></div>
                 	<div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
                     <div class="price">
                     	<div class="checkbox"><input type="checkbox" name="zuhe" /></div>
                     	<font>ï¿¥<span>749.00</span></font> &nbsp; 18R
                     </div>
                 </div>
-                <div class="team_icon"><img src="images/jia_b.gif" /></div>
+                <div class="team_icon"><img src="${pageContext.request.contextPath}/images/jia_b.gif" /></div>
                 <div class="team_list">
-                	<div class="img"><a href="#"><img src="images/mat_3.jpg" width="160" height="140" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/mat_3.jpg" width="160" height="140" /></a></div>
                 	<div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
                     <div class="price">
                     	<div class="checkbox"><input type="checkbox" name="zuhe" checked="checked" /></div>
                     	<font>ï¿¥<span>749.00</span></font> &nbsp; 18R
                     </div>
                 </div>
-                <div class="team_icon"><img src="images/equl.gif" /></div>
+                <div class="team_icon"><img src="${pageContext.request.contextPath}/images/equl.gif" /></div>
                 <div class="team_sum">
                 	å¥é¤ä»·ï¼ï¿¥<span>1517</span><br />
                     <input type="text" value="1" class="sum_ipt" /><br />
-                    <a href="#"><img src="images/z_buy.gif" /></a> 
+                    <a href="#"><img src="${pageContext.request.contextPath}/images/z_buy.gif" /></a> 
                 </div>
                 
             </div>
@@ -667,7 +667,7 @@
                 <div class="des_con">
                 	<table border="0" align="center" style="width:745px; font-size:14px; font-family:'å®ä½';" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="265"><img src="images/de1.jpg" width="206" height="412" /></td>
+                        <td width="265"><img src="${pageContext.request.contextPath}/images/de1.jpg" width="206" height="412" /></td>
                         <td>
                         	<b>è¿ªå¥¥çæé¦æ°´(Qç)</b><br />
                             ãååè§æ ¼ãï¼5ml<br />
@@ -682,10 +682,10 @@
                     </table>
                     
                     <p align="center">
-                    <img src="images/de2.jpg" width="746" height="425" /><br /><br />
-                    <img src="images/de3.jpg" width="750" height="417" /><br /><br />
-                    <img src="images/de4.jpg" width="750" height="409" /><br /><br />
-                    <img src="images/de5.jpg" width="750" height="409" />
+                    <img src="${pageContext.request.contextPath}/images/de2.jpg" width="746" height="425" /><br /><br />
+                    <img src="${pageContext.request.contextPath}/images/de3.jpg" width="750" height="417" /><br /><br />
+                    <img src="${pageContext.request.contextPath}/images/de4.jpg" width="750" height="409" /><br /><br />
+                    <img src="${pageContext.request.contextPath}/images/de5.jpg" width="750" height="409" />
 					</p>
                     
                 </div>
@@ -703,22 +703,22 @@
                     	<table border="0" style="width:100%;" cellspacing="0" cellpadding="0">
                           <tr>
                             <td width="90">å¥½è¯<font color="#999999">ï¼80%ï¼</font></td>
-                            <td><img src="images/pl.gif" align="absmiddle" /></td>
+                            <td><img src="${pageContext.request.contextPath}/images/pl.gif" align="absmiddle" /></td>
                           </tr>
                           <tr>
                             <td>ä¸­è¯<font color="#999999">ï¼20%ï¼</font></td>
-                            <td><img src="images/pl.gif" align="absmiddle" /></td>
+                            <td><img src="${pageContext.request.contextPath}/images/pl.gif" align="absmiddle" /></td>
                           </tr>
                           <tr>
                             <td>å·®è¯<font color="#999999">ï¼0%ï¼</font></td>
-                            <td><img src="images/pl.gif" align="absmiddle" /></td>
+                            <td><img src="${pageContext.request.contextPath}/images/pl.gif" align="absmiddle" /></td>
                           </tr>
                         </table>
                     </td>
                     <td width="185" class="jud_bg">
                     	è´­ä¹°è¿éè¯å°é»ç¬¬å­ä»£ç¹æ¶¦ç²¾åé²50mlçé¡¾å®¢ï¼å¨æ¶å°ååæå¯ä»¥å¯¹è¯¥åååè¡¨è¯è®º
                     </td>
-                    <td class="jud_bg">æ¨å¯å¯¹å·²è´­ä¹°ååè¿è¡è¯ä»·<br /><a href="#"><img src="images/btn_jud.gif" /></a></td>
+                    <td class="jud_bg">æ¨å¯å¯¹å·²è´­ä¹°ååè¿è¡è¯ä»·<br /><a href="#"><img src="${pageContext.request.contextPath}/images/btn_jud.gif" /></a></td>
                   </tr>
                 </table>
                 
@@ -726,7 +726,7 @@
                 				
                 <table border="0" class="jud_list" style="width:100%; margin-top:30px;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="160"><img src="images/peo1.jpg" width="20" height="20" align="absmiddle" />&nbsp;åæ­»èç</td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo1.jpg" width="20" height="20" align="absmiddle" />&nbsp;åæ­»èç</td>
                     <td width="180">
                     	é¢è²åç±»ï¼<font color="#999999">ç²è²</font> <br />
                         åå·ï¼<font color="#999999">50ml</font>
@@ -737,7 +737,7 @@
                     </td>
                   </tr>
                   <tr valign="top">
-                    <td width="160"><img src="images/peo2.jpg" width="20" height="20" align="absmiddle" />&nbsp;å°±æ¯è¿ä¹æ³ç</td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo2.jpg" width="20" height="20" align="absmiddle" />&nbsp;å°±æ¯è¿ä¹æ³ç</td>
                     <td width="180">
                     	é¢è²åç±»ï¼<font color="#999999">ç²è²</font> <br />
                         åå·ï¼<font color="#999999">50ml</font>
@@ -748,7 +748,7 @@
                     </td>
                   </tr>
                   <tr valign="top">
-                    <td width="160"><img src="images/peo3.jpg" width="20" height="20" align="absmiddle" />&nbsp;å¢¨éå¢¨é</td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo3.jpg" width="20" height="20" align="absmiddle" />&nbsp;å¢¨éå¢¨é</td>
                     <td width="180">
                     	é¢è²åç±»ï¼<font color="#999999">ç²è²</font> <br />
                         åå·ï¼<font color="#999999">50ml</font>
@@ -759,7 +759,7 @@
                     </td>
                   </tr>
                   <tr valign="top">
-                    <td width="160"><img src="images/peo4.jpg" width="20" height="20" align="absmiddle" />&nbsp;é£*****æ´ <br /><font color="#999999">ï¼å¿åç¨æ·ï¼</font></td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo4.jpg" width="20" height="20" align="absmiddle" />&nbsp;é£*****æ´ <br /><font color="#999999">ï¼å¿åç¨æ·ï¼</font></td>
                     <td width="180">
                     	é¢è²åç±»ï¼<font color="#999999">ç²è²</font> <br />
                         åå·ï¼<font color="#999999">50ml</font>
@@ -789,13 +789,13 @@
     <div id="MyDiv" class="white_content">             
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="images/close.gif" /></span>
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
             </div>
             <div class="notice_c">
            		
                 <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="40"><img src="images/suc.png" /></td>
+                    <td width="40"><img src="${pageContext.request.contextPath}/images/suc.png" /></td>
                     <td>
                     	<span style="color:#3e3e3e; font-size:18px; font-weight:bold;">æ¨å·²æåæ¶èè¯¥åå</span><br />
                     	<a href="#">æ¥çæçå³æ³¨ >></a>
@@ -818,13 +818,13 @@
     <div id="MyDiv1" class="white_content">             
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="images/close.gif" /></span>
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
             </div>
             <div class="notice_c">
            		
                 <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="40"><img src="images/suc.png" /></td>
+                    <td width="40"><img src="${pageContext.request.contextPath}/images/suc.png" /></td>
                     <td>
                     	<span style="color:#3e3e3e; font-size:18px; font-weight:bold;">å®è´å·²æåæ·»å å°è´­ç©è½¦</span><br />
                     	è´­ç©è½¦å±æ1ç§å®è´ï¼3ä»¶ï¼ &nbsp; &nbsp; åè®¡ï¼1120å
@@ -848,25 +848,25 @@
         <div class="b_btm">
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b1.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b1.png" width="62" height="62" /></td>
                 <td><h2>æ­£åä¿é</h2>æ­£åè¡è´§  æ¾å¿è´­ä¹°</td>
               </tr>
             </table>
 			<table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b2.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b2.png" width="62" height="62" /></td>
                 <td><h2>æ»¡38åé®</h2>æ»¡38åé® åè¿è´¹</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b3.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b3.png" width="62" height="62" /></td>
                 <td><h2>å¤©å¤©ä½ä»·</h2>å¤©å¤©ä½ä»· çéæ å¿§</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b4.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b4.png" width="62" height="62" /></td>
                 <td><h2>åæ¶éè¾¾</h2>æ¶è´§æ¶é´ç±ä½ åä¸»</td>
               </tr>
             </table>
@@ -914,14 +914,14 @@
             </p>
         </div>
         <div class="b_er">
-            <div class="b_er_c"><img src="images/er.gif" width="118" height="118" /></div>
-            <img src="images/ss.png" />
+            <div class="b_er_c"><img src="${pageContext.request.contextPath}/images/er.gif" width="118" height="118" /></div>
+            <img src="${pageContext.request.contextPath}/images/ss.png" />
         </div>
     </div>    
     <div class="btmbg">
 		<div class="btm">
         	å¤æ¡/è®¸å¯è¯ç¼å·ï¼èICPå¤12009302å·-1-www.dingguagua.com   Copyright Â© 2015-2018 å°¤æ´ªååç½ All Rights Reserved. å¤å¶å¿ç©¶ , Technical Support: Dgg Group <br />
-            <img src="images/b_1.gif" width="98" height="33" /><img src="images/b_2.gif" width="98" height="33" /><img src="images/b_3.gif" width="98" height="33" /><img src="images/b_4.gif" width="98" height="33" /><img src="images/b_5.gif" width="98" height="33" /><img src="images/b_6.gif" width="98" height="33" />
+            <img src="${pageContext.request.contextPath}/images/b_1.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_2.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_3.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_4.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_5.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_6.gif" width="98" height="33" />
         </div>    	
     </div>
     <!--End Footer End -->    
@@ -929,7 +929,7 @@
 
 </body>
 
-<script src="js/ShopShow.js"></script>
+<script src="${pageContext.request.contextPath}/js/ShopShow.js"></script>
 
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
