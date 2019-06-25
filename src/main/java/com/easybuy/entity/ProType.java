@@ -93,4 +93,10 @@ public class ProType {
 		this.iconClass = iconClass;
 	}
 	
+	@Override
+	public String toString() {
+		return "ProType [id=" + id + ", name=" + name + ", parentId=" + parentId + ", type=" + type + ", iconClass="
+				+ iconClass + "]";
+	}
+	
 }
