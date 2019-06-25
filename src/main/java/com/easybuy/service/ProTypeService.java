@@ -1,14 +1,14 @@
-package com.easybuy.dao;
+package com.easybuy.service;
 
 import java.util.List;
 
+import com.easybuy.dao.ProTypeMapper;
 import com.easybuy.entity.ProType;
-
 /**
- * 商品类别Dao
- * @author ?
+ * 购物(类别)ProTypeService
+ * @author 陈昌
  */
-public interface ProTypeMapper {
+public interface ProTypeService {
 	/**
 	 * 添加分类
 	 */

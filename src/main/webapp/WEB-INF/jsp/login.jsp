@@ -27,30 +27,8 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
     <!-- ajax登录 -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
-<%--     <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/login.js"></script> --%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/login.js"></script>
 <title>易买网-登录</title>
-<script type="text/javascript">
-$(function(){
-	$(".log_btn").click(function(){
-		var saveuser;
-		if($("#saveuser").prop("checked")==true){
-			saveuser = "on";
-		}else{
-			saveuser = "no";
-		}
-		$.post("${pageContext.request.contextPath}/user/login/"+saveuser,$("#loginForm").serialize(),function(data){
-			console.log(data);
-			if(data.result=="no"){
-				alert("账号密码错误！请重试！");
-			}else if(data.result=="user"){
-				location.href="${pageContext.request.contextPath}/page/index";
-			}else if(data.result=="admin"){
-				location.href="${pageContext.request.contextPath}/page/member";
-			}
-		},"json");
-	});
-})
-</script>
 </head>
 <body>  
 <!--Begin Header Begin-->

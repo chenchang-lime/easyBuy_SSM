@@ -2,14 +2,13 @@ package com.easybuy.service;
 
 import java.util.List;
 
-import com.easybuy.dao.ProTypeMapper;
 import com.easybuy.entity.Product;
 
 /**
- * 购物(商品&类别)Service
- * @author ?
+ * 购物(商品)Service
+ * @author 陈昌
  */
-public interface ShopingService {
+public interface ProService {
 	/**
 	 * 根据商品类别小类（3）分页查询该类别下的商品
 	 */
@@ -29,14 +28,4 @@ public interface ShopingService {
 	 * 删除商品
 	 */
 	int deletePro(int id);
-	
-	/**
-	 * 添加商品分类
-	 */
-	int insertProType(ProTypeMapper proType);
-	
-	/**
-	 * 删除商品分类
-	 */
-	int deleteProType(int id);
 }
