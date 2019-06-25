@@ -21,7 +21,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public int regist(User user) {
-		return 0;
+		user.setType(0);
+		int i = mapper.regist(user);
+		return i;
 	}
 
 	public List<User> selectUserByPage(Integer pageNum, Integer pageSize) {
@@ -38,6 +40,15 @@ public class UserServiceImpl implements UserService {
 
 	public int insertUserAddress(UserAddress address) {
 		return 0;
+	}
+
+	public String selectloginName(String loginName) {
+		User user=mapper.selectloginName(loginName);
+		if (user==null) {
+			return "ok";
+		}
+		return  "no";
+		
 	}
 
 }

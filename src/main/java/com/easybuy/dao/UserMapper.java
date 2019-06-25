@@ -36,4 +36,10 @@ public interface UserMapper {
 	 * 删除用户
 	 */
 	int deleteUserByID(int id);
+	
+
+	/**
+	 * 查询用户名存在
+	 */
+	User selectloginName(String loginName);
 }

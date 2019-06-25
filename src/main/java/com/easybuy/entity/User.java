@@ -1,4 +1,7 @@
 package com.easybuy.entity;
+
+import javax.validation.constraints.Pattern;
+
 /**
  * 表名：easybuy_user
  * 用户表
@@ -12,10 +15,12 @@ public class User {
 	/**
 	 * 用户名（仅登录用，非中文）,非空
 	 */
+	@Pattern(regexp="^[A-Za-z0-9]+$",message="用户名：仅登录用，非中文")
 	private String loginName;
 	/**
 	 * 姓名(真实姓名，网名),非空
 	 */
+	@Pattern(regexp="^[\\u4e00-\\u9fa5]+$",message="姓名：真实姓名,网名")
 	private String userName;
 	/**
 	 * 登录密码,非空
@@ -28,14 +33,18 @@ public class User {
 	/**
 	 * 身份证号
 	 */
+@Pattern(regexp="^\\d{15}|\\d{18}$",message="身份证号(15位、18位数字)")
 	private String identityCode;
 	/**
 	 * 邮箱
 	 */
+	@Pattern(regexp = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$",message="邮箱：请输入正确邮箱格式***@***.com(cn)")
 	private String email;
 	/**
 	 * 手机号
 	 */
+	@Pattern(regexp="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$",
+			message="手机号：请输入正确手机号码")
 	private String mobile;
 	/**
 	 * 用户类型（0.普通用户，买家； 1.管理员，店主 ）

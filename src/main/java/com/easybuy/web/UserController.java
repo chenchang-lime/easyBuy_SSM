@@ -1,11 +1,18 @@
 package com.easybuy.web;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.easybuy.entity.User;
 import com.easybuy.service.UserService;
+import com.easybuy.uitl.MD5TOOL;
 
 @SessionAttributes({"account"})
 @Controller
@@ -48,5 +56,45 @@ public class UserController {
 			}
 		}
 		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/regist")
+	public Map<String,Object> regist(@Valid User user,BindingResult result) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		user.setPassword(new MD5TOOL().getMD5tring(user.getPassword()));
+		int account= sService.regist(user);
+		if (account==1) {
+			map.put("b","ok");
+		}else {
+			map.put("b","no");
+		}
+		List<String> errorlist = new ArrayList<String>();
+		if (result.hasErrors()) {
+			map.put("error", "no");
+			List<ObjectError> list=result.getAllErrors();
+			for (ObjectError objectError : list) {
+				errorlist.add("\n"+objectError.getDefaultMessage()+"\n");
+//				map.put(((FieldError)objectError).getField(),objectError.getDefaultMessage());	
+			}
+			map.put("errorlist", errorlist);
+		}else {
+			map.put("error", "ok");
+		}
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/regist1")
+	public Map<String,Object> regist1(String loginName) {
+		System.out.println(loginName);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("a",sService.selectloginName(loginName));
+		return map;
+		
+		
+
+		
 	}
 }

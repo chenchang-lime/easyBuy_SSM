@@ -41,4 +41,9 @@ public interface UserService {
 	 * 新增收货地址
 	 */
 	int insertUserAddress(UserAddress address);
+	
+	/**
+	 * 查询用户名存在
+	 */
+	String selectloginName(String loginName);
 }

@@ -6,4 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" resultType="User">
 		select * from easybuy_user where loginName=#{loginName} and password=#{password}
 	</select>
+	
+	<insert id="regist" parameterType="User">
+		INSERT INTO easybuy_user (loginName,userName,password,sex,identityCode,email,mobile,money)
+		 VALUES (#{loginName},#{userName},#{password},#{sex},#{identityCode},#{email},#{mobile},#{money})
+	</insert>
+	
+	<select id="selectloginName" resultType="User">
+		select * from easybuy_user where loginName=#{loginName}
+	</select>
 </mapper>
