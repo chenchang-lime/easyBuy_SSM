@@ -2,19 +2,28 @@ package com.easybuy.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+
 import com.easybuy.entity.News;
 /**
  * 新闻服务Service
  * @author ?
  */
+
+
 public interface NewsService {
 	/**
 	 * 分页查询新闻
 	 */
-	List<News> selectNewsByPage(Integer pageNum,Integer pageSize);
+	List<News> selectNewsByPage(Integer currPage,Integer pageSize);
 	
 	/**
 	 * 根据ID查新闻详情
 	 */
 	News selectNewsByID(int id);
+	/**
+	 * 查询新闻总数量
+	 */
+	int selectCount();
 }
