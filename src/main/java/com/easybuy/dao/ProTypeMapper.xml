@@ -6,4 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAllProType" resultType="ProType">
 		select * from easybuy_product_category
 	</select>
+	
+	<select id="selectTypeByID" resultType="ProType" parameterType="int">
+		select * from easybuy_product_category where id=#{id}
+	</select>
 </mapper>
