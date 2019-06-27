@@ -15,12 +15,14 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.easybuy.entity.User;
 import com.easybuy.service.UserService;
 import com.easybuy.uitl.MD5TOOL;
+import com.github.pagehelper.PageHelper;
 
 @SessionAttributes({"account"})
 @Controller
@@ -57,7 +59,7 @@ public class UserController {
 		}
 		return map;
 	}
-	
+	//用户注册
 	@ResponseBody
 	@RequestMapping("/regist")
 	public Map<String,Object> regist(@Valid User user,BindingResult result) {
@@ -84,7 +86,7 @@ public class UserController {
 		}
 		return map;
 	}
-	
+	//验证用户名是否存在
 	@ResponseBody
 	@RequestMapping("/regist1")
 	public Map<String,Object> regist1(String loginName) {
@@ -92,9 +94,26 @@ public class UserController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("a",sService.selectloginName(loginName));
 		return map;
-		
-		
-
-		
 	}
+	
+	@ResponseBody
+	@RequestMapping("/selectvip")
+	public Map<Object, Object> selectvip(@RequestParam(value="pageNums1",defaultValue="1")Integer pageNums1,@RequestParam(value="pageSize",defaultValue="6")Integer pageSize) {
+		Map<Object,Object> map = new HashMap<Object,Object>();
+		PageHelper.startPage(pageNums1, pageSize);
+		List<User> list=sService.selectUserByPage(pageNums1, pageSize);
+		int count=sService.tatopage();
+		int totalPageNum = count%pageSize==0?count/pageSize:count/pageSize+1;
+		
+//		System.out.println("pageNums1-->"+pageNums1+",pageSize-->"+pageSize+",totalPageNum-->"+totalPageNum);
+		map.put("totalPageNum", totalPageNum);
+		map.put("pageNums1", pageNums1);
+		if (list!=null) {
+			map.put("list",list);
+		}else {
+			map.put("list","no");
+		}
+		return map;
+	}
+	
 }

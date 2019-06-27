@@ -23,9 +23,9 @@ public interface UserMapper {
 	int regist(User user);
 	
 	/**
-	 * 查询用户信息
+	 * 分页查询会员信息
 	 */
-	List<User> selectUser();
+	List<User> selectvip();
 	
 	/**
 	 * 修改用户信息
@@ -42,4 +42,11 @@ public interface UserMapper {
 	 * 查询用户名存在
 	 */
 	User selectloginName(String loginName);
+	
+
+	/**
+	 * 买家用户总数量
+	 */
+	Integer tatopage();
+	
 }

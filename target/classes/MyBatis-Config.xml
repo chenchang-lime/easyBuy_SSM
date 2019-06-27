@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<!-- 所有pojo包下的实体类去别名 -->
+	<!-- 所有entity包下的实体类去别名 -->
 	<typeAliases>
 		<package name="com.easybuy.entity"/>
 	</typeAliases>

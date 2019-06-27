@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> selectUserByPage(Integer pageNum, Integer pageSize) {
-		return null;
+		return mapper.selectvip();
 	}
 
 	public int updateUser(User user) {
@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService {
 		}
 		return  "no";
 		
+	}
+
+	public Integer tatopage() {
+		
+		return mapper.tatopage();
 	}
 
 }

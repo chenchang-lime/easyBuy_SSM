@@ -46,4 +46,11 @@ public interface UserService {
 	 * 查询用户名存在
 	 */
 	String selectloginName(String loginName);
+	
+	
+	/**
+	 * 买家用户总数量
+	 */
+	Integer tatopage();
+
 }

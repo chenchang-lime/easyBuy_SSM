@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -222,7 +225,7 @@
             <div class="left_m">
             	<div class="left_m_t t_bg4">分销中心</div>
                 <ul>
-                	<li><a href="Member_Member.html" class="now">我的会员</a></li>
+                	<li><a href="${pageContext.request.contextPath}/page/Member_User" class="now">我的会员</a></li>
                     <li><a href="Member_Results.html">我的业绩</a></li>
                     <li><a href="Member_Commission.html">我的佣金</a></li>
                     <li><a href="Member_Cash.html">申请提现</a></li>

@@ -15,4 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectloginName" resultType="User">
 		select * from easybuy_user where loginName=#{loginName}
 	</select>
+	
+	<select id="selectvip" resultType="User">
+		select id,loginName,type from easybuy_user where type=0
+	</select>
+	<select id="tatopage" resultType="int">
+		select count(*) from easybuy_user where type=0
+	</select>
 </mapper>

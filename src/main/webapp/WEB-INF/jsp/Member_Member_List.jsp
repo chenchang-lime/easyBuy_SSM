@@ -15,11 +15,12 @@
         
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
-        
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
-        
+	
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/member.js"></script>        
     
-<title>尤洪</title>
+<title>甘劲松会员管理</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -236,85 +237,24 @@
             <p></p>		
             
 			<div class="mem_t">
-            	<span class="m_num fr" style="margin-top:15px;"><a href="#">返回</a></span>一级会员
+            	<span class="m_num fr" style="margin-top:15px;"><a href="#">返回</a></span>会员列表
             </div>
-            <table border="1" class="mem_tab" style="width:870px; text-align:center; margin-top:20px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="th_bg" colspan="6">一级会员&nbsp; &nbsp; &nbsp;<b>（6人）</b></td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
-              </tr>
-              <tr>
-                <td width="145" class="td_bg">会员名</td>
-                <td width="145">YH1188</td>
-                <td width="145" class="td_bg">普通会员</td>
-                <td width="145">会员等级</td>
-                <td width="145" class="td_bg">会员ID</td>
-                <td width="145">12345678</td>
+            <table id="mytable" border="1" class="mem_tab" style="width:870px; text-align:center; margin-top:20px;" cellspacing="0" cellpadding="0">
+              <thead>
+	               <tr>
+	                <td class="th_bg" colspan="6">会员列表&nbsp; &nbsp; &nbsp;</td>
+	              </tr>
+              </thead>
+             
+              <tbody id="gjslist">
+              </tbody>
+              <tr>	
+	              <td colspan="6">
+	 	<span><a href="javascript:viod(0);" id="shang">
+	 	上一页</a></span>第<span id="pageNumsGJS">1</span>页|共<span id="tatopageGJS">5</span>页 <span><a href="javascript:viod(0);" id="xia">下一页</a></span>
+	              </td>
               </tr>
             </table>
-                                                                                        
- 
-                       
-            
-			
-
-
-            
         </div>
     </div>
 	<!--End 用户中心 End--> 
