@@ -13,7 +13,7 @@ function delType(){
 	thisType1ID = jq("#type1").val();
 	thisType2ID = jq("#type2").val();
 	thisType3ID = jq("#type3").val();
-	alert("thisType1ID-->"+thisType1ID+",thisType2ID-->"+thisType2ID+",thisType3ID-->"+thisType3ID);
+	//alert("thisType1ID-->"+thisType1ID+",thisType2ID-->"+thisType2ID+",thisType3ID-->"+thisType3ID);
 	if(thisType2ID==0){
 		jq("#type3NameAll").empty();
 		jq("#type1").val(0);
@@ -117,7 +117,7 @@ function selectProByTypeJAX(type1,type2,type3){
 
 //拿到1，2，3级分类，根据类别查找Pro，AJAX
 function selectProByTypeAJAXZhen(type1,type2,type3){
-	alert("type1-->"+type1+",type2-->"+type2+",type3-->"+type3);
+	//alert("type1-->"+type1+",type2-->"+type2+",type3-->"+type3);
 	jq.post("/easyBuy_SSM/pro/selectProByTypeAJAX/"+type1+"/"+type2+"/"+type3,null,function(data){
 		alert(data.result);
 	},"json");
