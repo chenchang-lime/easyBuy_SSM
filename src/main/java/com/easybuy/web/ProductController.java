@@ -22,8 +22,6 @@ import com.github.pagehelper.PageHelper;
 public class ProductController {	
 	@Autowired
 	private ProductService service;
-	@Autowired
-	private ProTypeService tservice;
 	
 	
 	
@@ -53,10 +51,10 @@ public class ProductController {
 		System.out.println(count);
 		int totalPage = count%pageSize==0?count/pageSize:count/pageSize+1;
 		Map<String,Object> map = new HashMap<String,Object>();
-		List<ProType> list1 = tservice.selectAllProType();
+		List<ProType> list1 = service.selectAllProType();
 		map.put("list1",list1);//在不分页的情况下，实现查询所有
 		PageHelper.startPage(currPage, pageSize);
-		List<ProType> list = tservice.selectAllProType();
+		List<ProType> list = service.selectAllProType();
 		System.out.println(list);
 		map.put("currPage",currPage);
 		map.put("pageSize",pageSize);
@@ -81,6 +79,21 @@ public class ProductController {
 		}else {
 			map.put("result", "no");
 			
+		}
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/deletePro")
+	public Map<String,Object> deletePro(int id){
+		System.out.println(111);
+		Map<String,Object> map = new HashMap<String,Object>();
+		int num =service.deletePro(id);
+		System.out.println("num");
+		if (num>0) {
+			map.put("result", "yes");
+		}else {
+			map.put("result", "no");
 		}
 		return map;
 	}

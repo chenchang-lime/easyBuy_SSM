@@ -9,11 +9,6 @@ import com.easybuy.entity.Product;
  */
 public interface ProMapper {
 
-	/**
-	 * 查询所有商品
-	 */
-	List<Product> selectAll();
-	
 	
 	/**
 	 * 根据商品类别小类（3）分页查询该类别下的商品

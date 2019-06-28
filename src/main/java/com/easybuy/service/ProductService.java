@@ -2,6 +2,7 @@ package com.easybuy.service;
 
 import java.util.List;
 
+import com.easybuy.entity.ProType;
 import com.easybuy.entity.Product;
 
 public interface ProductService {
@@ -15,6 +16,10 @@ public interface ProductService {
 	 */
 	int selectCount();
 	
+	/**
+	 * 查询所有分类
+	 */
+	List<ProType> selectAllProType();
 
 	/**
 	  @查询所有类别的数量
@@ -25,4 +30,9 @@ public interface ProductService {
 	  @删除类别
 	 */
 	int deleteProType(int id);
+	
+	/**
+	  @删除商品
+	 */
+	int deletePro(int id);
 }

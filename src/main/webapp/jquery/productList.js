@@ -19,7 +19,7 @@ jq(function(){
 	            "<td align='center'>"+this.stock+"</td>"+ 
 	            "<td align='center'>"+this.price+"</td>"+ 
 	            "<td align='center'><a href='#' style=color:red>修改</a></td>"+ 
-	            "<td align='center'><a href='#' style=color:red>删除</a></td>"+ 
+	            "<td align='center'><a href='javascript:void(0)' onclick='deletePro("+this.id+")' style=color:red>删除</a></td>"+ 
 	          "</tr>";
 			});
 			jq("#tb").html(html);
@@ -45,3 +45,16 @@ jq(function(){
 	})
 	show(currPage,pageSize);
 })
+
+function deletePro(id){
+		alert(id);
+		jq.post("/easyBuy_SSM/product/deletePro","id="+id,function(data){
+			if (data.result=="yes") {
+				alert("删除成功！");
+				window.location.reload();
+			}else{
+				alert("删除失败！");
+			}
+		},"json");
+}		
+		
