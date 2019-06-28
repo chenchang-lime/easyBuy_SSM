@@ -65,5 +65,10 @@ public class News {
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
+
+	@Override
+	public String toString() {
+		return "News [id=" + id + ", title=" + title + ", content=" + content + ", createTime=" + createTime + "]";
+	}
 	
 }

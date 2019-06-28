@@ -25,33 +25,45 @@
 		var currPage = 1;
 		var pageSize = 5;
 		function show(currPage, pageSize) {
-			jq.post("${pageContext.request.contextPath}/new/tonews",
-					"currPage=" + currPage + "&pageSize=" + pageSize, function(
-							data) {
-						console.log(data.list);
-						console.log(data.currPage);
-						console.log(data.pageSize);
-						console.log(data.id);
-						console.log(data.content);
-						jq("#currPage").text(data.currPage);
-						jq("#totalPage").text(data.totalPage);
-						currPage = data.currPage;
-						totalPage = data.totalPage;
-						var html = "";
-						jq("#count").text(data.count);
-						jq(data.list).each(
-								function() {
-									html += "<tr >" + "<td align='center' id='new'>"+"<a href='javascript:void(0)'>"
-											+ this.title +"</a>"
-											+ "</td>"
-											+ "<td align='center'>"
-											+ this.createTime + "</td>"
-											+ "</tr>";
-								});
-						
-						jq("#tb").html(html);
-					}, "json");
+			jq
+					.post(
+							"${pageContext.request.contextPath}/new/tonews",
+							"currPage=" + currPage + "&pageSize=" + pageSize,
+							function(data) {
+								console.log(data.list);
+								console.log(data.currPage);
+								console.log(data.pageSize);
+								console.log(data.id);
+								console.log(data.content);
+								jq("#currPage").text(data.currPage);
+								jq("#totalPage").text(data.totalPage);
+								currPage = data.currPage;
+								totalPage = data.totalPage;
+								var html = "";
+								jq("#count").text(data.count);
+								jq(data.list)
+										.each(
+												function() {
+													html += "<tr>"
+															+ "<td align='center'  class='td_bg'>"
+															+ "<a id='bbb' onclick='showDetail("
+															+ this.id
+															+ ")' href='javascript:void(0)'>"
+
+															+ this.title
+															+ "</a>"
+															+ "</td>"
+															+ "<td align='center'>"
+															+ this.createTime
+															+ "</td>" + "</tr>";
+												});
+
+								jq("#tb").html(html);
+							}, "json");
+			//根据ID给出相应的新闻内容
+
 		}
+
 		jq("#before").click(function() {
 			currPage -= 1;
 			if (currPage == 0) {
@@ -68,9 +80,22 @@
 			show(currPage, pageSize);
 		});
 		show(currPage, pageSize);
-		
-		
 	})
+
+	function showDetail(id) {
+		jq.post("${pageContext.request.contextPath}/new/tonewscontent/" + id,
+				function(data) {
+					alert(data.id.content)
+					var html = "";
+
+					html += "tr" + "<td>" + data.id.content + "</td>"
+
+					+ "</tr>";
+
+					jq("#newcontent").html(html);
+				}, "json");
+
+	}
 </script>
 
 <title>新闻</title>
@@ -83,7 +108,7 @@
 			<span class="s_city_b"> <span class="fl">送货至：</span> <span
 				class="s_city"> <span>四川</span>
 					<div class="s_city_bg">
-					
+
 						<div class="s_city_t"></div>
 						<div class="s_city_c">
 							<h2>请选择所在的收货地区</h2>
@@ -242,7 +267,8 @@
 								<a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a>
 							</div>
 							<div class="price">
-								<font color="#ff4e00">￥399</font> X1
+								<input type="hidden" value="" /> <font color="#ff4e00">￥399</font>
+								X1
 							</div>
 						</li>
 						<li>
@@ -326,35 +352,30 @@
 					</ul>
 				</div>
 			</div>
-			<!--     我的新闻 -->
-
-
-
-
-
-
+			<!--------------------------------------我的新闻 ------------------------------------>
 			<div class="m_right">
 				<p></p>
-				<div class="mem_tit">咨询列表</div>
-				<table border="1" width="80%">
-					<thead>
-						<tr>
-							<th>文章标题</th>
-							<th>创建时间</th>
-						</tr>
-					</thead>
+				<div class="mem_tit">新闻</div>
+				<table border="1" class="mem_tab"
+					style="width: 870px; text-align: center; margin-top: 20px;"
+					cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="th_bg" colspan="2">新闻列表</td>
+					</tr>
 					<tbody id="tb">
-
 					</tbody>
 					<tfoot>
-						<p align="right" style="padding: 100px">
-							<a href="javascript:void(0)" id="before" style="font-size: 20px">上一页</a>
-							<span id="currPage" style="font-size: 20px"></span> <span>|</span>
-							<span id="totalPage" style="font-size: 20px"></span> <a
-								href="javascript:void(0)" id="after" style="font-size: 20px">下一页</a>
-						</p>
+						<tr>
+							<td colspan="2"><a href="javascript:void(0)" id="before"
+								style="color:#ff4e00;">上一页</a> <span id="currPage"
+								style="font-size: 20px"></span> <span>|</span> <span
+								id="totalPage" style="font-size: 20px"></span> <a
+								href="javascript:void(0)" id="after" style="color:#ff4e00;">下一页</a>
+							</td>
+						</tr>
 					</tfoot>
 				</table>
+				<!--------------------------------------我的新闻 end------------------------------------>
 			</div>
 		</div>
 		<!--End 用户中心 End-->
