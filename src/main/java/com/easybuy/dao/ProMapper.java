@@ -5,9 +5,11 @@ import java.util.List;
 import com.easybuy.entity.Product;
 /**
  * 商品Dao
- * @author ?
+ * @author 刘宸威
  */
 public interface ProMapper {
+
+	
 	/**
 	 * 根据商品类别小类（3）分页查询该类别下的商品
 	 */
