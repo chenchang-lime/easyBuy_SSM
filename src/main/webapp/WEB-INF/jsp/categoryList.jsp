@@ -1,190 +1,192 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-    <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
-        <script type="text/javascript">
-           EvPNG.fix('div, ul, img, li, input, a'); 
-        </script>
-    <![endif]-->
-    
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
-            
-	<script type="text/javascript" src="js/lrscroll_1.js"></script>
-    
-    
-	<script type="text/javascript" src="js/n_nav.js"></script>
-    
-<title>商品小类搜索-商品列表</title>
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/n_nav.js"></script>
+<title>易买网-类别查询商品</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
 <div class="soubg">
 	<div class="sou">
-    	<!--Begin æå¨æ¶è´§å°åº Begin-->
+    	<!--Begin 所在收货地区 Begin-->
     	<span class="s_city_b">
-        	<span class="fl">éè´§è³ï¼</span>
+        	<span class="fl">送货至：</span>
             <span class="s_city">
-            	<span>åå·</span>
+            	<span>四川</span>
                 <div class="s_city_bg">
                 	<div class="s_city_t"></div>
                     <div class="s_city_c">
-                    	<h2>è¯·éæ©æå¨çæ¶è´§å°åº</h2>
+                    	<h2>请选择所在的收货地区</h2>
                         <table border="0" class="c_tab" style="width:235px; margin-top:10px;" cellspacing="0" cellpadding="0">
                           <tr>
                             <th>A</th>
-                            <td class="c_h"><span>å®å¾½</span><span>æ¾³é¨</span></td>
+                            <td class="c_h"><span>安徽</span><span>澳门</span></td>
                           </tr>
                           <tr>
                             <th>B</th>
-                            <td class="c_h"><span>åäº¬</span></td>
+                            <td class="c_h"><span>北京</span></td>
                           </tr>
                           <tr>
                             <th>C</th>
-                            <td class="c_h"><span>éåº</span></td>
+                            <td class="c_h"><span>重庆</span></td>
                           </tr>
                           <tr>
                             <th>F</th>
-                            <td class="c_h"><span>ç¦å»º</span></td>
+                            <td class="c_h"><span>福建</span></td>
                           </tr>
                           <tr>
                             <th>G</th>
-                            <td class="c_h"><span>å¹¿ä¸</span><span>å¹¿è¥¿</span><span>è´µå·</span><span>çè</span></td>
+                            <td class="c_h"><span>广东</span><span>广西</span><span>贵州</span><span>甘肃</span></td>
                           </tr>
                           <tr>
                             <th>H</th>
-                            <td class="c_h"><span>æ²³å</span><span>æ²³å</span><span>é»é¾æ±</span><span>æµ·å</span><span>æ¹å</span><span>æ¹å</span></td>
+                            <td class="c_h"><span>河北</span><span>河南</span><span>黑龙江</span><span>海南</span><span>湖北</span><span>湖南</span></td>
                           </tr>
                           <tr>
                             <th>J</th>
-                            <td class="c_h"><span>æ±è</span><span>åæ</span><span>æ±è¥¿</span></td>
+                            <td class="c_h"><span>江苏</span><span>吉林</span><span>江西</span></td>
                           </tr>
                           <tr>
                             <th>L</th>
-                            <td class="c_h"><span>è¾½å®</span></td>
+                            <td class="c_h"><span>辽宁</span></td>
                           </tr>
                           <tr>
                             <th>N</th>
-                            <td class="c_h"><span>åèå¤</span><span>å®å¤</span></td>
+                            <td class="c_h"><span>内蒙古</span><span>宁夏</span></td>
                           </tr>
                           <tr>
                             <th>Q</th>
-                            <td class="c_h"><span>éæµ·</span></td>
+                            <td class="c_h"><span>青海</span></td>
                           </tr>
                           <tr>
                             <th>S</th>
-                            <td class="c_h"><span>ä¸æµ·</span><span>å±±ä¸</span><span>å±±è¥¿</span><span class="c_check">åå·</span><span>éè¥¿</span></td>
+                            <td class="c_h"><span>上海</span><span>山东</span><span>山西</span><span class="c_check">四川</span><span>陕西</span></td>
                           </tr>
                           <tr>
                             <th>T</th>
-                            <td class="c_h"><span>å°æ¹¾</span><span>å¤©æ´¥</span></td>
+                            <td class="c_h"><span>台湾</span><span>天津</span></td>
                           </tr>
                           <tr>
                             <th>X</th>
-                            <td class="c_h"><span>è¥¿è</span><span>é¦æ¸¯</span><span>æ°ç</span></td>
+                            <td class="c_h"><span>西藏</span><span>香港</span><span>新疆</span></td>
                           </tr>
                           <tr>
                             <th>Y</th>
-                            <td class="c_h"><span>äºå</span></td>
+                            <td class="c_h"><span>云南</span></td>
                           </tr>
                           <tr>
                             <th>Z</th>
-                            <td class="c_h"><span>æµæ±</span></td>
+                            <td class="c_h"><span>浙江</span></td>
                           </tr>
                         </table>
                     </div>
                 </div>
             </span>
         </span>
-        <!--End æå¨æ¶è´§å°åº End-->
+        <!--End 所在收货地区 End-->
         <span class="fr">
-        	<span class="fl">ä½ å¥½ï¼è¯·<a href="Login.html">ç»å½</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">åè´¹æ³¨å</a>&nbsp;|&nbsp;<a href="#">æçè®¢å</a>&nbsp;|</span>
+        	<span class="fl">
+	        	<c:if test="${! empty account}">
+					欢迎<span style="color:#ff4e00;">[${account.userName}]</span>登录&nbsp;
+					<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">[注销]</a>
+				</c:if>
+				<c:if test="${empty account}">
+					<span class="fl">
+						你好，请<a href="${pageContext.request.contextPath}/page/login">登录</a>&nbsp; 
+						<a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">免费注册</a>
+					</span>
+				</c:if>
+				&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+        	</span>
         	<span class="ss">
             	<div class="ss_list">
-                	<a href="#">æ¶èå¤¹</a>
+                	<a href="#">收藏夹</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">æçæ¶èå¤¹</a></li>
-                                <li><a href="#">æçæ¶èå¤¹</a></li>
+                            	<li><a href="#">我的收藏夹</a></li>
+                                <li><a href="#">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>     
                 </div>
                 <div class="ss_list">
-                	<a href="#">å®¢æ·æå¡</a>
+                	<a href="#">客户服务</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">å®¢æ·æå¡</a></li>
-                                <li><a href="#">å®¢æ·æå¡</a></li>
-                                <li><a href="#">å®¢æ·æå¡</a></li>
+                            	<li><a href="#">客户服务</a></li>
+                                <li><a href="#">客户服务</a></li>
+                                <li><a href="#">客户服务</a></li>
                             </ul>
                         </div>
                     </div>    
                 </div>
                 <div class="ss_list">
-                	<a href="#">ç½ç«å¯¼èª</a>
+                	<a href="#">网站导航</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">ç½ç«å¯¼èª</a></li>
-                                <li><a href="#">ç½ç«å¯¼èª</a></li>
+                            	<li><a href="#">网站导航</a></li>
+                                <li><a href="#">网站导航</a></li>
                             </ul>
                         </div>
                     </div>    
                 </div>
             </span>
-            <span class="fl">|&nbsp;å³æ³¨æä»¬ï¼</span>
-            <span class="s_sh"><a href="#" class="sh1">æ°æµª</a><a href="#" class="sh2">å¾®ä¿¡</a></span>
-            <span class="fr">|&nbsp;<a href="#">ææºç&nbsp;<img src="images/s_tel.png" align="absmiddle" /></a></span>
+            <span class="fl">|&nbsp;关注我们：</span>
+            <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
+            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="${pageContext.request.contextPath}/images/s_tel.png" align="absmiddle" /></a></span>
         </span>
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
+    <div class="logo"><a href="${pageContext.request.contextPath}/page/login"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     <div class="search">
     	<form>
         	<input type="text" value="" class="s_ipt" />
-            <input type="submit" value="æç´¢" class="s_btn" />
+            <input type="submit" value="搜索" class="s_btn" />
         </form>                      
-        <span class="fl"><a href="#">åå¡</a><a href="#">iphone 6S</a><a href="#">æ°é²ç¾é£</a><a href="#">èç³</a><a href="#">æ¥ç¨å</a><a href="#">è¿è¡£è£</a></span>
+        <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
     <div class="i_car">
-    	<div class="car_t">è´­ç©è½¦ [ <span>3</span> ]</div>
+    	<div class="car_t">购物车 [ <span>3</span> ]</div>
         <div class="car_bg">
-       		<!--Begin è´­ç©è½¦æªç»å½ Begin-->
-        	<div class="un_login">è¿æªç»å½ï¼<a href="Login.html" style="color:#ff4e00;">é©¬ä¸ç»å½</a> æ¥çè´­ç©è½¦ï¼</div>
-            <!--End è´­ç©è½¦æªç»å½ End-->
-            <!--Begin è´­ç©è½¦å·²ç»å½ Begin-->
+       		<!--Begin 购物车未登录 Begin-->
+        	<div class="un_login">还未登录！<a href="${pageContext.request.contextPath}/page/login" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+            <!--End 购物车未登录 End-->
+            <!--Begin 购物车已登录 Begin-->
             <ul class="cars">
             	<li>
-                	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">æ³é¢æµªæ¼«æ¢¦å¢50ML é¦æ°´å¥³å£«æä¹æ¸æ°æ·¡é¦ é2MLå°æ ·3åª</a></div>
-                    <div class="price"><font color="#ff4e00">ï¿¥399</font> X1</div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car1.jpg" width="58" height="58" /></a></div>
+                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
+                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
                 </li>
                 <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">é¦å¥å¿ï¼Chanelï¼ééæ´»åæ·¡é¦æ°´50ml</a></div>
-                    <div class="price"><font color="#ff4e00">ï¿¥399</font> X1</div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
+                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
+                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
                 </li>
                 <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">é¦å¥å¿ï¼Chanelï¼ééæ´»åæ·¡é¦æ°´50ml</a></div>
-                    <div class="price"><font color="#ff4e00">ï¿¥399</font> X1</div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
+                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
+                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
                 </li>
             </ul>
-            <div class="price_sum">å±è®¡&nbsp; <font color="#ff4e00">ï¿¥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">å»è´­ç©è½¦ç»ç®</a></div>
-            <!--End è´­ç©è½¦å·²ç»å½ End-->
+            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
+            <div class="price_a"><a href="#">去购物车结算</a></div>
+            <!--End 购物车已登录 End-->
         </div>
     </div>
 </div>
@@ -192,336 +194,110 @@
 <!--Begin Menu Begin-->
 <div class="menu_bg">
 	<div class="menu">
-    	<!--Begin åååç±»è¯¦æ Begin-->    
-    	<div class="nav">
-        	<div class="nav_t">å¨é¨åååç±»</div>
-            <div class="leftNav none">
-                <ul>      
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav1.png" /></span>
-                            <span class="fl">è¿å£é£åãçé²</span>
-                        </div>
-                        <div class="zj">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav2.png" /></span>
-                            <span class="fl">é£åãé¥®æãé</span>
-                        </div>
-                        <div class="zj" style="top:-40px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå2</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav3.png" /></span>
-                            <span class="fl">æ¯å©´ãç©å·ãç«¥è£</span>
-                        </div>
-                        <div class="zj" style="top:-80px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå3</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav4.png" /></span>
-                            <span class="fl">å®¶å±ãå®¶åº­æ¸æ´ãçº¸å</span>
-                        </div>
-                        <div class="zj" style="top:-120px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå4</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav5.png" /></span>
-                            <span class="fl">ç¾å¦ãä¸ªäººæ¤çãæ´æ¤</span>
-                        </div>
-                        <div class="zj" style="top:-160px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå5</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav6.png" /></span>
-                            <span class="fl">å¥³è£ãåè¡£ãä¸­èå¹´</span>
-                        </div>
-                        <div class="zj" style="top:-200px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå6</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav7.png" /></span>
-                            <span class="fl">éé´ãç®±åãèè¡¨éé¥°</span>
-                        </div>
-                        <div class="zj" style="top:-240px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå7</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav8.png" /></span>
-                            <span class="fl">ç·è£ãè¿å¨</span>
-                        </div>
-                        <div class="zj" style="top:-280px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå8</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav9.png" /></span>
-                            <span class="fl">ææºãå°å®¶çµãçµè</span>
-                        </div>
-                        <div class="zj" style="top:-320px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå9</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>                    
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav10.png" /></span>
-                            <span class="fl">ç¤¼åãåå¼</span>
-                        </div>
-                        <div class="zj" style="top:-360px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>é¶é£ / ç³æ / å·§åå10</h2>
-                                    <a href="#">åæ</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">å·§åå</a>|
-                                    <a href="#">å£é¦ç³</a>|<a href="#">æµ·è</a>|<a href="#">é±¼å¹²</a>|<a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|
-                                    <a href="#">èé¥¯</a>|<a href="#">çº¢æ£</a>|<a href="#">çèå¹²</a>|<a href="#">èé¥¯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>                    	
-                </ul>            
-            </div>
+    	<!--Begin 商品分类详情 Begin-->    
+    	<div class="nav" id="nav_t">
+        	<div class="nav_t">全部商品分类</div>
+            <div class="leftNav none" id="leftNav"></div>
         </div>  
-        <!--End åååç±»è¯¦æ End-->                                                     
+        <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="Index.html">é¦é¡µ</a></li>
-            <li><a href="Food.html">ç¾é£</a></li>
-            <li><a href="Fresh.html">çé²</a></li>
-            <li><a href="HomeDecoration.html">å®¶å±</a></li>
-            <li><a href="SuitDress.html">å¥³è£</a></li>
-            <li><a href="MakeUp.html">ç¾å¦</a></li>
-            <li><a href="Digital.html">æ°ç </a></li>
-            <li><a href="GroupBuying.html">å¢è´­</a></li>
+        	<li><a href="${pageContext.request.contextPath}/page/login">首页</a></li>
+            <li><a href="Food.html">美食</a></li>
+            <li><a href="Fresh.html">生鲜</a></li>
+            <li><a href="HomeDecoration.html">家居</a></li>
+            <li><a href="SuitDress.html">女装</a></li>
+            <li><a href="MakeUp.html">美妆</a></li>
+            <li><a href="Digital.html">数码</a></li>
+            <li><a href="GroupBuying.html">团购</a></li>
         </ul>
-        <div class="m_ad">ä¸­ç§éå¥½ç¤¼ï¼</div>
+        <div class="m_ad">中秋送好礼！</div>
     </div>
 </div>
 <!--End Menu End--> 
 <div class="i_bg">
 	<div class="postion">
-    	<span class="fl">å¨é¨ > ç¾å¦ä¸ªæ¤ > é¦æ°´ > </span>
-        <span class="n_ch">
-            <span class="fl">åçï¼<font>é¦å¥å¿</font></span>
-            <a href="#"><img src="images/s_close.gif" /></a>
-        </span>
+		<form action="" id="myForm">
+			<input type="hidden" id="type1" name="type1" value="${type1}"/>
+			<input type="hidden" id="type2" name="type2" value="${type2}"/>
+			<input type="hidden" id="type3" name="type3" value="${type3}"/>
+		</form>
+    	<span class="fl">
+    		全部 > <span id="type1Name">${type1Name} > </span><span id="type2Name">${type2Name} ></span> 
+    	</span>
+    	<span id="type3NameAll">
+    	<c:if test="${type3!=0}">
+	        <span class="n_ch">
+	        	<span class="fl"><!-- 品牌： -->
+	        		<font id="type3Name">${type3Name}</font>
+	        	</span>
+	            <a href='javascript:void(0);' onclick='delType()'><img src="${pageContext.request.contextPath}/images/s_close.gif" /></a>
+	        </span>
+    	</c:if>
+	    </span>
     </div>
-    <!--Begin ç­éæ¡ä»¶ Begin-->
+    <!--Begin 筛选条件 Begin-->
     <div class="content mar_10">
-    	<table border="0" class="choice" style="width:100%; font-family:'å®ä½'; margin:0 auto;" cellspacing="0" cellpadding="0">
+    	<table border="0" class="choice" style="width:100%; font-family:'宋体'; margin:0 auto;" cellspacing="0" cellpadding="0">
           <tr valign="top">
-            <td width="70">&nbsp; åçï¼</td>
-            <td class="td_a"><a href="#" class="now">é¦å¥å¿ï¼Chanelï¼</a><a href="#">è¿ªå¥¥ï¼Diorï¼</a><a href="#">èæå²ï¼VERSACEï¼</a><a href="#">è²ææ ¼æï¼Ferragamoï¼</a><a href="#">å°è»ï¼LANCOMEï¼</a><a href="#">ç±é©¬ä»ï¼HERMESï¼</a><a href="#">å¡æåè±ï¼Calvin Kleinï¼</a><a href="#">å¤é©°ï¼GUCCIï¼</a><a href="#">å®æ ¼ä¸½ï¼BVLGARIï¼</a><a href="#">é¿è¿ªè¾¾æ¯ï¼Adidasï¼</a><a href="#">å¡å°æÂ·åè±æ©ï¼CKï¼</a><a href="#">åä»ï¼LYNXï¼</a><a href="#">å¤§å«æå¤«ï¼Davidoffï¼</a><a href="#">å®å¨èï¼Anna suiï¼</a><a href="#">é¿çå°¼ï¼ARMANIï¼</a><a href="#">å¨å°ï¼Guerlainï¼</a></td>
+            <td width="70">&nbsp; 品牌：</td>
+            <td class="td_a"><a href="#" class="now">香奈儿（Chanel）</a><a href="#">迪奥（Dior）</a><a href="#">范思哲（VERSACE）</a><a href="#">菲拉格慕（Ferragamo）</a><a href="#">兰蔻（LANCOME）</a><a href="#">爱马仕（HERMES）</a><a href="#">卡文克莱（Calvin Klein）</a><a href="#">古驰（GUCCI）</a><a href="#">宝格丽（BVLGARI）</a><a href="#">阿迪达斯（Adidas）</a><a href="#">卡尔文·克莱恩（CK）</a><a href="#">凌仕（LYNX）</a><a href="#">大卫杜夫（Davidoff）</a><a href="#">安娜苏（Anna sui）</a><a href="#">阿玛尼（ARMANI）</a><a href="#">娇兰（Guerlain）</a></td>
           </tr>
           <tr valign="top">
-            <td>&nbsp; ä»·æ ¼ï¼</td>                                                                                                       
-            <td class="td_a"><a href="#">0-199</a><a href="#" class="now">200-399</a><a href="#">400-599</a><a href="#">600-899</a><a href="#">900-1299</a><a href="#">1300-1399</a><a href="#">1400ä»¥ä¸</a></td>
+            <td>&nbsp; 价格：</td>                                                                                                       
+            <td class="td_a"><a href="#">0-199</a><a href="#" class="now">200-399</a><a href="#">400-599</a><a href="#">600-899</a><a href="#">900-1299</a><a href="#">1300-1399</a><a href="#">1400以上</a></td>
           </tr>                                              
           <tr>
-            <td>&nbsp; ç±»åï¼</td>
-            <td class="td_a"><a href="#">å¥³å£«é¦æ°´</a><a href="#">ç·å£«é¦æ°´</a><a href="#">Qçé¦æ°´</a><a href="#">ç»åå¥è£</a><a href="#">é¦ä½èµ°ç </a><a href="#">å¶å®</a></td>
+            <td>&nbsp; 类型：</td>
+            <td class="td_a"><a href="#">女士香水</a><a href="#">男士香水</a><a href="#">Q版香水</a><a href="#">组合套装</a><a href="#">香体走珠</a><a href="#">其它</a></td>
           </tr>                                          
           <tr>
-            <td>&nbsp; é¦åï¼</td>                                       
-            <td class="td_a"><a href="#">æµé¦æ°´</a><a href="#">é¦ç²¾Parfumé¦æ°´</a><a href="#">æ·¡é¦ç²¾EDPæ·¡é¦æ°´</a><a href="#">é¦é²EDT</a><a href="#">å¤é¾æ°´</a><a href="#">å¶å®</a></td>
+            <td>&nbsp; 香型：</td>                                       
+            <td class="td_a"><a href="#">浓香水</a><a href="#">香精Parfum香水</a><a href="#">淡香精EDP淡香水</a><a href="#">香露EDT</a><a href="#">古龙水</a><a href="#">其它</a></td>
           </tr>                                                             
         </table>                                                                                 
     </div>
-    <!--End ç­éæ¡ä»¶ End-->
+    <!--End 筛选条件 End-->
     
     <div class="content mar_20">
     	<div class="l_history">
         	<div class="his_t">
-            	<span class="fl">æµè§åå²</span>
-                <span class="fr"><a href="#">æ¸ç©º</a></span>
+            	<span class="fl">浏览历史</span>
+                <span class="fr"><a href="#">清空</a></span>
             </div>
         	<ul>
             	<li>
-                    <div class="img"><a href="#"><img src="images/his_1.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_1.jpg" width="185" height="162" /></a></div>
+                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
-                    	<font>ï¿¥<span>368.00</span></font> &nbsp; 18R
+                    	<font>￥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_2.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_2.jpg" width="185" height="162" /></a></div>
+                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
-                    	<font>ï¿¥<span>768.00</span></font> &nbsp; 18R
+                    	<font>￥<span>768.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_3.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_3.jpg" width="185" height="162" /></a></div>
+                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
-                    	<font>ï¿¥<span>680.00</span></font> &nbsp; 18R
+                    	<font>￥<span>680.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_4.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_4.jpg" width="185" height="162" /></a></div>
+                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
-                    	<font>ï¿¥<span>368.00</span></font> &nbsp; 18R
+                    	<font>￥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_5.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/è¿ªå¥¥é¦æ°´2ä»¶å¥è£</a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_5.jpg" width="185" height="162" /></a></div>
+                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
-                    	<font>ï¿¥<span>368.00</span></font> &nbsp; 18R
+                    	<font>￥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
         	</ul>
@@ -529,248 +305,248 @@
         <div class="l_list">
         	<div class="list_t">
             	<span class="fl list_or">
-                	<a href="#" class="now">é»è®¤</a>
+                	<a href="#" class="now">默认</a>
                     <a href="#">
-                    	<span class="fl">éé</span>                        
-                        <span class="i_up">ééä»ä½å°é«æ¾ç¤º</span>
-                        <span class="i_down">ééä»é«å°ä½æ¾ç¤º</span>                                                     
+                    	<span class="fl">销量</span>                        
+                        <span class="i_up">销量从低到高显示</span>
+                        <span class="i_down">销量从高到低显示</span>                                                     
                     </a>
                     <a href="#">
-                    	<span class="fl">ä»·æ ¼</span>                        
-                        <span class="i_up">ä»·æ ¼ä»ä½å°é«æ¾ç¤º</span>
-                        <span class="i_down">ä»·æ ¼ä»é«å°ä½æ¾ç¤º</span>     
+                    	<span class="fl">价格</span>                        
+                        <span class="i_up">价格从低到高显示</span>
+                        <span class="i_down">价格从高到低显示</span>     
                     </a>
-                    <a href="#">æ°å</a>
+                    <a href="#">新品</a>
                 </span>
-                <span class="fr">å±åç°120ä»¶</span>
+                <span class="fr">共发现120件</span>
             </div>
             <div class="list_c">
             	
                 <ul class="cate_list">
                 	<li>
-                    	<div class="img"><a href="#"><img src="images/per_1.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_1.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_2.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_2.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_3.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_3.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_4.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_4.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_5.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_5.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_6.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_6.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_7.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_7.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_8.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_8.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_9.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_9.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_10.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_10.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_11.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_11.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_12.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_12.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_5.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_5.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_6.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_6.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_7.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_7.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_8.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_8.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_9.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_9.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_10.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_10.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_11.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_11.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     <li>
-                    	<div class="img"><a href="#"><img src="images/per_12.jpg" width="210" height="185" /></a></div>
+                    	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/per_12.jpg" width="210" height="185" /></a></div>
                         <div class="price">
-                            <font>ï¿¥<span>198.00</span></font> &nbsp; 26R
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
                         </div>
-                        <div class="name"><a href="#">é¦å¥å¿ééæ¸æ°æ·¡é¦æ°´50ml</a></div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                         <div class="carbg">
-                        	<a href="#" class="ss">æ¶è</a>
-                            <a href="#" class="j_car">å å¥è´­ç©è½¦</a>
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                 </ul>
                 
                 <div class="pages">
-                	<a href="#" class="p_pre">ä¸ä¸é¡µ</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">ä¸ä¸é¡µ</a>
+                	<a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">下一页</a>
                 </div>
                 
                 
@@ -784,89 +560,85 @@
         <div class="b_btm">
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b1.png" width="62" height="62" /></td>
-                <td><h2>æ­£åä¿é</h2>æ­£åè¡è´§  æ¾å¿è´­ä¹°</td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b1.png" width="62" height="62" /></td>
+                <td><h2>正品保障</h2>正品行货  放心购买</td>
               </tr>
             </table>
 			<table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b2.png" width="62" height="62" /></td>
-                <td><h2>æ»¡38åé®</h2>æ»¡38åé® åè¿è´¹</td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b2.png" width="62" height="62" /></td>
+                <td><h2>满38包邮</h2>满38包邮 免运费</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b3.png" width="62" height="62" /></td>
-                <td><h2>å¤©å¤©ä½ä»·</h2>å¤©å¤©ä½ä»· çéæ å¿§</td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b3.png" width="62" height="62" /></td>
+                <td><h2>天天低价</h2>天天低价 畅选无忧</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b4.png" width="62" height="62" /></td>
-                <td><h2>åæ¶éè¾¾</h2>æ¶è´§æ¶é´ç±ä½ åä¸»</td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b4.png" width="62" height="62" /></td>
+                <td><h2>准时送达</h2>收货时间由你做主</td>
               </tr>
             </table>
         </div>
     </div>
     <div class="b_nav">
     	<dl>                                                                                            
-        	<dt><a href="#">æ°æä¸è·¯</a></dt>
-            <dd><a href="#">å®åæµç¨</a></dd>
-            <dd><a href="#">è´­ç©æµç¨</a></dd>
-            <dd><a href="#">è®¢è´­æ¹å¼</a></dd>
-            <dd><a href="#">éç§å£°æ</a></dd>
-            <dd><a href="#">æ¨èåäº«è¯´æ</a></dd>
+        	<dt><a href="#">新手上路</a></dt>
+            <dd><a href="#">售后流程</a></dd>
+            <dd><a href="#">购物流程</a></dd>
+            <dd><a href="#">订购方式</a></dd>
+            <dd><a href="#">隐私声明</a></dd>
+            <dd><a href="#">推荐分享说明</a></dd>
         </dl>
         <dl>
-        	<dt><a href="#">ééä¸æ¯ä»</a></dt>
-            <dd><a href="#">è´§å°ä»æ¬¾åºå</a></dd>
-            <dd><a href="#">ééæ¯ä»æ¥è¯¢</a></dd>
-            <dd><a href="#">æ¯ä»æ¹å¼è¯´æ</a></dd>
+        	<dt><a href="#">配送与支付</a></dt>
+            <dd><a href="#">货到付款区域</a></dd>
+            <dd><a href="#">配送支付查询</a></dd>
+            <dd><a href="#">支付方式说明</a></dd>
         </dl>
         <dl>
-        	<dt><a href="#">ä¼åä¸­å¿</a></dt>
-            <dd><a href="#">èµéç®¡ç</a></dd>
-            <dd><a href="#">æçæ¶è</a></dd>
-            <dd><a href="#">æçè®¢å</a></dd>
+        	<dt><a href="#">会员中心</a></dt>
+            <dd><a href="#">资金管理</a></dd>
+            <dd><a href="#">我的收藏</a></dd>
+            <dd><a href="#">我的订单</a></dd>
         </dl>
         <dl>
-        	<dt><a href="#">æå¡ä¿è¯</a></dt>
-            <dd><a href="#">éæ¢è´§åå</a></dd>
-            <dd><a href="#">å®åæå¡ä¿è¯</a></dd>
-            <dd><a href="#">äº§åè´¨éä¿è¯</a></dd>
+        	<dt><a href="#">服务保证</a></dt>
+            <dd><a href="#">退换货原则</a></dd>
+            <dd><a href="#">售后服务保证</a></dd>
+            <dd><a href="#">产品质量保证</a></dd>
         </dl>
         <dl>
-        	<dt><a href="#">èç³»æä»¬</a></dt>
-            <dd><a href="#">ç½ç«æéæ¥å</a></dd>
-            <dd><a href="#">è´­ç©å¨è¯¢</a></dd>
-            <dd><a href="#">æè¯ä¸å»ºè®®</a></dd>
+        	<dt><a href="#">联系我们</a></dt>
+            <dd><a href="#">网站故障报告</a></dd>
+            <dd><a href="#">购物咨询</a></dd>
+            <dd><a href="#">投诉与建议</a></dd>
         </dl>
         <div class="b_tel_bg">
-        	<a href="#" class="b_sh1">æ°æµªå¾®å</a>            
-        	<a href="#" class="b_sh2">è¾è®¯å¾®å</a>
+        	<a href="#" class="b_sh1">新浪微博</a>            
+        	<a href="#" class="b_sh2">腾讯微博</a>
             <p>
-            æå¡ç­çº¿ï¼<br />
+            服务热线：<br />
             <span>400-123-4567</span>
             </p>
         </div>
         <div class="b_er">
-            <div class="b_er_c"><img src="images/er.gif" width="118" height="118" /></div>
-            <img src="images/ss.png" />
+            <div class="b_er_c"><img src="${pageContext.request.contextPath}/images/er.gif" width="118" height="118" /></div>
+            <img src="${pageContext.request.contextPath}/images/ss.png" />
         </div>
     </div>    
     <div class="btmbg">
 		<div class="btm">
-        	å¤æ¡/è®¸å¯è¯ç¼å·ï¼èICPå¤12009302å·-1-www.dingguagua.com   Copyright Â© 2015-2018 å°¤æ´ªååç½ All Rights Reserved. å¤å¶å¿ç©¶ , Technical Support: Dgg Group <br />
-            <img src="images/b_1.gif" width="98" height="33" /><img src="images/b_2.gif" width="98" height="33" /><img src="images/b_3.gif" width="98" height="33" /><img src="images/b_4.gif" width="98" height="33" /><img src="images/b_5.gif" width="98" height="33" /><img src="images/b_6.gif" width="98" height="33" />
+        	备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
+            <img src="${pageContext.request.contextPath}/images/b_1.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_2.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_3.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_4.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_5.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_6.gif" width="98" height="33" />
         </div>    	
     </div>
     <!--End Footer End -->    
 </div>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/logout.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectProByType.js"></script>
 </body>
-
-
-<!--[if IE 6]>
-<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
 </html>

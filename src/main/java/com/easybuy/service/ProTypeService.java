@@ -23,4 +23,9 @@ public interface ProTypeService {
 	 * 查询所有分类
 	 */
 	List<ProType> selectAllProType();
+	
+	/**
+	 * 根据ID查询分类
+	 */
+	ProType selectTypeByID(Integer id);
 }

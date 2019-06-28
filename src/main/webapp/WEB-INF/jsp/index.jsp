@@ -6,12 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-    <!--[if IE 6]>
-    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
-        <script type="text/javascript">
-           EvPNG.fix('div, ul, img, li, input, a'); 
-        </script>
-    <![endif]-->    
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min_044d0927.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.bxslider_e88acd1b.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
@@ -27,13 +21,13 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/tban.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
 	<!-- ajax注销 -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
-<%--     <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/logout.js"></script> --%>
+<%--     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script> --%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/logout.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectType.js"></script>
     
 <title>易买网-主页</title>
 </head>
-<body>  
+<body>
 <!--Begin Header Begin-->
 <div class="soubg">
 	<div class="sou">
@@ -115,15 +109,18 @@
         <!--End 所在收货地区 End-->
         <span class="fr">
         	<span class="fl">
-        		<c:if test="${! empty user}">
-					欢迎<span style="color:#ff4e00;">${user.userName}</span>登录，当前余额为:<span style="color:#ff4e00;">${user.money}</span>元
-					<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">注销</a>
-				</c:if>
-				<c:if test="${empty user}">
-					你好，请<a href="Login.jsp">登录</a>&nbsp; <a href="Regist.jsp" style="color:#ff4e00;">免费注册</a>
-				</c:if>
-				&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
-        	</span>
+        		<c:if test="${! empty account}">
+				欢迎<span style="color:#ff4e00;">[${account.userName}]</span>登录&nbsp;
+				<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">[注销]</a>
+			</c:if>
+			<c:if test="${empty account}">
+				<span class="fl">
+					你好，请<a href="${pageContext.request.contextPath}/page/login">登录</a>&nbsp; 
+					<a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">免费注册</a>
+				</span>
+			</c:if>
+			&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+        </span>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
@@ -170,7 +167,7 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
+    <div class="logo"><a href="${pageContext.request.contextPath}/page/login"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     <div class="search">
     	<form>
         	<input type="text" value="" class="s_ipt" />
@@ -182,7 +179,7 @@
     	<div class="car_t">购物车 [ <span>3</span> ]</div>
         <div class="car_bg">
        		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+        	<div class="un_login">还未登录！<a href="${pageContext.request.contextPath}/page/login" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
             <ul class="cars">
@@ -219,7 +216,7 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="Index.html">首页</a></li>
+        	<li><a href="${pageContext.request.contextPath}/page/login">首页</a></li>
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -1124,14 +1121,6 @@
 </div>
 
 </body>
-
-
-<!--[if IE 6]>
-<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
-</html>
-
-
 <div class="top">
     <div class="logo"><a href="${ctx}/Home?action=index"><img src="${ctx}/statics/images/logo.png"></a></div>
     <div class="search">

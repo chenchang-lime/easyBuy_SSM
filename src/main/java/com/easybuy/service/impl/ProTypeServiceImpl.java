@@ -14,7 +14,7 @@ public class ProTypeServiceImpl implements ProTypeService {
 
 	@Autowired
 	private ProTypeMapper tmapper;
-	
+
 	public int insertProType(ProTypeMapper proType) {
 		return 0;
 	}
@@ -23,9 +23,12 @@ public class ProTypeServiceImpl implements ProTypeService {
 		return 0;
 	}
 
-	
 	public List<ProType> selectAllProType() {
 		return tmapper.selectAllProType();
+	}
+
+	public ProType selectTypeByID(Integer id) {
+		return tmapper.selectTypeByID(id);
 	}
 
 }
