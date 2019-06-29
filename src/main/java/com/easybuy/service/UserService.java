@@ -35,7 +35,7 @@ public interface UserService {
 	/**
 	 * 删除用户
 	 */
-	int deleteUserByID(int id);
+	int deleteUserByID(User user);
 	
 	/**
 	 * 新增收货地址
@@ -52,5 +52,5 @@ public interface UserService {
 	 * 买家用户总数量
 	 */
 	Integer tatopage();
-
+	
 }

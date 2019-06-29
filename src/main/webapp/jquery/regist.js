@@ -22,7 +22,7 @@ $(function(){
 	});
 	
 	$("[name=loginName]").blur(function(){
-			alert($("[name=loginName]").val());
+//			alert($("[name=loginName]").val());
 		$.post("/easyBuy_SSM/user/regist1","loginName="+$("[name=loginName]").val(),function(data){
 			if (data.a=="no") {
 				alert("用户名重复");

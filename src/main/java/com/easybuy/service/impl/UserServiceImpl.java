@@ -21,9 +21,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public int regist(User user) {
-		user.setType(0);
-		int i = mapper.regist(user);
-		return i;
+
+		return   mapper.regist(user);
 	}
 
 	public List<User> selectUserByPage(Integer pageNum, Integer pageSize) {
@@ -31,11 +30,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public int updateUser(User user) {
-		return 0;
+		System.out.println("money");
+		return mapper.updateUser(user);
 	}
 
-	public int deleteUserByID(int id) {
-		return 0;
+	public int deleteUserByID(User user) {
+		return   mapper.regist(user);
+		
 	}
 
 	public int insertUserAddress(UserAddress address) {

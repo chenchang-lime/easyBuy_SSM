@@ -17,9 +17,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectvip" resultType="User">
-		select id,loginName,type from easybuy_user where type=0
+		select * from easybuy_user where type=0
 	</select>
 	<select id="tatopage" resultType="int">
 		select count(*) from easybuy_user where type=0
+	</select>
+	
+	
+	<update id="updateUser"  parameterType="User">
+		UPDATE easybuy_user SET loginName=#{loginName} , userName=#{userName}, 
+		sex=#{sex},identityCode=#{identityCode},email=#{email}, mobile=#{mobile},money=#{money},type=#{type} 
+		WHERE id=#{id}
+	</update>
+	
+	<select id="selecUserByID"  parameterType="User">
+		select loginName,userName,password,sex,identityCode,email,mobile,money  from where id=#{id}
 	</select>
 </mapper>

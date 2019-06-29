@@ -63,8 +63,8 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("/regist")
 	public Map<String,Object> regist(@Valid User user,BindingResult result) {
+		System.out.println(user);
 		Map<String,Object> map = new HashMap<String,Object>();
-		
 		user.setPassword(new MD5TOOL().getMD5tring(user.getPassword()));
 		int account= sService.regist(user);
 		if (account==1) {
@@ -102,6 +102,9 @@ public class UserController {
 		Map<Object,Object> map = new HashMap<Object,Object>();
 		PageHelper.startPage(pageNums1, pageSize);
 		List<User> list=sService.selectUserByPage(pageNums1, pageSize);
+		for (User user : list) {
+			System.out.println(user);
+		}
 		int count=sService.tatopage();
 		int totalPageNum = count%pageSize==0?count/pageSize:count/pageSize+1;
 		
@@ -115,5 +118,23 @@ public class UserController {
 		}
 		return map;
 	}
+//删除&修改
+	@ResponseBody
+	@RequestMapping("/updateUserByID")
+	public Map<String,Object> deleteUserByID(User user) {
+		System.out.println("111111111111111");
+		Map<String,Object> map = new HashMap<String,Object>();
+		System.out.println(user);
+		int deletelist=sService.updateUser(user);
+		System.out.println("2222222222-->"+deletelist);
+		if (deletelist>0) {
+			map.put("updatelist", "ok");
+		}else {
+			map.put("updatelist","no");
+		}
+		return map;
+		
+	}
+	
 	
 }

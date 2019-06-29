@@ -49,4 +49,10 @@ public interface UserMapper {
 	 */
 	Integer tatopage();
 	
+	/**
+	 * 查询用户
+	 */
+	List<User> selecUserByID(int id);
+	
+	
 }

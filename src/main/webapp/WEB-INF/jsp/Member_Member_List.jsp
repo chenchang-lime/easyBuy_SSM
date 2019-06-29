@@ -16,9 +16,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
-	
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/member.js"></script>        
+       
     
 <title>甘劲松会员管理</title>
 </head>
@@ -235,26 +233,23 @@
         </div>
 		<div class="m_right">
             <p></p>		
-            
+            <a href="java"></a>
 			<div class="mem_t">
-            	<span class="m_num fr" style="margin-top:15px;"><a href="#">返回</a></span>会员列表
+            	<span class="m_num fr" style="margin-top:15px;"><a href="javascript:viod(0);" id="fanhui">返回</a></span>会员列表
             </div>
+             <form id="myform">
             <table id="mytable" border="1" class="mem_tab" style="width:870px; text-align:center; margin-top:20px;" cellspacing="0" cellpadding="0">
-              <thead>
+              <thead id="gjslist3">
 	               <tr>
-	                <td class="th_bg" colspan="6">会员列表&nbsp; &nbsp; &nbsp;</td>
+	                <td class="th_bg" colspan="8">会员列表&nbsp; &nbsp; &nbsp;</td>
 	              </tr>
               </thead>
-             
               <tbody id="gjslist">
               </tbody>
-              <tr>	
-	              <td colspan="6">
-	 	<span><a href="javascript:viod(0);" id="shang">
-	 	上一页</a></span>第<span id="pageNumsGJS">1</span>页|共<span id="tatopageGJS">5</span>页 <span><a href="javascript:viod(0);" id="xia">下一页</a></span>
-	              </td>
-              </tr>
             </table>
+            <input type="hidden" id="state" name="type"  value=""/>
+          
+              </form>
         </div>
     </div>
 	<!--End 用户中心 End--> 
@@ -343,8 +338,10 @@
     <!--End Footer End -->    
 </div>
 
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/member.js"></script> 
 </body>
-
+	
 
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>

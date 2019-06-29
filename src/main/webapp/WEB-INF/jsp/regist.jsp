@@ -63,6 +63,7 @@
                     <span class="fr">已有商城账号，<a href="Login.html" style="color:#ff4e00;">我要登录</a></span>
                 </td>
               </tr>
+              <span></span>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
                 <td><input type="text" value="" class="l_user" name="loginName" /></td>
