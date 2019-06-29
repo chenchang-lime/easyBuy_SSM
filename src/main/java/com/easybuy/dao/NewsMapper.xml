@@ -15,4 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectNewsByID" resultType="News" >
 	SELECT * FROM easybuy_news where id=#{id} 
 	</select>
+	
+	<insert id="insertNews" parameterType="com.easybuy.entity.News">
+		INSERT INTO easybuy_news (title,content,createTime)
+		values(#{title},#{content},#{createTime})
+	</insert>
+	
 </mapper>

@@ -26,4 +26,9 @@ public interface NewsService {
 	 * 查询新闻总数量
 	 */
 	int selectCount();
+	/**
+	 * 新增新闻
+	 * 
+	 */
+	int insertNews(News news);
 }

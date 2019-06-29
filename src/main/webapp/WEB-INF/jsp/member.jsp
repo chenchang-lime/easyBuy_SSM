@@ -29,8 +29,8 @@
     	<span class="s_city_b">
         	<span class="fl">送货至：</span>
             <span class="s_city">
-            	<span>湖北</span>
-                <div class="s_city_bg">
+            	<span >湖北</span>
+                <div class="s_city_bg" >
                 	<div class="s_city_t"></div>
                     <div class="s_city_c">
                     	<h2>请选择所在的收货地区</h2>

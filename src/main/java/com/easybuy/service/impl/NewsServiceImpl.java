@@ -32,4 +32,9 @@ public class NewsServiceImpl implements NewsService {
 		return mapper.countNews();
 	}
 
+	public int insertNews(News news) {
+	
+		return mapper.insertNews(news);
+	}
+
 }

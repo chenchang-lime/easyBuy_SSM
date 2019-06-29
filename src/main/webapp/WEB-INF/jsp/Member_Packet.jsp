@@ -20,83 +20,8 @@
 	src="${pageContext.request.contextPath}/js/menu.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/select.js"></script>
-<script type="text/javascript">
-	jq(function() {
-		var currPage = 1;
-		var pageSize = 5;
-		function show(currPage, pageSize) {
-			jq
-					.post(
-							"${pageContext.request.contextPath}/new/tonews",
-							"currPage=" + currPage + "&pageSize=" + pageSize,
-							function(data) {
-								console.log(data.list);
-								console.log(data.currPage);
-								console.log(data.pageSize);
-								console.log(data.id);
-								console.log(data.content);
-								jq("#currPage").text(data.currPage);
-								jq("#totalPage").text(data.totalPage);
-								currPage = data.currPage;
-								totalPage = data.totalPage;
-								var html = "";
-								jq("#count").text(data.count);
-								jq(data.list)
-										.each(
-												function() {
-													html += "<tr>"
-															+ "<td align='center'  class='td_bg'>"
-															+ "<a id='bbb' onclick='showDetail("
-															+ this.id
-															+ ")' href='javascript:void(0)'>"
-
-															+ this.title
-															+ "</a>"
-															+ "</td>"
-															+ "<td align='center'>"
-															+ this.createTime
-															+ "</td>" + "</tr>";
-												});
-
-								jq("#tb").html(html);
-							}, "json");
-			//根据ID给出相应的新闻内容
-
-		}
-
-		jq("#before").click(function() {
-			currPage -= 1;
-			if (currPage == 0) {
-				currPage = 1;
-			}
-			show(currPage, pageSize);
-		})
-
-		jq("#after").click(function() {
-			currPage += 1;
-			if (currPage > jq("#totalPage").text()) {
-				currPage = jq("#totalPage").text();
-			}
-			show(currPage, pageSize);
-		});
-		show(currPage, pageSize);
-	})
-
-	function showDetail(id) {
-		jq.post("${pageContext.request.contextPath}/new/tonewscontent/" + id,
-				function(data) {
-					alert(data.id.content)
-					var html = "";
-
-					html += "tr" + "<td>" + data.id.content + "</td>"
-
-					+ "</tr>";
-
-					jq("#newcontent").html(html);
-				}, "json");
-
-	}
-</script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/jquery/news.js"></script>
 
 <title>新闻</title>
 </head>
@@ -354,8 +279,11 @@
 			</div>
 			<!--------------------------------------我的新闻 ------------------------------------>
 			<div class="m_right">
-				<p></p>
-				<div class="mem_tit">新闻</div>
+				<div class="mem_t">
+				<span class="m_num fr" style="margin-top:15px;"><a onclick="xinzeng()" href="javascript:void(0);">新增</a></span>
+            	<span class="m_num fr" style="margin-top:15px;"><a onclick="fanhui()" href="javascript:void(0);">返回</a></span>新闻列表
+            </div>
+            <form id="myform" method="post">
 				<table border="1" class="mem_tab"
 					style="width: 870px; text-align: center; margin-top: 20px;"
 					cellspacing="0" cellpadding="0">
@@ -363,18 +291,11 @@
 						<td class="th_bg" colspan="2">新闻列表</td>
 					</tr>
 					<tbody id="tb">
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="2"><a href="javascript:void(0)" id="before"
-								style="color:#ff4e00;">上一页</a> <span id="currPage"
-								style="font-size: 20px"></span> <span>|</span> <span
-								id="totalPage" style="font-size: 20px"></span> <a
-								href="javascript:void(0)" id="after" style="color:#ff4e00;">下一页</a>
-							</td>
-						</tr>
-					</tfoot>
+					</tbody> 
+					
 				</table>
+					  
+				</form>
 				<!--------------------------------------我的新闻 end------------------------------------>
 			</div>
 		</div>

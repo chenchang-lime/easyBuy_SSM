@@ -2,6 +2,7 @@ package com.easybuy.dao;
 
 import java.util.List;
 
+
 import com.easybuy.entity.News;
 
 /**
@@ -23,4 +24,8 @@ public interface NewsMapper {
 	 * 根据ID查新闻详情
 	 */
 	News selectNewsByID(int id);
+	/**
+	 * 新增新闻
+	 */
+	int insertNews(News news);
 }
