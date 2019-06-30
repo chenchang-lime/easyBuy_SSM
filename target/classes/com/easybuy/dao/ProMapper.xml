@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easybuy.dao.ProMapper">
+	<select id="selectProByType" resultType="Product" parameterType="int">
+		select * from easybuy_product where categoryLevel1Id=#{type1} and categoryLevel2Id=#{type2} and categoryLevel3Id=#{type3} and isDelete=0
+	</select>
+	
+	<select id="countProByType" resultType="int" parameterType="int">
+		select count(*) from easybuy_product where categoryLevel1Id=#{type1} and categoryLevel2Id=#{type2} and categoryLevel3Id=#{type3} and isDelete=0
+	</select>
+	
+	<select id="selectProByID" resultType="Product" parameterType="int">
+		select * from easybuy_product where id=#{proID}
+	</select>
+</mapper>

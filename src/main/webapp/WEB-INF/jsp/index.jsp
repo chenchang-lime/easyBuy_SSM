@@ -109,7 +109,7 @@
         <!--End 所在收货地区 End-->
         <span class="fr">
         	<span class="fl">
-        		<c:if test="${! empty account}">
+        	<c:if test="${! empty account}">
 				欢迎<span style="color:#ff4e00;">[${account.userName}]</span>登录&nbsp;
 				<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">[注销]</a>
 			</c:if>
@@ -167,7 +167,7 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="${pageContext.request.contextPath}/page/login"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
+    <div class="logo"><a href="${pageContext.request.contextPath}/page/index"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     <div class="search">
     	<form>
         	<input type="text" value="" class="s_ipt" />
@@ -200,7 +200,7 @@
                 </li>
             </ul>
             <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">去购物车结算</a></div>
+            <div class="price_a"><a href="/easyBuy_SSM/page/buyCar">去购物车结算</a></div>
             <!--End 购物车已登录 End-->
         </div>
     </div>
@@ -216,14 +216,14 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="${pageContext.request.contextPath}/page/login">首页</a></li>
-            <li><a href="Food.html">美食</a></li>
-            <li><a href="Fresh.html">生鲜</a></li>
-            <li><a href="HomeDecoration.html">家居</a></li>
-            <li><a href="SuitDress.html">女装</a></li>
-            <li><a href="MakeUp.html">美妆</a></li>
-            <li><a href="Digital.html">数码</a></li>
-            <li><a href="GroupBuying.html">团购</a></li>
+        	<li><a href="${pageContext.request.contextPath}/page/index">首页</a></li>
+            <li><a href="${pageContext.request.contextPath}/page/index">美食</a></li>
+            <li><a href="${pageContext.request.contextPath}/page/index">生鲜</a></li>
+            <li><a href="${pageContext.request.contextPath}/page/index">家居</a></li>
+            <li><a href="${pageContext.request.contextPath}/page/index">女装</a></li>
+            <li><a href="${pageContext.request.contextPath}/page/index">美妆</a></li>
+            <li><a href="${pageContext.request.contextPath}/page/index">数码</a></li>
+            <li><a href="${pageContext.request.contextPath}/page/index">团购</a></li>
         </ul>
         <div class="m_ad">中秋送好礼！</div>
     </div>
