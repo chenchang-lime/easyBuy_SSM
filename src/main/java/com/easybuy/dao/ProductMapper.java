@@ -32,4 +32,21 @@ public interface ProductMapper {
 	 * 删除商品
 	 */
 	int deletePro(int id);
+	
+	/**
+	  @查询一级分类
+	 */
+	List<ProType> selectFirType(); 
+	/**
+	  @查询二级分类
+	 */
+	List<ProType> selectSecType(); 
+	/**
+	  @查询三级分类
+	 */
+	List<ProType> selectThiType(); 
+	/**
+	  @添加商品
+	 */
+	int insertProduct(Product product);
 }

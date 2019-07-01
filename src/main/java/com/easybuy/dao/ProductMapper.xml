@@ -25,4 +25,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deletePro">
 		delete from easybuy_product where id=#{id}
 	</delete>
+	<select id="selectFirType" resultType="ProType">
+		select * from easybuy_product_category where type=1
+	</select>
+	<select id="selectSecType" resultType="ProType">
+		select * from easybuy_product_category where type=2
+	</select>
+	<select id="selectThiType" resultType="ProType">
+		select * from easybuy_product_category where type=3
+	</select>
+	<update id="insertProduct" parameterType="Product">
+		insert into easybuy_product(name,description,price,stock,categoryLevel1Id,categoryLevel2Id,categoryLevel3Id,fileName) values(#{name},#{description},#{price},#{stock},#{categoryLevel1Id},#{categoryLevel2Id},#{categoryLevel3Id},#{fileName})
+	</update>
 </mapper>

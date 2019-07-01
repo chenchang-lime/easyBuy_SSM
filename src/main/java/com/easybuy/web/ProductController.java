@@ -23,11 +23,6 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	
-	
-	
-	
-	
 	@ResponseBody
 	@RequestMapping("/selectall")
 	public Map<String,Object> selectAll(@RequestParam(value="currPage",defaultValue="1")int currPage,@RequestParam(value="pageSize",defaultValue="5")int pageSize){
@@ -95,6 +90,36 @@ public class ProductController {
 		}else {
 			map.put("result", "no");
 		}
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/selectInsertType")
+	public Map<String,Object> selectFirType(){
+		System.out.println(111);
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<ProType> list1 = service.selectFirType();
+		List<ProType> list2 = service.selectSecType();
+		List<ProType> list3 = service.selectThiType();
+		map.put("list1", list1);
+		map.put("list2", list2);
+		map.put("list3", list3);
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/insertProduct")
+	public Map<String,Object> insertProduct(Product product){
+		System.out.println(111);
+		Map<String,Object> map = new HashMap<String,Object>();
+		int num = service.insertProduct(product);
+		System.out.println(num);
+		if (num>0) {
+			map.put("result", "yes");
+		}else {
+			map.put("result", "no");
+		}
+		System.out.println(map);
 		return map;
 	}
 	
