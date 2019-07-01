@@ -1,4 +1,7 @@
 package com.easybuy.entity;
+
+import java.util.Date;
+
 /**
  * 表名：easybuy_order
  * 订单表
@@ -16,15 +19,15 @@ public class Order {
 	/**
 	 * 用户登录名-引用自表easybuy_user的loginName
 	 */
-	private Integer loginName;
+	private String  loginName;
 	/**
 	 * 收货地址-引用自表easybuy_user_address的address
 	 */
-	private Integer userAddress;
+	private String userAddress; //地址为String类型
 	/**
 	 * 订单创建时间-默认为系统当前时间
 	 */
-	private Integer createTime;
+	private Date createTime;  //时间为date类型
 	/**
 	 * 订单总金额
 	 */
@@ -32,7 +35,12 @@ public class Order {
 	/**
 	 * 订单唯一标识码-序列号
 	 */
-	private Integer serialNumber;
+	private String serialNumber;
+	
+	/**
+	 * 订单状态
+	 */
+	private Integer status ;
 	
 	/**
 	 * 无参构造函数
@@ -49,8 +57,78 @@ public class Order {
 	 * @param cost  订单总金额
 	 * @param serialNumber  订单唯一标识码-序列号
 	 */
-	public Order(Integer id, Integer userId, Integer loginName, Integer userAddress, Integer createTime, Double cost,
-			Integer serialNumber) {
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
+
+	public String getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", userId=" + userId + ", loginName=" + loginName + ", userAddress=" + userAddress
+				+ ", createTime=" + createTime + ", cost=" + cost + ", serialNumber=" + serialNumber + ", status="
+				+ status + "]";
+	}
+	public Order(Integer id, Integer userId, String loginName, String userAddress, Date createTime, Double cost,
+			String serialNumber, Integer status) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -59,69 +137,7 @@ public class Order {
 		this.createTime = createTime;
 		this.cost = cost;
 		this.serialNumber = serialNumber;
-	}
-	/**
-	 * 订单编号-主键
-	 */
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	/**
-	 * 用户ID-引用自表easybuy_user的id
-	 */
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-	/**
-	 * 用户登录名-引用自表easybuy_user的loginName
-	 */
-	public Integer getLoginName() {
-		return loginName;
-	}
-	public void setLoginName(Integer loginName) {
-		this.loginName = loginName;
-	}
-	/**
-	 * 收货地址-引用自表easybuy_user_address的address
-	 */
-	public Integer getUserAddress() {
-		return userAddress;
-	}
-	public void setUserAddress(Integer userAddress) {
-		this.userAddress = userAddress;
-	}
-	/**
-	 * 订单创建时间-默认为系统当前时间
-	 */
-	public Integer getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Integer createTime) {
-		this.createTime = createTime;
-	}
-	/**
-	 * 订单总金额
-	 */
-	public Double getCost() {
-		return cost;
-	}
-	public void setCost(Double cost) {
-		this.cost = cost;
-	}
-	/**
-	 * 订单唯一标识码-序列号
-	 */
-	public Integer getSerialNumber() {
-		return serialNumber;
-	}
-	public void setSerialNumber(Integer serialNumber) {
-		this.serialNumber = serialNumber;
+		this.status = status;
 	}
 	
 }

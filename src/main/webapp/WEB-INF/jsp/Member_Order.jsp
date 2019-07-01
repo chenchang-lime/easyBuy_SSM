@@ -12,13 +12,12 @@
         </script>
     <![endif]-->
         
+<title>尤洪</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
-        
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
-        
-    
-<title>尤洪</title>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/orderData.js"></script>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -197,7 +196,8 @@
             <div class="left_m">
             	<div class="left_m_t t_bg1">订单中心</div>
                 <ul>
-                	<li><a href="${pageContext.request.contextPath}/page/Member_Order" class="now">我的订单</a></li>
+                	<li><a href="javascript:void(0)" id="js" class="now">我的订单</a></li>
+                	<%-- <li><a href="${pageContext.request.contextPath}/selectOrderByPage" id="js" class="now">我的订单</a></li> --%>
                     <li><a href="${pageContext.request.contextPath}/page/Member_Address">收货地址</a></li>
                     <li><a href="#">缺货登记</a></li>
                     <li><a href="#">跟踪订单</a></li>
@@ -235,90 +235,41 @@
             <p></p>
             <div class="mem_tit">我的订单</div>
             <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
-              <tr>                                                                                                                                                    
-                <td width="20%" >订单号</td>
-                <td width="25%">下单时间</td>
-                <td width="15%">订单总金额</td>
-                <td width="25%">订单状态</td>
-                <td width="15%">操作</td>
-              </tr>
-              
-            <!--   <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td> 
-                <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>已确认，已付款，已发货</td>
-                <td><font color="#ff4e00">已确认</font></td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>已确认，已付款，已发货</td>
-                <td><font color="#ff4e00">已确认</font></td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>已确认，已付款，已发货</td>
-                <td><font color="#ff4e00">已确认</font></td>
-              </tr>
-              <tr>
-                <td><font color="#ff4e00">2015092823056</font></td>
-                <td>2015-09-26   16:45:20</td>
-                <td>￥456.00</td>
-                <td>未确认，未付款，未发货</td>
-                <td>取消订单</td>
-              </tr> -->
+            	<thead>
+	              <tr>                                                                                                                                                    
+	                <td width="20%" >订单号</td>
+	                <td width="25%">下单时间</td>
+	                <td width="15%">订单总金额</td>
+	                <td width="25%">订单状态</td>
+	                <td width="15%">操作</td>
+	              </tr>
+              	</thead>
+              	<tbody id="td">
+              	
+              	</tbody>
             </table>
-
+			<p align="center">
+				<a href="javascript:void(0)" id="firstPage">首页</a> 
+				<a href="javascript:void(0)" id="before">上一页</a> 
+					<span id="currPage">0</span>
+										/
+					<span id="totalPage">0</span>
+				<a href="javascript:void(0)" id="next">下一页</a> 
+				<a href="javascript:void(0)" id="lastPage">尾页</a> 
+			</p>
+			
 
             <div class="mem_tit">合并订单</div>
             <table border="0" class="order_tab" style="width:930px;"  cellspacing="0" cellpadding="0">
               <tr>
-                <td width="135" align="right">主订单</td>
-                <td width="220">
-                	<select class="jj" name="order1">
-                      <option value="0" selected="selected">请选择...</option>
-                      <option value="1">2015092626589</option>
-                      <option value="2">2015092626589</option>
-                      <option value="3">2015092626589</option>
-                      <option value="4">2015092626589</option>
-                    </select>
+                 <td width="135" align="right">主订单</td>
+                <td width="240" class="zwf1">
                 </td>
                 <td width="135" align="right">从订单</td>
-                <td width="220">
-                	<select class="jj" name="order2">
-                      <option value="0" selected="selected">请选择...</option>
-                      <option value="1">2015092626589</option>
-                      <option value="2">2015092626589</option>
-                      <option value="3">2015092626589</option>
-                      <option value="4">2015092626589</option>
-                    </select>
+                <td width="220" class="zwf2">
                 </td>
-                <td><div class="btn_u"><a href="#">合并订单</a></div></td>
+                
+                <td><div class="btn_u"><a href="javascript:void(0)" id="combine">合并订单</a></div></td>
               </tr>
               <tr>
                 <td>&nbsp;</td>
@@ -418,7 +369,7 @@
 </div>
 
 </body>
-
+    
 
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>

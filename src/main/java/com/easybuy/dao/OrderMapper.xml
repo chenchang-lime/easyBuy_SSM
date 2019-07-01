@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easybuy.dao.OrderMapper">
+
+	<select id="selectOrderByPage" resultType="Order">
+		SELECT * FROM easybuy_order ORDER BY createTime DESC 
+	</select>
+	
+	<select id="selectAll" resultType="int">
+		SELECT COUNT(*) FROM easybuy_order
+	</select>
+	
+	<insert id="update" parameterType="int">
+		UPDATE easybuy_order SET status=0 WHERE id=#{id}
+	</insert>
+	
+	<select id="selectOrder"  resultType="Order">
+		SELECT id,serialNumber,status FROM easybuy_order where status=2 ORDER BY createTime DESC
+	</select>
+	
+	<select id="selectById" resultType="Order">
+		SELECT * FROM easybuy_order where id = #{id} and status=2 
+	</select>
+	
+	<insert id="updateCost">
+		UPDATE easybuy_order SET cost=#{cost} WHERE id=#{firstId}
+	</insert>
+	
+</mapper>
