@@ -5,12 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-    <!--[if IE 6]>
-    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
-        <script type="text/javascript">
-           EvPNG.fix('div, ul, img, li, input, a'); 
-        </script>
-    <![endif]-->    
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min_044d0927.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.bxslider_e88acd1b.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
@@ -35,7 +29,7 @@
 <div class="soubg">
 	<div class="sou">
         <span class="fr">
-        	<span class="fl">你好,请<a href="/page/login">登录</a>&nbsp; <a href="/page/Regist" style="color:#ff4e00;">免费注册</a></span>
+        	<span class="fl">你好,请<a href="${pageContext.request.contextPath}/page/login">登录</a>&nbsp; <a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">免费注册</a></span>
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
             <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="${pageContext.request.contextPath}/images/s_tel.png" align="absmiddle" /></a></span>
@@ -46,7 +40,7 @@
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
-        <div class="logo"><a href="/page/Index"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/page/index"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     </div>
 	<div class="login">
     	<div class="log_img"><img src="${pageContext.request.contextPath}/images/l_img.png" width="611" height="425" /></div>
@@ -57,7 +51,7 @@
               	<td width="55">&nbsp;</td>
                 <td>
                 	<span class="fl" style="font-size:24px;">登录</span>
-                    <span class="fr">还没有商城账号，<a href="/page/Regist" style="color:#ff4e00;">立即注册</a></span>
+                    <span class="fr">还没有商城账号，<a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">立即注册</a></span>
                 </td>
               </tr>
               <tr height="70">
@@ -95,11 +89,5 @@
     </div>    	
 </div>
 <!--End Footer End -->    
-
 </body>
-
-
-<!--[if IE 6]>
-<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
 </html>

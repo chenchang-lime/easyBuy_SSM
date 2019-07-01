@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easybuy.dao.MyCartMapper">
+	<insert id="addMyCart">
+		insert  into easybuy_mycart(loginName,proID,num) values (#{loginName},#{proID},#{num})
+	</insert>
+	
+	<select id="hasRepeatPro" resultType="MyCart">
+		select * from easybuy_mycart where loginName = #{loginName} and proID = #{proID}
+	</select>
+	
+	<update id="updateRepeatPro">
+		update easybuy_mycart set num=#{num} where id=#{id}
+	</update>
+	
+	<select id="selectMyCart" resultType="MyCart" parameterType="String">
+		select c.id,loginName,proID,num,p.name,price,fileName,proType from easybuy_mycart c,easybuy_product p where c.proid=p.id and loginName = #{loginName}
+	</select>
+	
+	<delete id="delProFromMyCart" parameterType="int">
+		delete from easybuy_mycart where id=#{id}
+	</delete>
+	
+</mapper>
