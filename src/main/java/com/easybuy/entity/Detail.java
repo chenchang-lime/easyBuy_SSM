@@ -47,6 +47,14 @@ public class Detail {
 		this.quantity = quantity;
 		this.cost = cost;
 	}
+	
+	public Detail(Integer orderId, Integer productId, Integer quantity, Double cost) {
+		super();
+		this.orderId = orderId;
+		this.productId = productId;
+		this.quantity = quantity;
+		this.cost = cost;
+	}
 	/**
 	 * 订单详情表ID-主键
 	 */

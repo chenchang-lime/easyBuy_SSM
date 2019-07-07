@@ -10,7 +10,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/n_nav.js"></script>
-<title>易买网-类别查询商品</title>
+<title>【转转】商城-类别查询商品</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -20,7 +20,7 @@
     	<span class="s_city_b">
         	<span class="fl">送货至：</span>
             <span class="s_city">
-            	<span>四川</span>
+            	<span>湖北</span>
                 <div class="s_city_bg">
                 	<div class="s_city_t"></div>
                     <div class="s_city_c">
@@ -48,7 +48,7 @@
                           </tr>
                           <tr>
                             <th>H</th>
-                            <td class="c_h"><span>河北</span><span>河南</span><span>黑龙江</span><span>海南</span><span>湖北</span><span>湖南</span></td>
+                            <td class="c_h"><span>河北</span><span>河南</span><span>黑龙江</span><span>海南</span><span class="c_check">湖北</span><span>湖南</span></td>
                           </tr>
                           <tr>
                             <th>J</th>
@@ -68,7 +68,7 @@
                           </tr>
                           <tr>
                             <th>S</th>
-                            <td class="c_h"><span>上海</span><span>山东</span><span>山西</span><span class="c_check">四川</span><span>陕西</span></td>
+                            <td class="c_h"><span>上海</span><span>山东</span><span>山西</span><span>四川</span><span>陕西</span></td>
                           </tr>
                           <tr>
                             <th>T</th>
@@ -92,20 +92,22 @@
             </span>
         </span>
         <!--End 所在收货地区 End-->
-        <span class="fr">
+       <span class="fr">
         	<span class="fl">
-	        	<c:if test="${! empty account}">
-					欢迎<span style="color:#ff4e00;">[${account.userName}]</span>登录&nbsp;
-					<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">[注销]</a>
-				</c:if>
-				<c:if test="${empty account}">
-					<span class="fl">
-						你好，请<a href="${pageContext.request.contextPath}/page/login">登录</a>&nbsp; 
-						<a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">免费注册</a>
-					</span>
-				</c:if>
-				&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
-        	</span>
+        	<c:if test="${! empty account}">
+        		<input type="hidden" id="isLogin" value="1" />
+				欢迎<span style="color:#ff4e00;"><a href="/easyBuy_SSM/page/member_User">&nbsp;[${account.userName}]&nbsp;</a></span>登录&nbsp;
+				<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">[注销]</a>
+				&nbsp;|&nbsp;<a href="/easyBuy_SSM/page/member_UserOrder">我的订单</a>&nbsp;|
+			</c:if>
+			<c:if test="${empty account}">
+				<input type="hidden" id="isLogin" value="0" />
+				<span class="fl">
+					你好，请<a href="${pageContext.request.contextPath}/page/login">登录</a>&nbsp; 
+					<a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">免费注册</a>
+				</span>
+			</c:if>
+        </span>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
@@ -152,40 +154,34 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="${pageContext.request.contextPath}/page/login"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
+    <div class="logo"><a href="${pageContext.request.contextPath}/page/index"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     <div class="search">
-    	<form>
-        	<input type="text" value="" class="s_ipt" />
-            <input type="submit" value="搜索" class="s_btn" />
-        </form>                      
-        <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
+    	<form action="" id="myForm">
+			<input type="hidden" id="type1" name="categoryLevel1Id" value="${type1}"/>
+			<input type="hidden" id="type2" name="categoryLevel2Id" value="${type2}"/>
+			<input type="hidden" id="type3" name="categoryLevel3Id" value="${type3}"/>
+			<input type="hidden" id="thisMinPrice" value="0"/>
+			<input type="hidden" id="thisMaxPrice" value="0"/>
+			<input type="hidden" id="orderBy" value=""/>
+        	<input type="text" value="${ControllerToPageLikeName}" name="name" id="likeName" class="s_ipt" />
+            <input type="button" value="搜索" id="selectLike" class="s_btn" />
+		</form>
+		<input type="hidden" id="thisType1Name" value="${type1Name}"/>
+		<input type="hidden" id="thisType2Name" value="${type2Name}"/>
+		<input type="hidden" id="thisType3Name" value="${type3Name}"/>
+<!--         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span> -->
     </div>
     <div class="i_car">
-    	<div class="car_t">购物车 [ <span>3</span> ]</div>
+    	<div class="car_t" id="shouMyCart">购物车 [ <span class="myCartNum">0</span> ]</div>
         <div class="car_bg">
        		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="${pageContext.request.contextPath}/page/login" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+        	<div class="un_login" id="noLoginMyCart">还未登录！<a href="${pageContext.request.contextPath}/page/login" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-            	<li>
-                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
+            <ul class="cars" id="isLoginMycart1">
             </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="/easyBuy_SSM/page/buyCar">去购物车结算</a></div>
+            <div class="price_sum" id="isLoginMycart2">共计&nbsp; <font color="#ff4e00"></font><span class="totalPrice">0</span></div>
+            <div class="price_a" id="isLoginMycart3"><a href="/easyBuy_SSM/page/buyCar">去购物车结算</a></div>
             <!--End 购物车已登录 End-->
         </div>
     </div>
@@ -201,14 +197,14 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="${pageContext.request.contextPath}/page/login">首页</a></li>
-            <li><a href="${pageContext.request.contextPath}/page/login">美食</a></li>
-            <li><a href="${pageContext.request.contextPath}/page/login">生鲜</a></li>
-            <li><a href="${pageContext.request.contextPath}/page/login">家居</a></li>
-            <li><a href="${pageContext.request.contextPath}/page/login">女装</a></li>
-            <li><a href="${pageContext.request.contextPath}/page/login">美妆</a></li>
-            <li><a href="${pageContext.request.contextPath}/page/login">数码</a></li>
-            <li><a href="${pageContext.request.contextPath}/page/login">团购</a></li>
+        	<li><a href="${pageContext.request.contextPath}/page/index">首页</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/548/0/0">美妆</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/628/0/0">家居</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/660/0/0">食品</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/670/0/0">数码</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/676/0/0">儿童</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/681/0/0">箱包</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/702/0/0">男装</a></li>
         </ul>
         <div class="m_ad">中秋送好礼！</div>
     </div>
@@ -216,44 +212,56 @@
 <!--End Menu End--> 
 <div class="i_bg">
 	<div class="postion">
-		<form action="" id="myForm">
-			<input type="hidden" id="type1" name="type1" value="${type1}"/>
-			<input type="hidden" id="type2" name="type2" value="${type2}"/>
-			<input type="hidden" id="type3" name="type3" value="${type3}"/>
-		</form>
     	<span class="fl">
-    		全部 > <span id="type1Name">${type1Name} > </span><span id="type2Name">${type2Name} ></span> 
+    	全部 > <span id="type1Name">
+    			<c:if test="${type3==0&&type2!=0}">${type1Name} > </c:if>
+    			<c:if test="${type3!=0&&type2!=0&&type1!=0}">${type1Name} > </c:if>
+    		</span>
+    		<span id="type2Name">
+    		<c:if test="${type3!=0&&type2!=0}">${type2Name} > </c:if>
+    		</span>
     	</span>
     	<span id="type3NameAll">
-    	<c:if test="${type3!=0}">
-	        <span class="n_ch">
-	        	<span class="fl">
-	        		<font id="type3Name">${type3Name}</font>
-	        	</span>
-	            <a href='javascript:void(0);' onclick='delType()'><img src="${pageContext.request.contextPath}/images/s_close.gif" /></a>
-	        </span>
-    	</c:if>
+	    	<span class="n_ch">
+		        <span class="fl">
+		        	<font id="type3Name">
+		        	<c:if test="${type3!=0}">
+		        	${type3Name}
+		        	</c:if>
+		        	<c:if test="${type3==0&&type2!=0}">
+		        	${type2Name}
+		        	</c:if>
+		        	<c:if test="${type3==0&&type2==0&&type1!=0}">
+		        	${type1Name}
+		        	</c:if>
+		        	</font>
+		        </span>
+		        <a href='javascript:void(0);' onclick='delType()'><img src="${pageContext.request.contextPath}/images/s_close.gif" /></a>
+		    </span>
 	    </span>
     </div>
     <!--Begin 筛选条件 Begin-->
     <div class="content mar_10">
     	<table border="0" class="choice" style="width:100%; font-family:'宋体'; margin:0 auto;" cellspacing="0" cellpadding="0">
-          <tr valign="top">
+          <tr valign="top" id="pinpai">
             <td width="70">&nbsp; 品牌：</td>
-            <td class="td_a"><a href="#" class="now">香奈儿（Chanel）</a><a href="#">迪奥（Dior）</a><a href="#">范思哲（VERSACE）</a><a href="#">菲拉格慕（Ferragamo）</a><a href="#">兰蔻（LANCOME）</a><a href="#">爱马仕（HERMES）</a><a href="#">卡文克莱（Calvin Klein）</a><a href="#">古驰（GUCCI）</a><a href="#">宝格丽（BVLGARI）</a><a href="#">阿迪达斯（Adidas）</a><a href="#">卡尔文·克莱恩（CK）</a><a href="#">凌仕（LYNX）</a><a href="#">大卫杜夫（Davidoff）</a><a href="#">安娜苏（Anna sui）</a><a href="#">阿玛尼（ARMANI）</a><a href="#">娇兰（Guerlain）</a></td>
+            <td class="td_a">
+            	<a href="#" id="thisPinPai" class="now"></a>
+            </td>	
           </tr>
           <tr valign="top">
             <td>&nbsp; 价格：</td>                                                                                                       
-            <td class="td_a"><a href="#">0-199</a><a href="#" class="now">200-399</a><a href="#">400-599</a><a href="#">600-899</a><a href="#">900-1299</a><a href="#">1300-1399</a><a href="#">1400以上</a></td>
+            <td class="td_a">
+	            <span id="price1"><a href="javascript:void(0);" onclick="selectProByPrice(1,0,0)" class="now">默认</a></span>
+	            <span id="price2"><a href="javascript:void(0);" onclick="selectProByPrice(2,0,199)">0-199</a></span>
+	            <span id="price3"><a href="javascript:void(0);" onclick="selectProByPrice(3,200,399)">200-399</a></span>
+	            <span id="price4"><a href="javascript:void(0);" onclick="selectProByPrice(4,400,599)">400-599</a></span>
+	            <span id="price5"><a href="javascript:void(0);" onclick="selectProByPrice(5,600,899)">600-899</a></span>
+	            <span id="price6"><a href="javascript:void(0);" onclick="selectProByPrice(6,900,1299)">900-1299</a></span>
+	            <span id="price7"><a href="javascript:void(0);" onclick="selectProByPrice(7,1300,1399)">1300-1399</a></span>
+	           <span id="price8"> <a href="javascript:void(0);" onclick="selectProByPrice(8,1400,0)">1400以上</a></span>
+            </td>
           </tr>                                              
-          <tr>
-            <td>&nbsp; 类型：</td>
-            <td class="td_a"><a href="#">女士香水</a><a href="#">男士香水</a><a href="#">Q版香水</a><a href="#">组合套装</a><a href="#">香体走珠</a><a href="#">其它</a></td>
-          </tr>                                          
-          <tr>
-            <td>&nbsp; 香型：</td>                                       
-            <td class="td_a"><a href="#">浓香水</a><a href="#">香精Parfum香水</a><a href="#">淡香精EDP淡香水</a><a href="#">香露EDT</a><a href="#">古龙水</a><a href="#">其它</a></td>
-          </tr>                                                             
         </table>                                                                                 
     </div>
     <!--End 筛选条件 End-->
@@ -286,39 +294,25 @@
                     	<font>￥<span>680.00</span></font> &nbsp; 18R
                     </div>
                 </li>
-                <li>
-                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_4.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_5.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
         	</ul>
         </div>
         <div class="l_list">
         	<div class="list_t">
-            	<span class="fl list_or">
-                	<a href="#" class="now">默认</a>
-                    <a href="#">
-                    	<span class="fl">销量</span>                        
-                        <span class="i_up">销量从低到高显示</span>
-                        <span class="i_down">销量从高到低显示</span>                                                     
+            	<span class="fl list_or" id="orderByA">
+                	<a href="javascript:void(0)" class="now" id="moren">默认</a>
+                    <a href="javascript:void(0)" id="orderBySalesA">
+                    	<span class="fl" id="orderBySales">销量</span>                        
+                        <span class="i_up" id="orderBySalesMax">销量从低到高显示</span>
+                        <span class="i_down" id="orderBySalesMin">销量从高到低显示</span>                                                     
                     </a>
-                    <a href="#">
-                    	<span class="fl">价格</span>                        
-                        <span class="i_up">价格从低到高显示</span>
-                        <span class="i_down">价格从高到低显示</span>     
+                    <a href="javascript:void(0)" id="orderByPriceA">
+                    	<span class="fl" id="orderByPrice">价格</span>                        
+                        <span class="i_up" id="orderByPriceMax">价格从低到高显示</span>
+                        <span class="i_down" id="orderByPriceMin">价格从高到低显示</span>     
                     </a>
-                    <a href="#">新品</a>
+<!--                     <a href="#">新品</a> -->
                 </span>
-                <span class="fr" id="totalPro">共发现120件</span>
+                <span class="fr">共发现<span id="totalPro" style="color:#ff3600;font-size:16px;font-weight:bold;">0</span>件</span>
             </div>
             <!---------------------------------------------商品列表 --------------------------------------------->
             <div class="list_c">
@@ -375,7 +369,7 @@
         	<dt><a href="#">会员中心</a></dt>
             <dd><a href="#">资金管理</a></dd>
             <dd><a href="#">我的收藏</a></dd>
-            <dd><a href="#">我的订单</a></dd>
+            <dd><a href="/easyBuy_SSM/page/member_UserOrder">我的订单</a></dd>
         </dl>
         <dl>
         	<dt><a href="#">服务保证</a></dt>
@@ -408,10 +402,91 @@
             <img src="${pageContext.request.contextPath}/images/b_1.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_2.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_3.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_4.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_5.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_6.gif" width="98" height="33" />
         </div>    	
     </div>
-    <!--End Footer End -->    
+    <!--End Footer End -->   
+    <!--Begin 弹出层-加入购物车 Begin-->
+		<div id="fade1" class="black_overlay"></div>
+		<div id="MyDiv1" class="white_content">
+			<div class="white_d">
+				<div class="notice_t">
+					<span class="fr" style="margin-top: 10px; cursor: pointer;"
+						onclick="CloseDiv_1('MyDiv1','fade1')"><img
+						src="${pageContext.request.contextPath}/images/close.gif" /></span>
+				</div>
+				<div class="notice_c">
+
+					<table border="0" align="center" style="margin-top:;"
+						cellspacing="0" cellpadding="0">
+						<tr valign="top">
+							<td width="40"><img src="${pageContext.request.contextPath}/images/suc.png" /></td>
+							<td><span
+								style="color: #3e3e3e; font-size: 18px; font-weight: bold;">宝贝已成功添加到购物车</span><br />
+								购物车共有<span id="typeNum">1</span>种宝贝（<span class="myCartNum">1</span>件） &nbsp; &nbsp; 合计：<span class="totalPrice">0</span>元</td>
+						</tr>
+						<tr height="50" valign="bottom">
+							<td>&nbsp;</td>
+							<td>
+								<a href="/easyBuy_SSM/page/buyCar" class="b_sure">去购物车结算</a>
+								<a href="javascript:void(0);" onclick="CloseDiv_1('MyDiv1','fade1')" class="b_buy">继续购物</a>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+		</div>
+		<!--End 弹出层-加入购物车 End--> 
+		<!--Begin 弹出层-没登陆 Begin-->
+	<div id="fade" class="black_overlay"></div>
+    <div id="NoLoginDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;"></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td>登录后才可以操作哦~~~~</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td>
+	                    <a href="/easyBuy_SSM/page/login" onclick="CloseDiv('NoLoginDiv','fade')" class="b_sure">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('NoLoginDiv','fade')" class="b_buy">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-购物车没登陆 End-->
+    <!--Begin 弹出层-error Begin-->
+    <div id="errorDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td>系统繁忙，请稍后再试！！！</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_sure">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_buy">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-error End-->
 </div>
+<input type="hidden" id="loginName" value="${account.loginName}" />
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/util.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/logout.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/shade.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectTopMyCart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectProByType.js"></script>
 </body>
 </html>

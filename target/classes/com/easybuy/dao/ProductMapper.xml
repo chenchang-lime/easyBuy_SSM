@@ -4,11 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.easybuy.dao.ProductMapper">
 	<select id="selectAll" resultType="Product">
-		select * from easybuy_product 
+		select * from easybuy_product where isDelete=0
 	</select>
 	
 	<select id="selectCount" resultType="int">
-		select count(*) from easybuy_product 
+		select count(*) from easybuy_product where isDelete=0
 	</select>
 	
 	<select id="selectAllProType" resultType="ProType">
@@ -22,7 +22,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteProType">
 		delete from easybuy_product_category where id=#{id}
 	</delete>
-	<delete id="deletePro">
-		delete from easybuy_product where id=#{id}
-	</delete>
+	
+	<update id="deletePro">
+		update easybuy_product set isDelete=1 where id=#{id}
+	</update>
+	
+	<select id="selectFirType" resultType="ProType">
+		select * from easybuy_product_category where type=1
+	</select>
+	<select id="selectSecType" resultType="ProType">
+		select * from easybuy_product_category where type=2
+	</select>
+	<select id="selectThiType" resultType="ProType">
+		select * from easybuy_product_category where type=3
+	</select>
+	<insert id="insertProduct" parameterType="Product">
+		insert into easybuy_product(name,description,price,stock,categoryLevel1Id,categoryLevel2Id,categoryLevel3Id,fileName,img1,img2,img3,img4,sales) values(#{name},#{description},#{price},#{stock},#{categoryLevel1Id},#{categoryLevel2Id},#{categoryLevel3Id},#{fileName},#{fileName},#{fileName},#{fileName},#{fileName},0)
+	</insert>
+	<update id="updatePro" parameterType="Product">
+		update easybuy_product set name=#{name},description=#{description},price=#{price},stock=#{stock},categoryLevel1Id=#{categoryLevel1Id},categoryLevel2Id=#{categoryLevel2Id},categoryLevel3Id=#{categoryLevel3Id},fileName=#{fileName},img1=#{fileName},img2=#{fileName},img3=#{fileName},img4=#{fileName} where id=#{id}
+	</update>
+	<insert id="insertType" parameterType="ProType">
+		insert into easybuy_product_category (name,parentId,type,iconClass) values (#{name},#{parentId},#{type},#{iconClass})
+	</insert>
+	<select id="sameInsertName" resultType="Product">
+		select * from easybuy_product where name=#{name}
+	</select>
+	<select id="sameSecType" resultType="ProType">
+		select * from easybuy_product_category where type=2 and name=#{name}
+	</select>
+	<select id="sameThdType" resultType="ProType">
+		select * from easybuy_product_category where type=3 and name=#{name}
+	</select>
 </mapper>

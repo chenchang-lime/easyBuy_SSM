@@ -3,16 +3,19 @@ package com.easybuy.web;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import com.easybuy.entity.MyLove;
 import com.easybuy.entity.ProType;
 import com.easybuy.entity.Product;
+import com.easybuy.entity.User;
+import com.easybuy.service.MyLoveService;
 import com.easybuy.service.ProService;
 import com.easybuy.service.ProTypeService;
 
@@ -23,14 +26,27 @@ public class ProController {
 	private ProService pService;
 	@Autowired
 	private ProTypeService ptService;
+	@Autowired
+	private MyLoveService lService;
 	
 	@ResponseBody
-	@RequestMapping("/selectProByTypeAJAX/{type1}/{type2}/{type3}/{pageNum}/{pageSize}")
-	public Map<String,Object> selectProByTypeAJAX(@PathVariable Integer pageNum,@PathVariable Integer pageSize,@PathVariable Integer type1,@PathVariable Integer type2,@PathVariable Integer type3){
+	@RequestMapping("/selectProByTypeAJAX/{pageNum}/{pageSize}/{minPrice}/{maxPrice}/{orderBy}")
+	public Map<String,Object> selectProByTypeAJAX(Product pro,@PathVariable Integer pageNum,@PathVariable Integer pageSize,@PathVariable Integer minPrice,@PathVariable Integer maxPrice,@PathVariable String orderBy,HttpServletRequest request){
 		Map<String,Object> map = new HashMap<String,Object>();
-		//System.out.println("type1-->"+type1+",type2-->"+type2+",type3-->"+type3+",pageNum-->"+pageNum+",pageSize-->"+pageSize);
-		List<Product> list = pService.selectProByType(pageNum, pageSize, type1, type2, type3);
-		int totalPro = pService.countProByType(type1, type2, type3);
+		Integer type1 = pro.getCategoryLevel1Id();
+		Integer type2 = pro.getCategoryLevel2Id();
+		Integer type3 = pro.getCategoryLevel3Id();
+		String likeName = pro.getName();
+		System.out.println("likeName-->"+likeName+"type1-->"+type1+",type2-->"+type2+",type3-->"+type3+",pageNum-->"+pageNum+",pageSize-->"+pageSize+",minPrice-->"+minPrice+",maxPrice-->"+maxPrice+",orderBy-->"+orderBy);
+		List<Product> list = pService.selectProByType(pageNum, pageSize, type1, type2, type3,likeName,minPrice,maxPrice,orderBy);
+		int totalPro = pService.countProByType(type1, type2, type3,likeName,minPrice,maxPrice);
+		HttpSession session = request.getSession();
+		Object obj = session.getAttribute("account");
+		if(obj!=null) {
+			User user = (User) session.getAttribute("account");
+			List<MyLove> myLoveList = lService.selectMyLove(user.getLoginName());
+			map.put("myLoveList", myLoveList);
+		}
 		map.put("list", list);
 		map.put("pageNum", pageNum);
 		map.put("pageSize", pageSize);
@@ -78,5 +94,14 @@ public class ProController {
 		map.put("type2", type2);
 		map.put("type3", type3);
 		return map;
+	}
+	
+	@RequestMapping("/selectProLikeName")
+	public String selectProByType(Model model,Product pro){
+		model.addAttribute("type1", 0);
+		model.addAttribute("type2", 0);
+		model.addAttribute("type3", 0);
+		model.addAttribute("ControllerToPageLikeName",pro.getName());
+		return "categoryList";
 	}
 }

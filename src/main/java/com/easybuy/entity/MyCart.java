@@ -3,9 +3,9 @@ package com.easybuy.entity;
 public class MyCart {
 	private Integer id;
 	private String loginName;
-	private String proID;
+	private Integer proID;
 	private String name;
-	private String price;
+	private Double price;
 	private String proType;
 	private String fileName;
 	private Integer num;
@@ -14,7 +14,7 @@ public class MyCart {
 		super();
 	}
 
-	public MyCart(Integer id, String loginName, String proID, String name, String price, String proType,
+	public MyCart(Integer id, String loginName, Integer proID, String name, Double price, String proType,
 			String fileName, Integer num) {
 		super();
 		this.id = id;
@@ -49,19 +49,19 @@ public class MyCart {
 		this.loginName = loginName;
 	}
 
-	public String getProID() {
+	public Integer getProID() {
 		return proID;
 	}
 
-	public void setProID(String proID) {
+	public void setProID(Integer proID) {
 		this.proID = proID;
 	}
 
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

@@ -1,31 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-    <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
-        <script type="text/javascript">
-           EvPNG.fix('div, ul, img, li, input, a'); 
-        </script>
-    <![endif]-->
-    
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
-                
-	<script type="text/javascript" src="js/n_nav.js"></script>   
-    
-    <script type="text/javascript" src="js/select.js"></script>
-    
-    <script type="text/javascript" src="js/num.js">
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/n_nav.js"></script>   
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/num.js">
     	var jq = jQuery.noConflict();
     </script>     
-    
-    <script type="text/javascript" src="js/shade.js"></script>
-    
-<title>易买网-购物车2-确认订单信息</title>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/shade.js"></script>
+<title>【转转】商城-订单确认</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -35,7 +24,7 @@
     	<span class="s_city_b">
         	<span class="fl">送货至：</span>
             <span class="s_city">
-            	<span>四川</span>
+            	<span>湖北</span>
                 <div class="s_city_bg">
                 	<div class="s_city_t"></div>
                     <div class="s_city_c">
@@ -63,7 +52,7 @@
                           </tr>
                           <tr>
                             <th>H</th>
-                            <td class="c_h"><span>河北</span><span>河南</span><span>黑龙江</span><span>海南</span><span>湖北</span><span>湖南</span></td>
+                            <td class="c_h"><span>河北</span><span>河南</span><span>黑龙江</span><span>海南</span><span class="c_check">湖北</span><span>湖南</span></td>
                           </tr>
                           <tr>
                             <th>J</th>
@@ -83,7 +72,7 @@
                           </tr>
                           <tr>
                             <th>S</th>
-                            <td class="c_h"><span>上海</span><span>山东</span><span>山西</span><span class="c_check">四川</span><span>陕西</span></td>
+                            <td class="c_h"><span>上海</span><span>山东</span><span>山西</span><span>四川</span><span>陕西</span></td>
                           </tr>
                           <tr>
                             <th>T</th>
@@ -107,9 +96,23 @@
             </span>
         </span>
         <!--End 所在收货地区 End-->
-        <span class="fr">
-        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
-        	<span class="ss">
+       <span class="fr">
+        	<span class="fl">
+        	<c:if test="${! empty account}">
+        		<input type="hidden" id="isLogin" value="1" />
+				欢迎<span style="color:#ff4e00;"><a href="/easyBuy_SSM/page/member_User">&nbsp;[${account.userName}]&nbsp;</a></span>登录&nbsp;
+				<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">[注销]</a>
+				&nbsp;|&nbsp;<a href="/easyBuy_SSM/page/member_UserOrder">我的订单</a>&nbsp;|
+			</c:if>
+			<c:if test="${empty account}">
+				<input type="hidden" id="isLogin" value="0" />
+				<span class="fl">
+					你好，请<a href="${pageContext.request.contextPath}/page/login">登录</a>&nbsp; 
+					<a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">免费注册</a>
+				</span>
+			</c:if>
+        </span>
+        <span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
                     <div class="ss_list_bg">
@@ -150,45 +153,30 @@
             </span>
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
-            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="images/s_tel.png" align="absmiddle" /></a></span>
+            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="${pageContext.request.contextPath}/images/s_tel.png" align="absmiddle" /></a></span>
         </span>
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
+    <div class="logo"><a href="${pageContext.request.contextPath}/page/index"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     <div class="search">
-    	<form>
-        	<input type="text" value="" class="s_ipt" />
+    	<form method="post" action="${pageContext.request.contextPath}/pro/selectProLikeName">
+        	<input type="text" value="" name="name" id="likeName" class="s_ipt" />
             <input type="submit" value="搜索" class="s_btn" />
-        </form>                      
+        </form>                     
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
-    <div class="i_car">
-    	<div class="car_t">购物车 [ <span>3</span> ]</div>
+	<div class="i_car">
+    	<div class="car_t" id="shouMyCart">购物车 [ <span class="myCartNum">0</span> ]</div>
         <div class="car_bg">
        		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+        	<div class="un_login" id="noLoginMyCart">还未登录！<a href="${pageContext.request.contextPath}/page/login" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-            	<li>
-                	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
+            <ul class="cars" id="isLoginMycart1">
             </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">去购物车结算</a></div>
+            <div class="price_sum" id="isLoginMycart2">共计&nbsp; <font color="#ff4e00"></font><span class="totalPrice">0</span></div>
+            <div class="price_a" id="isLoginMycart3"><a href="/easyBuy_SSM/page/buyCar">去购物车结算</a></div>
             <!--End 购物车已登录 End-->
         </div>
     </div>
@@ -200,257 +188,18 @@
     	<!--Begin 商品分类详情 Begin-->    
     	<div class="nav">
         	<div class="nav_t">全部商品分类</div>
-            <div class="leftNav none">
-                <ul>      
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav1.png" /></span>
-                            <span class="fl">进口食品、生鲜</span>
-                        </div>
-                        <div class="zj">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav2.png" /></span>
-                            <span class="fl">食品、饮料、酒</span>
-                        </div>
-                        <div class="zj" style="top:-40px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力2</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav3.png" /></span>
-                            <span class="fl">母婴、玩具、童装</span>
-                        </div>
-                        <div class="zj" style="top:-80px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力3</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav4.png" /></span>
-                            <span class="fl">家居、家庭清洁、纸品</span>
-                        </div>
-                        <div class="zj" style="top:-120px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力4</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav5.png" /></span>
-                            <span class="fl">美妆、个人护理、洗护</span>
-                        </div>
-                        <div class="zj" style="top:-160px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力5</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav6.png" /></span>
-                            <span class="fl">女装、内衣、中老年</span>
-                        </div>
-                        <div class="zj" style="top:-200px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力6</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav7.png" /></span>
-                            <span class="fl">鞋靴、箱包、腕表配饰</span>
-                        </div>
-                        <div class="zj" style="top:-240px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力7</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav8.png" /></span>
-                            <span class="fl">男装、运动</span>
-                        </div>
-                        <div class="zj" style="top:-280px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力8</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav9.png" /></span>
-                            <span class="fl">手机、小家电、电脑</span>
-                        </div>
-                        <div class="zj" style="top:-320px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力9</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>                    
-                    <li>
-                    	<div class="fj">
-                        	<span class="n_img"><span></span><img src="images/nav10.png" /></span>
-                            <span class="fl">礼品、充值</span>
-                        </div>
-                        <div class="zj" style="top:-360px;">
-                            <div class="zj_l">
-                                <div class="zj_l_c">
-                                    <h2>零食 / 糖果 / 巧克力10</h2>
-                                    <a href="#">坚果</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">巧克力</a>|
-                                    <a href="#">口香糖</a>|<a href="#">海苔</a>|<a href="#">鱼干</a>|<a href="#">蜜饯</a>|<a href="#">红枣</a>|
-                                    <a href="#">蜜饯</a>|<a href="#">红枣</a>|<a href="#">牛肉干</a>|<a href="#">蜜饯</a>|
-                                </div>
-                            </div>
-                            <div class="zj_r">
-                                <a href="#"><img src="images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="images/n_img2.jpg" width="236" height="200" /></a>
-                            </div>
-                        </div>
-                    </li>                    	
-                </ul>            
-            </div>
+            <div class="leftNav none" id="leftNav"></div>
         </div>  
         <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="Index.html">首页</a></li>
-            <li><a href="Food.html">美食</a></li>
-            <li><a href="Fresh.html">生鲜</a></li>
-            <li><a href="HomeDecoration.html">家居</a></li>
-            <li><a href="SuitDress.html">女装</a></li>
-            <li><a href="MakeUp.html">美妆</a></li>
-            <li><a href="Digital.html">数码</a></li>
-            <li><a href="GroupBuying.html">团购</a></li>
+        	<li><a href="${pageContext.request.contextPath}/page/index">首页</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/548/0/0">美妆</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/628/0/0">家居</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/660/0/0">食品</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/670/0/0">数码</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/676/0/0">儿童</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/681/0/0">箱包</a></li>
+            <li><a href="/easyBuy_SSM/pro/selectProByType/702/0/0">男装</a></li>
         </ul>
         <div class="m_ad">中秋送好礼！</div>
     </div>
@@ -458,7 +207,7 @@
 <!--End Menu End--> 
 <div class="i_bg">  
     <div class="content mar_20">
-    	<img src="images/img2.jpg" />        
+    	<img src="${pageContext.request.contextPath}/images/img2.jpg" />        
     </div>
     
     <!--Begin 第二步：确认订单信息 Begin -->
@@ -472,42 +221,14 @@
                 <td class="car_th" width="550">商品名称</td>
                 <td class="car_th" width="140">属性</td>
                 <td class="car_th" width="150">购买数量</td>
-                <td class="car_th" width="130">小计</td>
-                <td class="car_th" width="140">返还积分</td>
+                <td class="car_th" width="130">单价</td>
+                <td class="car_th" width="140">小计</td>
               </tr>
-              <tr>
-                <td>
-                    <div class="c_s_img"><img src="images/c_1.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-                </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
-              <tr class="car_tr">
-                <td>
-                    <div class="c_s_img"><img src="images/c_2.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-                </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
-              <tr>
-                <td>
-                    <div class="c_s_img"><img src="images/c_3.jpg" width="73" height="73" /></div>
-                    Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml
-                </td>
-                <td align="center">颜色：灰色</td>
-                <td align="center">1</td>
-                <td align="center" style="color:#ff4e00;">￥620.00</td>
-                <td align="center">26R</td>
-              </tr>
+              <tbody id="buyCar2">
+              </tbody>
               <tr>
                 <td colspan="5" align="right" style="font-family:'Microsoft YaHei';">
-                    商品总价：￥1899.00 ； 返还积分 56R  
+                    商品总价：<font color="#ff4e00" class="totalPrice">￥0.00</font>元 
                 </td>
               </tr>
             </table>
@@ -517,84 +238,49 @@
             </div>
             <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="p_td" width="160">商品名称</td>
-                <td width="395">海贼王</td>
+                <td class="p_td" width="160">收件人</td>
+                <td width="395" id="userName">未知</td>
                 <td class="p_td" width="160">电子邮件</td>
-                <td width="395">12345678@qq.com</td>
+                <td width="395" id="email">未知</td>
               </tr>
               <tr>
-                <td class="p_td">详细信息</td>
-                <td>四川省成都市武侯区</td>
-                <td class="p_td">邮政编码</td>
-                <td>6011111</td>
-              </tr>
-              <tr>
-                <td class="p_td">电话</td>
-                <td></td>
+                <td class="p_td">详细地址</td>
+                <td id="address">未知</td>
                 <td class="p_td">手机</td>
-                <td>18600002222</td>
-              </tr>
-              <tr>
-                <td class="p_td">标志建筑</td>
-                <td></td>
-                <td class="p_td">最佳送货时间</td>
-                <td></td>
+                <td id="mobile">未知</td>
               </tr>
             </table>
-
             
             <div class="two_t">
             	配送方式
             </div>
+<form id="orderForm" method="post">
             <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="car_th" width="80"></td>
                 <td class="car_th" width="200">名称</td>
                 <td class="car_th" width="370">订购描述</td>
                 <td class="car_th" width="150">费用</td>
-                <td class="car_th" width="135">免费额度</td>
-                <td class="car_th" width="175">保价费用</td>
               </tr>
               <tr>
-              	<td align="center"><input type="checkbox" name="ch" checked="checked" /></td>
+              	<td align="center"><input class="checkbox1" type="checkbox" name="express" value="1" /></td>
+                <td align="center" style="font-size:14px;"><b>顺丰快递</b></td>
+                <td align="center">顺丰次日达，空运</td>
+                <td align="center">￥20.00</td>
+              </tr>
+              <tr>
+              	<td align="center"><input class="checkbox1" type="checkbox" name="express" value="2" checked="checked" /></td>
                 <td align="center" style="font-size:14px;"><b>申通快递</b></td>
-                <td>江、浙、沪地区首重为15元/KG，其他地区18元/KG，续重均为5-6元/KG， 云南地区为8元</td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center">不支持保价</td>
+                <td align="center">江、浙、沪地区首重为8元/KG，其他地区10元/KG，续重均为5元/KG， 云南地区为15元</td>
+                <td align="center">￥10.00</td>
               </tr>
               <tr>
-              	<td align="center"><input type="checkbox" name="ch" /></td>
-                <td align="center" style="font-size:14px;"><b>城际快递</b></td>
-                <td>运费固定</td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center">不支持保价</td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="ch" /></td>
+              	<td align="center"><input class="checkbox1" type="checkbox" name="express" value="3" name="ch" /></td>
                 <td align="center" style="font-size:14px;"><b>邮局平邮</b></td>
-                <td>运费固定</td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center">不支持保价</td>
-              </tr>
-              <tr>
-              	<td colspan="6">
-                	<span class="fr"><label class="r_rad"><input type="checkbox" name="baojia" /></label><label class="r_txt">配送是否需要保价</label></span>
-                </td>
+                <td align="center">运费固定</td>
+                <td align="center">￥8.00</td>
               </tr>
             </table> 
-            
-            <div class="two_t">
-            	支付方式
-            </div>
-            <ul class="pay">
-                <li class="checked">余额支付<div class="ch_img"></div></li>
-                <li>银行亏款/转账<div class="ch_img"></div></li>
-                <li>货到付款<div class="ch_img"></div></li>
-                <li>支付宝<div class="ch_img"></div></li>
-            </ul>
             
             <div class="two_t">
             	商品包装
@@ -604,56 +290,16 @@
                 <td class="car_th" width="80"></td>
                 <td class="car_th" width="490">名称</td>
                 <td class="car_th" width="180">费用</td>
-                <td class="car_th" width="180">免费额度</td>
-                <td class="car_th" width="180">图片</td>
               </tr>
               <tr>
-              	<td align="center"><input type="checkbox" name="pack" checked="checked" /></td>
-                <td><b style="font-size:14px;">不要包装</b></td>
-                <td align="center">￥15.00</td>
+              	<td align="center"><input class="checkbox2" type="checkbox" name="packing" value="0" checked="checked" /></td>
+                <td align="center"><b style="font-size:14px;">不要包装</b></td>
                 <td align="center">￥0.00</td>
-                <td align="center"></td>
               </tr>
               <tr>
-              	<td align="center"><input type="checkbox" name="pack" /></td>
-                <td><b style="font-size:14px;">精品包装</b></td>
+              	<td align="center"><input class="checkbox2" type="checkbox" name="packing" value="1" /></td>
+                <td align="center"><b style="font-size:14px;">精品包装</b></td>
                 <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center"><a href="#" style="color:#ff4e00;">查看</a></td>
-              </tr>
-            </table> 
-            
-            <div class="two_t">
-            	祝福贺卡
-            </div>
-            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="car_th" width="80"></td>
-                <td class="car_th" width="490">名称</td>
-                <td class="car_th" width="180">费用</td>
-                <td class="car_th" width="180">免费额度</td>
-                <td class="car_th" width="180">图片</td>
-              </tr>
-              <tr>
-              	<td align="center"><input type="checkbox" name="wish" checked="checked" /></td>
-                <td><b style="font-size:14px;">不要贺卡</b></td>
-                <td align="center">￥15.00</td>
-                <td align="center">￥0.00</td>
-                <td align="center"></td>
-              </tr>
-              <tr>
-              	<td align="center" style="border-bottom:0; padding-bottom:0;"><input type="checkbox" name="wish" /></td>
-                <td style="border-bottom:0; padding-bottom:0;"><b style="font-size:14px;">祝福贺卡</b></td>
-                <td align="center" style="border-bottom:0; padding-bottom:0;">￥15.00</td>
-                <td align="center" style="border-bottom:0; padding-bottom:0;">￥0.00</td>
-                <td align="center" style="border-bottom:0; padding-bottom:0;"><a href="#" style="color:#ff4e00;">查看</a></td>
-              </tr>
-              <tr valign="top">
-              	<td align="center"></td>
-                <td colspan="4">
-                	<span class="fl"><b style="font-size:14px;">祝福语：</b></span>
-                    <span class="fl"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></span>
-                </td>
               </tr>
             </table> 
             
@@ -661,53 +307,44 @@
             	其他信息
             </div>
             <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="145" align="right" style="padding-right:0;"><b style="font-size:14px;">使用红包：</b></td>
-                <td>
-                	<span class="fl" style="margin-left:50px; margin-right:10px;">选择已有红包</span>
-                    <select class="jj" name="city">
-                      <option value="0" selected="selected">请选择</option>
-                      <option value="1">50元</option>
-                      <option value="2">30元</option>
-                      <option value="3">20元</option>
-                      <option value="4">10元</option>
-                    </select>
-                    <span class="fl" style="margin-left:50px; margin-right:10px;">或者输入红包序列号</span>
-                    <span class="fl"><input type="text" value="" class="c_ipt" style="width:220px;" />
-                    <span class="fr" style="margin-left:10px;"><input type="submit" value="验证红包" class="btn_tj" /></span>
-                </td>
-			  </tr>
               <tr valign="top">
                 <td align="right" style="padding-right:0;"><b style="font-size:14px;">订单附言：</b></td>
-                <td style="padding-left:0;"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></td>
+                <td style="padding-left:0;"><textarea class="add_txt" name="remarks" style="width:860px; height:50px;"></textarea></td>
               </tr>
               <tr>
               	<td align="right" style="padding-right:0;"><b style="font-size:14px;">缺货处理：</b></td>
                 <td>
-                	<label class="r_rad"><input type="checkbox" name="none" checked="checked" /></label><label class="r_txt" style="margin-right:50px;">等待所有商品备齐后再发</label>
-                    <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">取下订单</label>
-                    <label class="r_rad"><input type="checkbox" name="none" /></label><label class="r_txt" style="margin-right:50px;">与店主协商</label>
+                	<label class="r_rad"><input class="checkbox3" type="checkbox" name="shortage" value="1" checked="checked" /></label><label class="r_txt" style="margin-right:50px;">等待所有商品备齐后再发</label>
+                    <label class="r_rad"><input class="checkbox3" type="checkbox" name="shortage" value="2" /></label><label class="r_txt" style="margin-right:50px;">取消订单</label>
+                    <label class="r_rad"><input class="checkbox3" type="checkbox" name="shortage" value="3" /></label><label class="r_txt" style="margin-right:50px;">与店主协商</label>
                 </td>
               </tr>
             </table>
-            
-            <table border="0" style="width:900px; margin-top:20px;" cellspacing="0" cellpadding="0">
+            </div>
+            <table border="0" style="width:900px; margin-top:0px;" cellspacing="0" cellpadding="0">
               <tr>
                 <td align="right">
-                	该订单完成后，您将获得 <font color="#ff4e00">1815</font> 积分 ，以及价值 <font color="#ff4e00">￥0.00</font> 的红包 <br />
-                    商品总价: <font color="#ff4e00">￥1815.00</font>  + 配送费用: <font color="#ff4e00">￥15.00</font>
+                    商品总价: <font color="#ff4e00" class="totalPrice">￥0.00</font>  + 配送费用: <font color="#ff4e00" id="expressPrice">￥10.00</font>
+                <span id="packing" style="display:none;">  + 精品包装: <font color='#ff4e00'>￥15.00</font></span>
                 </td>
               </tr>
               <tr height="70">
                 <td align="right">
-                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥2899</span></b>
+                	<input type="hidden" id="userAddress" name="userAddress" value="未知" />
+                	<input type="hidden" id="totalPriceNum" value="" />
+                	<input type="hidden" id="orderTotalMoney" name="cost" value="0" />
+                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;" id="orderTotalMoneyText">￥0.00</span>元</b>
                 </td>
               </tr>
               <tr height="70">
-                <td align="right"><a href="#"><img src="images/btn_sure.gif" /></a></td>
+                <td align="right">
+	                <a href="javascript:void(0)" onclick="addOrder()">
+	                	<img src="${pageContext.request.contextPath}/images/btn_sure.gif" />
+	                </a>
+               </td>
               </tr>
             </table>
-
+</form>
             
         	
         </div>
@@ -720,25 +357,25 @@
         <div class="b_btm">
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b1.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b1.png" width="62" height="62" /></td>
                 <td><h2>正品保障</h2>正品行货  放心购买</td>
               </tr>
             </table>
 			<table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b2.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b2.png" width="62" height="62" /></td>
                 <td><h2>满38包邮</h2>满38包邮 免运费</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b3.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b3.png" width="62" height="62" /></td>
                 <td><h2>天天低价</h2>天天低价 畅选无忧</td>
               </tr>
             </table>
             <table border="0" style="width:210px; height:62px; float:left; margin-left:75px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="72"><img src="images/b4.png" width="62" height="62" /></td>
+                <td width="72"><img src="${pageContext.request.contextPath}/images/b4.png" width="62" height="62" /></td>
                 <td><h2>准时送达</h2>收货时间由你做主</td>
               </tr>
             </table>
@@ -763,7 +400,7 @@
         	<dt><a href="#">会员中心</a></dt>
             <dd><a href="#">资金管理</a></dd>
             <dd><a href="#">我的收藏</a></dd>
-            <dd><a href="#">我的订单</a></dd>
+            <dd><a href="/easyBuy_SSM/page/member_UserOrder">我的订单</a></dd>
         </dl>
         <dl>
         	<dt><a href="#">服务保证</a></dt>
@@ -786,23 +423,71 @@
             </p>
         </div>
         <div class="b_er">
-            <div class="b_er_c"><img src="images/er.gif" width="118" height="118" /></div>
-            <img src="images/ss.png" />
+            <div class="b_er_c"><img src="${pageContext.request.contextPath}/images/er.gif" width="118" height="118" /></div>
+            <img src="${pageContext.request.contextPath}/images/ss.png" />
         </div>
     </div>    
     <div class="btmbg">
 		<div class="btm">
         	备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
-            <img src="images/b_1.gif" width="98" height="33" /><img src="images/b_2.gif" width="98" height="33" /><img src="images/b_3.gif" width="98" height="33" /><img src="images/b_4.gif" width="98" height="33" /><img src="images/b_5.gif" width="98" height="33" /><img src="images/b_6.gif" width="98" height="33" />
+            <img src="${pageContext.request.contextPath}/images/b_1.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_2.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_3.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_4.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_5.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_6.gif" width="98" height="33" />
         </div>    	
     </div>
     <!--End Footer End -->    
+    
+    <div id="fade" class="black_overlay"></div>
+    <!--Begin 弹出层-购物车没有商品 Begin-->
+    <div id="NoProDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;"></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td>购物车空空如也！是否去主页挑一些呢~~~</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td>
+	                    <a href="/easyBuy_SSM/page/index" onclick="CloseDiv('NoProDiv','fade')" class="b_sure">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('NoProDiv','fade')" class="b_buy">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-购物车没有商品 End-->
+    <!--Begin 弹出层-error Begin-->
+    <div id="errorDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td>系统繁忙，请稍后再试！！！</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_sure">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_buy">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-error End-->
 </div>
+<input type="hidden" id="loginName" value="${account.loginName}" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/isLogin.js"></script>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/util.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/logout.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectType.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/shade.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/addOrder.js"></script>
 </body>
-
-
-<!--[if IE 6]>
-<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
 </html>

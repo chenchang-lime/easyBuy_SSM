@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easybuy.dao.MyLoveMapper">
+	<insert id="addMyLove" parameterType="MyLove">
+		insert into easybuy_mylove(myLoveProID,oldPri,loveTime,loginName) values(#{myLoveProID},#{oldPri},#{loveTime},#{loginName})
+	</insert>
+	
+	<delete id="delMyLoveByProID">
+		delete from easybuy_mylove where loginName=#{loginName} and myLoveProID=#{proID}
+	</delete>
+	
+	<select id="selectMyLove" resultType="MyLove" parameterType="String">
+		select * from easybuy_mylove where loginName=#{loginName}
+	</select>
+	
+	<select id="countMyLove" resultType="int" parameterType="String">
+		select count(*) from easybuy_mylove where loginName=#{loginName}
+	</select>
+</mapper>

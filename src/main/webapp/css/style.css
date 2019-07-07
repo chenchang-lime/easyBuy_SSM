@@ -379,7 +379,7 @@ ul.menu_r li a:hover, ul.menu_r li a.now{
 	color:#ff4e00;
 }
 .inews ul{
-	height:150px; overflow:hidden; margin:10px 10px 20px 10px;
+	height:399px; overflow:hidden; margin:10px 10px 20px 10px;
 }
 .inews ul li{
 	height:30px; line-height:30px; overflow:hidden; color:#888888;
@@ -1870,7 +1870,8 @@ ul.p_sell li .times{
 	width:100%; height:140px; background-color:#ff4e00;
 }
 .m_logo{
-	width:150px; height:58px; overflow:hidden; float:left; margin-top:38px;
+/* 	width:150px; height:58px; overflow:hidden; float:left; margin-top:38px; */
+	width:202px; height:55px; overflow:hidden; float:left; margin-top:38px;
 }
 .m_search{
 	width:392px; height:40px; overflow:hidden; background-color:#FFF; float:left; display:inline; margin-left:450px; margin-top:49px;

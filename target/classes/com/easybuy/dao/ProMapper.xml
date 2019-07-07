@@ -3,15 +3,77 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.easybuy.dao.ProMapper">
-	<select id="selectProByType" resultType="Product" parameterType="int">
-		select * from easybuy_product where categoryLevel1Id=#{type1} and categoryLevel2Id=#{type2} and categoryLevel3Id=#{type3} and isDelete=0
+	<select id="selectProByType" resultType="Product" parameterType="map">
+		select * from easybuy_product 
+		<where>
+			 isDelete=0 
+			<if test="type1!=null and type1!='' and type1!=0">
+				 and categoryLevel1Id=#{type1}  
+			</if>
+			<if test="type2!=null and type2!='' and type2!=0">
+				 and categoryLevel2Id=#{type2}
+			</if>
+			<if test="type3!=null and type3!='' and type3!=0">
+				 and categoryLevel3Id=#{type3}
+			</if>
+			<if test="likeName!=null and likeName!=''">
+				 and name like #{likeName}
+			</if>
+			<if test="minPrice!=null and minPrice!=0">
+				 and price &gt;= #{minPrice}
+			</if>
+			<if test="maxPrice!=null and maxPrice!=0">
+				 and price &lt;= #{maxPrice}
+			</if>
+		</where>
+		<if test="salesMax!=null and salesMax!=''">
+			order by sales desc
+		</if>
+		<if test="salesMin!=null and salesMin!=''">
+			order by sales
+		</if>
+		<if test="orderMaxPrice!=null and orderMaxPrice!=''">
+			order by price desc
+		</if>
+		<if test="orderMinPrice!=null and orderMinPrice!=''">
+			order by price
+		</if>
 	</select>
 	
-	<select id="countProByType" resultType="int" parameterType="int">
-		select count(*) from easybuy_product where categoryLevel1Id=#{type1} and categoryLevel2Id=#{type2} and categoryLevel3Id=#{type3} and isDelete=0
+	<select id="countProByType" resultType="int" parameterType="map">
+		select count(*) from easybuy_product 
+		<where>
+			 isDelete=0 
+			<if test="type1!=null and type1!='' and type1!=0">
+				 and categoryLevel1Id=#{type1}  
+			</if>
+			<if test="type2!=null and type2!='' and type2!=0">
+				 and categoryLevel2Id=#{type2}
+			</if>
+			<if test="type3!=null and type3!='' and type3!=0">
+				 and categoryLevel3Id=#{type3}
+			</if>
+			<if test="likeName!=null and likeName!=''">
+				 and name like #{likeName}
+			</if>
+			<if test="minPrice!=null and minPrice!=0">
+				 and price &gt;= #{minPrice}
+			</if>
+			<if test="maxPrice!=null and maxPrice!=0">
+				 and price &lt;= #{maxPrice}
+			</if>
+		</where>
 	</select>
 	
 	<select id="selectProByID" resultType="Product" parameterType="int">
 		select * from easybuy_product where id=#{proID}
 	</select>
+	
+	<select id="selectProByIDNoDel" resultType="Product" parameterType="int">
+		select * from easybuy_product where id=#{proID} and isDelete = 0
+	</select>
+	
+	<update id="updateStockAndSales" parameterType="int">
+		update easybuy_product set stock=stock-#{updateNum},sales=sales+#{updateNum} where id=#{proID}
+	</update>
 </mapper>

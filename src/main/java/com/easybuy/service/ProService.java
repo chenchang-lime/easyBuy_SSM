@@ -12,12 +12,12 @@ public interface ProService {
 	/**
 	 * 根据商品类别分页查询该类别下的商品
 	 */
-	List<Product> selectProByType(Integer pageNum,Integer pageSize,Integer categoryLevel1Id,Integer categoryLevel2Id,Integer categoryLevel3Id);
+	List<Product> selectProByType(Integer pageNum, Integer pageSize, Integer categoryLevel1Id,Integer categoryLevel2Id, Integer categoryLevel3Id,String likeName,Integer minProce,Integer maxPrice,String orderBy);
 	
 	/**
 	 * 根据商品类别查询该类别下的商品数量
 	 */
-	int countProByType(Integer type1,Integer type2,Integer type3);
+	int countProByType(Integer type1,Integer type2,Integer type3,String likeName,Integer minProce,Integer maxPrice);
 	
 	
 	/**
@@ -34,4 +34,6 @@ public interface ProService {
 	 * 删除商品
 	 */
 	int deletePro(int id);
+	
+	Product selectProByIDNoDel(Integer proID);
 }

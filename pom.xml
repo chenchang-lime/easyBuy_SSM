@@ -5,6 +5,7 @@
 	<artifactId>easyBuy_SSM</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	
 	<dependencies>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -76,31 +77,33 @@
 			<artifactId>jsqlparser</artifactId>
 			<version>1.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.9.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.9.8</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-jaxb-annotations</artifactId>
-			<version>2.9.6</version>
-		</dependency>
+		<!-- jack Json -->
+<!-- 		<dependency> -->
+<!-- 		<groupId>com.fasterxml.jackson.core</groupId> -->
+<!-- 		<artifactId>jackson-annotations</artifactId> -->
+<!-- 		<version>2.9.0</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 		<groupId>com.fasterxml.jackson.core</groupId> -->
+<!-- 		<artifactId>jackson-core</artifactId> -->
+<!-- 		<version>2.9.8</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 		<groupId>com.fasterxml.jackson.core</groupId> -->
+<!-- 		<artifactId>jackson-databind</artifactId> -->
+<!-- 		<version>2.9.8</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 		<groupId>org.codehaus.jackson</groupId> -->
+<!-- 		<artifactId>jackson-mapper-asl</artifactId> -->
+<!-- 		<version>1.9.2</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 		<groupId>com.fasterxml.jackson.module</groupId> -->
+<!-- 		<artifactId>jackson-module-jaxb-annotations</artifactId> -->
+<!-- 		<version>2.9.6</version> -->
+<!-- 		</dependency> -->
+		<!-- jack Json end -->
 		<dependency>
 			<groupId>com.fasterxml</groupId>
 			<artifactId>classmate</artifactId>

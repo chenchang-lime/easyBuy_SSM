@@ -23,4 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from easybuy_mycart where id=#{id}
 	</delete>
 	
+	<delete id="delMyCart" parameterType="String">
+		delete from easybuy_mycart where loginName=#{loginName}
+	</delete>
+	
 </mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easybuy.dao.OrderMapperCC">
+	<insert id="insertOrder" parameterType="Order">
+		insert into easybuy_order(userId,loginName,userAddress,createTime,cost,serialNumber,express,packing,remarks,shortage,paymentMethod,status) values(#{userId},#{loginName},#{userAddress},#{createTime},#{cost},#{serialNumber},#{express},#{packing},#{remarks},#{shortage},0,1)
+	</insert>
+	<select id="selectOrderBySetSerialNumber" resultType="Order" parameterType="String">
+		select * from easybuy_order where serialNumber=#{serialNumber}
+	</select>
+	<select id="selectOrderByID" resultType="Order" parameterType="Integer">
+		select * from easybuy_order where id=#{id}
+	</select>
+	<update id="updateOrderStatus">
+		update easybuy_order set status=#{status} where serialNumber=#{serialNumber}
+	</update>
+	<update id="payOrder">
+		update easybuy_order set status=#{status},paymentMethod=#{paymentMethod} where id=#{id}
+	</update>
+	<select id="selectOrderByPage" resultType="Order" parameterType="String">
+		select * from easybuy_order where loginName=#{loginName} ORDER BY createTime DESC
+	</select>
+	<select id="countMyOrder" resultType="int" parameterType="String">
+		select count(*) from easybuy_order where loginName=#{loginName}
+	</select>
+</mapper>

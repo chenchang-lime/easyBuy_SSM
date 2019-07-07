@@ -44,4 +44,46 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.deletePro(id);
 	}
 
+	public List<ProType> selectFirType() {
+		// TODO Auto-generated method stub
+		return mapper.selectFirType();
+	}
+
+	public List<ProType> selectSecType() {
+		// TODO Auto-generated method stub
+		return mapper.selectSecType();
+	}
+
+	public List<ProType> selectThiType() {
+		// TODO Auto-generated method stub
+		return mapper.selectThiType();
+	}
+
+	public int insertProduct(Product product) {
+		System.out.println(product);
+		return mapper.insertProduct(product);
+	}
+
+	public int updatePro(Product product) {
+		return mapper.updatePro(product);
+	}
+
+	public int insertType(ProType proType) {
+		return mapper.insertType(proType);
+	}
+
+	public List<Product> sameInsertName(String name) {
+		return mapper.sameInsertName(name);
+	}
+
+	public List<ProType> sameSecType(String name) {
+		// TODO Auto-generated method stub
+		return mapper.sameSecType(name);
+	}
+
+	public List<ProType> sameThdType(String name) {
+		// TODO Auto-generated method stub
+		return mapper.sameThdType(name);
+	}
+
 }

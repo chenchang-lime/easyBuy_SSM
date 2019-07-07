@@ -35,10 +35,23 @@ public interface UserService {
 	/**
 	 * 删除用户
 	 */
-	int deleteUserByID(int id);
+	int deleteUserByID(User user);
 	
 	/**
 	 * 新增收货地址
 	 */
 	int insertUserAddress(UserAddress address);
+	
+	/**
+	 * 查询用户名存在
+	 */
+	String selectloginName(String loginName);
+	
+	
+	/**
+	 * 买家用户总数量
+	 */
+	Integer tatopage();
+	
+	
 }

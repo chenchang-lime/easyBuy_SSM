@@ -22,7 +22,7 @@
     <!-- ajax登录 -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/login.js"></script>
-<title>易买网-登录</title>
+<title>【转转】商城-登录</title>
 </head>
 <body>  
 <!--Begin Header Begin-->

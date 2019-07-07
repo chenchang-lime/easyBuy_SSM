@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/jsp/categoryList.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/member_Address.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/member_User.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/member_UserOrder.jsp=UTF-8

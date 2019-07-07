@@ -3,7 +3,6 @@
 var jq = jQuery.noConflict();
 
 jQuery(function(){
-//优势页面点击子导航
 	var subNav_active = jq(".adv_active");
 	var subNav_scroll = function(target){
 		subNav_active.removeClass	("adv_active");
@@ -17,7 +16,6 @@ jQuery(function(){
 		jq("html,body").animate({scrollTop:targetScroll},300);
 		return false;
 	});
-	//页面跳转时定位
 	if(window.location.hash){
 		var targetScroll = jq(window.location.hash).offset().top - 80;
 		jq("html,body").animate({scrollTop:targetScroll},300);
@@ -25,7 +23,7 @@ jQuery(function(){
 	jQuery(window).scroll(function(){
 		var jqthis = jq(this);
 		var targetTop = jq(this).scrollTop();
-		var footerTop = jq("#footer").offset().top;
+		//var footerTop = jq("#footer").offset().top;
 		var height = jq(window).height();
 		
 		if (targetTop >= 520){

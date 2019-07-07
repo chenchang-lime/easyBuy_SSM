@@ -1,4 +1,7 @@
 package com.easybuy.entity;
+
+import java.util.Date;
+
 /**
  * 表名：easybuy_news
  * 新闻表
@@ -20,13 +23,13 @@ public class News {
 	/**
 	 * 创建时间，默认为系统当前时间
 	 */
-	private String createTime;
+	private Date createTime;
 	
 	public News() {
 		super();
 	}
 
-	public News(Integer id, String title, String content, String createTime) {
+	public News(Integer id, String title, String content, Date createTime) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -58,11 +61,11 @@ public class News {
 		this.content = content;
 	}
 
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	

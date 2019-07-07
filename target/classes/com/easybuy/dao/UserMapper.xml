@@ -6,4 +6,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" resultType="User">
 		select * from easybuy_user where loginName=#{loginName} and password=#{password}
 	</select>
+	
+	<insert id="regist" parameterType="User">
+		INSERT INTO easybuy_user (loginName,userName,password,payPwd,sex,identityCode,email,mobile,type,money,registTime,headPic,finishOrder,loginNum)
+		 VALUES (#{loginName},#{userName},#{password},#{payPwd},#{sex},#{identityCode},#{email},#{mobile},0,0,#{registTime},#{headPic},0,0)
+	</insert>
+	
+	<select id="selectloginName" resultType="User">
+		select * from easybuy_user where loginName=#{loginName}
+	</select>
+	
+	<select id="selectvip" resultType="User">
+		select * from easybuy_user where type=0
+	</select>
+	<select id="tatopage" resultType="int">
+		select count(*) from easybuy_user where type=0
+	</select>
+	
+	<update id="updateUser"  parameterType="User">
+		UPDATE easybuy_user SET loginName=#{loginName},userName=#{userName}, 
+		sex=#{sex},identityCode=#{identityCode},email=#{email}, mobile=#{mobile},type=#{type} 
+		WHERE id=#{id}
+	</update>
+	
+	<select id="selecUserByID"  parameterType="User">
+		select loginName,userName,password,payPwd,sex,identityCode,email,mobile,money  from where id=#{id}
+	</select>
+	
+	
 </mapper>

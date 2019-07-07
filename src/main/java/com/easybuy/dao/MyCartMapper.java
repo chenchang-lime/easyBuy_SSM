@@ -17,4 +17,6 @@ public interface MyCartMapper {
 	List<MyCart> selectMyCart(String loginName);
 	
 	int delProFromMyCart(Integer id);
+	
+	int delMyCart(String loginName);
 }

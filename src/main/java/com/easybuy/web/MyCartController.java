@@ -61,8 +61,12 @@ public class MyCartController {
 		if(obj!=null) {
 			User user = (User) session.getAttribute("account");
 			List<MyCart> list = cService.selectMyCart(user.getLoginName());
-			map.put("list", list);
-			map.put("result", "ok");
+			if(list.size()>0) {
+				map.put("result", "ok");
+				map.put("list", list);
+			}else {
+				map.put("result", "noPro");
+			}
 		} else {
 			map.put("result", "noLogin");
 		}

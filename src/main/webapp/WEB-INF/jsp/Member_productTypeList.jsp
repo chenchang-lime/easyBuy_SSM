@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-   
-        
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/productTypeList.js"></script>    
     
-<title>分类管理</title>
+<title>【转转】商城-分类管理</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -94,9 +93,25 @@
             </span>
         </span>
         <!--End 所在收货地区 End-->
-        <span class="fr">
-        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
-        	<span class="ss">
+        <!----------------------------------- 头部登录注销-------------------------------- -->
+       <span class="fr">
+        	<span class="fl">
+        	<c:if test="${! empty account}">
+        		<input type="hidden" id="isLogin" value="1" />
+				欢迎<span style="color:#ff4e00;"><a href="/easyBuy_SSM/page/member_User">&nbsp;[${account.userName}]&nbsp;</a></span>登录&nbsp;
+				<a href="javascript:void(0)" style="color:#ff4e00;" id="logout">[注销]</a>
+				&nbsp;|&nbsp;<a href="/easyBuy_SSM/page/member_UserOrder">我的订单</a>&nbsp;|
+			</c:if>
+			<c:if test="${empty account}">
+				<input type="hidden" id="isLogin" value="0" />
+				<span class="fl">
+					你好，请<a href="${pageContext.request.contextPath}/page/login">登录</a>&nbsp; 
+					<a href="${pageContext.request.contextPath}/page/regist" style="color:#ff4e00;">免费注册</a>
+				</span>
+			</c:if>
+        </span>
+        <!----------------------------------- 头部登录注销-------------------------------- -->
+        <span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
                     <div class="ss_list_bg">
@@ -143,42 +158,13 @@
 </div>
 <div class="m_top_bg">
     <div class="top">
-        <div class="m_logo"><a href="Index.html"><img src="${pageContext.request.contextPath}/images/logo1.png" /></a></div>
+        <div class="m_logo"><a href="${pageContext.request.contextPath}/page/index"><img src="${pageContext.request.contextPath}/images/logo1.png" /></a></div>
         <div class="m_search">
-            <form>
-                <input type="text" value="" class="m_ipt" />
-                <input type="submit" value="搜索" class="m_btn" />
-            </form>                      
+            <form method="post" action="${pageContext.request.contextPath}/pro/selectProLikeName">
+	        	<input type="text" value="" name="name" id="likeName" class="m_ipt" />
+	            <input type="submit" value="搜索" class="m_btn" />
+	        </form>                      
             <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
-        </div>
-        <div class="i_car">
-            <div class="car_t">购物车 [ <span>3</span> ]</div>
-            <div class="car_bg">
-                <!--Begin 购物车未登录 Begin-->
-                <div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
-                <!--End 购物车未登录 End-->
-                <!--Begin 购物车已登录 Begin-->
-                <ul class="cars">
-                    <li>
-                        <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car1.jpg" width="58" height="58" /></a></div>
-                        <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                        <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                    </li>
-                    <li>
-                        <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
-                        <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                        <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                    </li>
-                    <li>
-                        <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/car2.jpg" width="58" height="58" /></a></div>
-                        <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                        <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                    </li>
-                </ul>
-                <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-                <div class="price_a"><a href="#">去购物车结算</a></div>
-                <!--End 购物车已登录 End-->
-            </div>
         </div>
     </div>
 </div>
@@ -187,59 +173,98 @@
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
    		<div class="m_left">
-        	<div class="left_n">管理中心</div>
-            <div class="left_m">
-            	<div class="left_m_t t_bg1">订单中心</div>
-                <ul>
-                	<li><a href="Member_Order.html">我的订单</a></li>
-                    <li><a href="Member_Address.html">收货地址</a></li>
-                    <li><a href="#">缺货登记</a></li>
-                    <li><a href="#">跟踪订单</a></li>
-                </ul>
-            </div>
-            <div class="left_m">
-            	<div class="left_m_t t_bg2">商品管理</div>
-                <ul>
-                	<li><a href="Member_User.html">用户信息</a></li>
-                    <li><a href="Member_Collect.html" class="now">分类管理</a></li>
-                    <li><a href="Member_Msg.html" >商品管理</a></li>
-                    <li><a href="Member_Links.html">商品上架</a></li>
-                </ul>
-            </div>
-            <div class="left_m">
-            	<div class="left_m_t t_bg3">账户中心</div>
-                <ul>
-                	<li><a href="Member_Safe.html">账户安全</a></li>
-                    <li><a href="Member_Packet.html">我的红包</a></li>
-                    <li><a href="Member_Money.html">资金管理</a></li>
-                </ul>
-            </div>
-            <div class="left_m">
-            	<div class="left_m_t t_bg4">分销中心</div>
-                <ul>
-                	<li><a href="Member_Member.html">我的会员</a></li>
-                    <li><a href="Member_Results.html">我的业绩</a></li>
-                    <li><a href="Member_Commission.html">我的佣金</a></li>
-                    <li><a href="Member_Cash.html">申请提现</a></li>
-                </ul>
-            </div>
+	     <!-- -----------------------------订单管理员----------------------------- -->
+	        <c:if test="${account.type==2}">
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg1">订单中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_Order">订单管理</a></li>
+	                </ul>
+	            </div>
+	        </c:if>
+        <!-- -----------------------------订单管理员----------------------------- -->
+	     <!-- -----------------------------会员理员----------------------------- -->
+	        <c:if test="${account.type==3}">
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg2">会员中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_Member_List">会员管理</a></li>
+	                </ul>
+	            </div>
+	        </c:if>
+        <!-- -----------------------------会员管理员----------------------------- -->
+	     <!-- -----------------------------产品管理员----------------------------- -->
+	        <c:if test="${account.type==4}">
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg3">产品中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_productTypeList">分类管理</a></li>
+	                    <li><a href="/easyBuy_SSM/page/Member_productList">商品管理</a></li>
+	                    <li><a href="/easyBuy_SSM/page/Member_productInsert">商品上架</a></li>
+	                </ul>
+	            </div>
+	        </c:if>
+        <!-- -----------------------------产品管理员----------------------------- -->
+	     <!-- -----------------------------新闻管理员----------------------------- -->
+	        <c:if test="${account.type==5}">
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg4">新闻中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_Packet">新闻管理</a></li>
+	                </ul>
+	            </div>
+	        </c:if>
+        <!-- -----------------------------新闻管理员----------------------------- -->
+        
+	        <!-- -----------------------------最高权限管理员----------------------------- -->
+	        <c:if test="${account.type==1}">
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg1">订单中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_Order">订单管理</a></li>
+	                </ul>
+	            </div>
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg2">会员中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_Member_List">会员管理</a></li>
+	                </ul>
+	            </div>
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg3">产品中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_productTypeList">分类管理</a></li>
+	                    <li><a href="/easyBuy_SSM/page/Member_productList">商品管理</a></li>
+	                    <li><a href="/easyBuy_SSM/page/Member_productInsert">商品上架</a></li>
+	                </ul>
+	            </div>
+	            <div class="left_m">
+	            	<div class="left_m_t t_bg4">新闻中心</div>
+	                <ul>
+	                    <li><a href="/easyBuy_SSM/page/Member_Packet">新闻管理</a></li>
+	                </ul>
+	            </div>
+	        </c:if>
         </div>
+        <!-- -----------------------------最高权限管理员----------------------------- -->
         
         
        <!-- 修改内容  -->
         
-		<div class="m_right">
-            <p></p>
+	<div class="m_right">
+            
             <div class="mem_tit">
             	<span class="fr" style="font-size:12px; color:#55555; font-family:'宋体'; margin-top:5px;">共发现<span  id="count" style=color:red></span>个类别</span>分类管理
             </div>
-           		<table border="0" class="order_tab" style="width:80%;" cellspacing="0" cellpadding="0">
+      	<div id="showList">
+           		<div>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="添加二级分类" id="typeinsert2"/>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="添加三级分类" id="typeinsert3"/></div>	
+           		<table border="0" class="order_tab" style="width:80%;" cellspacing="0" cellpadding="0" id="table">
               <thead>
 	              <tr>                                                                                                                                       
-	                <td align="center" width=120px">分类名称</td>
-	                <td align="center" width="120px">分类级别</td>
-	                <td align="center" width="120px">父级分类</td>
-	                <td align="center" width="170px">操作</td>
+	                <td align="center" width="200px">分类名称</td>
+	                <td align="center" width="200px">分类级别</td>
+	                <td align="center" width="200px">父级分类</td>
+	               
 	              </tr>
               </thead>
               <tbody id="tb">
@@ -253,7 +278,69 @@
 				<span id="totalPage" style="font-size:20px"></span>
 				<a href="javascript:void(0)" id="after" style="font-size:20px">下一页</a>
 			</p>
-        </div>
+		</div>	
+		<div id="showInsert2">
+			<form id="form2" method="post">
+				<table border="1" class="order_tab" style="width:60%;" cellspacing="0" cellpadding="0">
+	              	<tr>
+	              		<td align="right" width="40%">一级分类</td>
+	              		<td width="60%">
+	              			<input type="hidden" id="pid" name="parentId"/>
+	              			<input type="hidden" value="2" name="type"/>
+	              			<select class="firstType" name="categoryLevel1Id" id="typeLevel2"><option value='-1'>请选择</option></select>
+	              		</td>
+	              		
+	              	</tr>
+	              	<tr>
+	              		<td align="right" width="40%">请输入新增二级分类的名称：</td>
+	              		<td width="60%"><input type="text" name="name" id="insertSecType"/></td>
+	              	</tr>
+	              	<tr>
+	              		<td align="center" colspan=2>
+	              		<input type="button" id="insert2" value="确认添加"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	              		<a href="${pageContext.request.contextPath}/page/Member_productTypeList">返回</a>
+	              		</td>
+	              	</tr>
+	              	
+				</table>
+			</form>
+		</div>
+		<div id="showInsert3">
+			<form id="form3">
+				<table border="1" class="order_tab" style="width:60%;" cellspacing="0" cellpadding="0">
+	              	<tr>
+	              		<td align="right" width="40%">一级分类</td>
+	              		<td width="60%"><select class="firstType" name="categoryLevel1Id" id="typeLevel3"><option value='-1'>请选择</option></select></td>
+	              	</tr>
+	              	<tr>
+	              		<td align="right" width="40%">二级分类</td>
+	              		<td width="60%">
+	              			<select id="secendType" name="categoryLevel2Id"><option value='-1'>请选择</option></select>
+	              			<input type="hidden" id="pid3" name="parentId"/>
+	              			<input type="hidden" value="3" name="type"/>
+	              			</td>
+	              	</tr>
+	              	<tr>
+	              		<td align="right" width="40%">请输入新增三级分类的名称：</td>
+	              		<td width="60%"><input type="text" name="name" id="insertThdType"/></td>
+	              	</tr>
+	              	<tr>
+	              		<td align="right" width="40%">请上传三级分类的图片：</td>
+	              		<td width="60%"><input type="file" name="file"/>
+	              						<input type="hidden" name="iconClass"/>
+										<img alt="" src="" width="100px" height="100px" id="image"/>
+						</td>
+	              	</tr>
+	              	<tr>
+	              		<td align="center" colspan=2>
+	              		<input type="button" id="insert3" value="确认添加"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	              		<a href="${pageContext.request.contextPath}/page/Member_productTypeList">返回</a>
+	              		</td>
+	              	</tr>
+				</table>
+			</form>
+		</div>
+			
     </div>
 	<!--End 用户中心 End--> 
     <!--Begin Footer Begin -->
@@ -339,11 +426,9 @@
     </div>
     <!--End Footer End -->    
 </div>
-
+<input type="hidden" id="loginName" value="${account.loginName}" />
+<input type="hidden" id="userType" value="${account.type}" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/isLoginType4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/logout.js"></script>
 </body>
-
-
-<!--[if IE 6]>
-<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
 </html>

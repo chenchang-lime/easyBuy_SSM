@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easybuy.dao.NewsMapper">
+	
+	<select id="selectAllNews" resultType="News">
+	SELECT * FROM easybuy_news ORDER BY createTime DESC
+	</select>
+	
+	<select id="selectNewsTop5" resultType="News">
+	SELECT * FROM easybuy_news ORDER BY createTime desc limit 11
+	</select>
+	
+	
+	<select id="countNews" resultType="int">
+	SELECT count(*) FROM easybuy_news 
+	</select>
+	
+    <select id="selectNewsByID" resultType="News" parameterType="int" >
+	select * FROM easybuy_news where id=#{id} 
+	</select>
+	
+	<insert id="insertNews" parameterType="com.easybuy.entity.News">
+		INSERT INTO easybuy_news (title,content,createTime)
+		values(#{title},#{content},#{createTime})
+	</insert>
+	
+	<delete id="deleteNews">
+		 delete from easybuy_news where id=#{id}
+	</delete>
+	<update id="updataNews" parameterType="News" >
+		update easybuy_news set title=#{title},content=#{content},createTime=#{createTime} where id=#{id}
+	</update>
+</mapper>

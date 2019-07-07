@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.easybuy.entity.User;
+import com.easybuy.entity.UserAddress;
 /**
  * 用户Dao
  * @author ?
@@ -23,9 +24,9 @@ public interface UserMapper {
 	int regist(User user);
 	
 	/**
-	 * 查询用户信息
+	 * 分页查询会员信息
 	 */
-	List<User> selectUser();
+	List<User> selectvip();
 	
 	/**
 	 * 修改用户信息
@@ -36,4 +37,27 @@ public interface UserMapper {
 	 * 删除用户
 	 */
 	int deleteUserByID(int id);
+	
+
+	/**
+	 * 查询用户名存在
+	 */
+	User selectloginName(String loginName);
+	
+
+	/**
+	 * 买家用户总数量
+	 */
+	Integer tatopage();
+	
+	/**
+	 * 查询用户
+	 */
+	List<User> selecUserByID(int id);
+	
+	/**
+	 * 新增收货地址
+	 */
+	int insertUserAddress(UserAddress address);
+	
 }
