@@ -43,12 +43,21 @@ function insertajax(){
 	jq("#btn").click(function(){
 		jq.post("/easyBuy_SSM/product/insertProduct",jq("#insertform").serialize(),function(data){
 			if (data.result=="yes") {
-				alert("添加成功");
+				jq("#msg").html("添加成功！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 				location.href='/easyBuy_SSM/page/Member_productList';
 			}else if(data.result=="no"){
-				alert("添加失败");
+				jq("#msg").html("添加失败！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 			}else if(data.result=="error"){
-				alert("验证不通过"+data.errorList);
+				jq("#msg").html("验证不通过"+data.errorList);
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 			}
 		},"json");
 	});
@@ -100,9 +109,15 @@ jq(function(){
 function islogin(){
 	jq.post("/easyBuy_SSM/product/islogin",null,function(data){
 		if (data.result=="yes") {
-			alert("已登录")
+			jq("#msg").html("已登录！");
+			jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+			jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+			ShowDiv('showMsgDiv','fade');
 		}else{
-			alert("请先登录");
+			jq("#msg").html("请登录后操作！");
+			jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+			jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+			ShowDiv('showMsgDiv','fade');
 			location.href="/easyBuy_SSM/page/login";
 		}
 	},"json");

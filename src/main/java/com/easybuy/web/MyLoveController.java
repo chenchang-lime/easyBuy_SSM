@@ -40,6 +40,13 @@ public class MyLoveController {
 		if(obj!=null) {
 			User user = (User) session.getAttribute("account");
 			Product pro = pService.selectProByID(proID);
+			List<MyLove> myLoveList = lService.selectMyLove(user.getLoginName());
+			for (MyLove myLove : myLoveList) {
+				if(proID.equals(myLove.getMyLoveProID())) {
+					map.put("result", "isMyLove");
+					return map;
+				}
+			}
 			MyLove myLove = new MyLove(proID, pro.getPrice(),new Date(), user.getLoginName());
 			if(lService.addMyLove(myLove)>0) {
 				map.put("result", "ok");

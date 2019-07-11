@@ -65,7 +65,8 @@ function ajax(page) {
 												btn = "--------";
 												deliver = "--------";
 											}
-											html += "<tr>"
+											html += "<tr ondblclick='query("+ this.id+ ")'>"
+													
 													+ "<td><a><font color='#ff4e00' onclick='addtoSelect("
 													+ this.id
 													+ ")'> "
@@ -73,6 +74,9 @@ function ajax(page) {
 													+ "</font><a></td>"
 													+ "<td>"
 													+ this.createTime
+													+ "</td>"
+													+ "<td>"
+													+ this.loginName
 													+ "</td>"
 													+ "<td>"
 													+ saveDecimal2(this.cost)
@@ -83,25 +87,13 @@ function ajax(page) {
 													+ "<td>"
 													+ btn
 													+ "</td>"
-													+ "<td>"
-													+ deliver
-													+ "</td>"
-													+ "<td><a href='javascript:void(0)' onclick='query("
-													+ this.id
-													+ ")'>查看详细</a><input type='hidden' id='rere' value='"+this.id+"'/></td>"
-													+ "<tr>"
+												+ "<tr>"
 										});
 						jq("#td").html(html);
 					}, "json");
 }
 
-
-function fanhui() {
-	jq("#xxx").attr("style", "display:none;")
-	jq("#www").attr("style", "display:block;")
-}
-
-function ondeliver(id) {
+/*function ondeliver(id) {
 	jq(pageOrderList).each(function() {
 		if (this.id == id) {
 			order = this;
@@ -116,12 +108,12 @@ function ondeliver(id) {
 	});
 	jq("#homePage").attr("style", "display:none;")
 	showondeliver();
-}
+}*/
 
-function showondeliver() {
+/*function showondeliver() {
 	var html="";
 	    html = "<div class='m_right' id='back'>"
-			+ "<div class='mem_tit'>我的订单</div>"
+			+ "<div class='mem_tit'>发货</div>"
 			+ "<table border='0' class='order_tab' style='width:930px; text-align:center; margin-bottom:30px;' cellspacing='0' cellpadding='0'>"
 			+ "<tr>" + "<td colspan='2'><h2>确认邮递信息<h2></td>" + "</tr>" + "<tr>"
 			+ "<td width='50%'>客户选择的邮递方式：</td>" + "<td width='50%'><h3>"
@@ -135,12 +127,12 @@ function showondeliver() {
 			+ "<h3></td>"
 			+ "</tr>"
 			+ "<tr>"
-			+ "<td width='50%'>选择邮递方式：</td>"
-			+ "<td width='50%'>"
-			+ "<h3><input type='radio' name='express' checked/>顺丰&nbsp;&nbsp;"
-			+ "<input type='radio' name='express'/>申通&nbsp;&nbsp;"
-			+ "<input type='radio' name='express'/>邮政&nbsp;&nbsp;"
-			+"</td>"
+				+ "<td width='50%'>选择邮递方式：</td>"
+				+ "<td width='50%'>"
+					+ "<h3><input type='radio' name='express' checked/>顺丰&nbsp;&nbsp;"
+				+ "<input type='radio' name='express'/>申通&nbsp;&nbsp;"
+				+ "<input type='radio' name='express'/>邮政&nbsp;&nbsp;"
+				+"</td>"
 			+ "</tr>"
 			+ "<tr>"
 			+ "<td width='50%'>填入快递单号：</td>"
@@ -151,13 +143,16 @@ function showondeliver() {
 			+ "<input type='button' value='确认发货' onclick='deliver("+order.id+")'></input>"
 			+ "</td>" + "</tr>" + "</table>" + "</div>";
 	jq("#expressPage").html(html);
-}
+}*/
 
 function deliver(id) {
 	var str= jq("#getcourierNumber").val();
 	var reg=/^[A-Za-z0-9]{12,15}$/;
 	if (!reg.test(str)) {
-		alert("快递单号有误，只能字母和数字组成，长度12-15位");
+		jq("#msg").html("快递单号有误，只能字母和数字组成，长度12-15位！");
+		jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+		jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+		ShowDiv('showMsgDiv','fade');
 		return ;
 	} 
 	jq.post("/easyBuy_SSM/order/deliver/"+id+"/"+jq("#getcourierNumber").val(), function(data){
@@ -165,12 +160,6 @@ function deliver(id) {
 		jq("#expressPage").attr("style", "display:none;")
 		jq("#homePage").attr("style", "display:block;")
 	})
-}
-
-function back() {
-	jq("#expressPage").attr("style", "display:none;")
-	jq("#homePage").attr("style", "display:block;")
-	ajax(page);
 }
 
 function islogin() {
@@ -182,17 +171,25 @@ function islogin() {
 		if(userType==2||userType==1){
 			return true;
 		}else{
-			alert("暂无此页面操作权限！请联系管理员！");
+			jq("#msg").html("暂无此页面操作权限！请联系管理员！");
+			jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+			jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+			ShowDiv('showMsgDiv','fade');
 			location.href="/easyBuy_SSM/page/index";
 		}
 	}
 }
 
 function update(id) {
-	jq.post("/easyBuy_SSM/order/update/" + id, function(data) {
-		console.log(data);
-		ajax(page);
-	})
+	var r=confirm("确定取消订单？");
+	if (r==true) {
+		jq.post("/easyBuy_SSM/order/update/" + id, function(data) {
+			console.log(data);
+			ajax(page);
+		})
+	} else {
+		return false;
+	}
 }
 
 function addtoSelect(id) {
@@ -202,10 +199,13 @@ function addtoSelect(id) {
 				if (this.id == id) {
 					html += "<option value='" + this.id + "'>订单号:"
 							+ this.serialNumber + "</option>";
+					html += "<option value='" + this.id + "'>订单号:"
+							+ this.loginName + "</option>";
 					html += "<option value='" + this.id + "'>下单时间:"
 							+ this.createTime + "</option>";
 					html += "<option value='" + this.id + "'>订单总金额:"
 							+ this.cost + "</option>";
+					
 				}
 			});
 	html += "</select>";
@@ -225,27 +225,33 @@ jq(function() {// 页面加载完以后
 
 	islogin();
 
-	/*
-	 * jq("#showDetail").mouseover(function(){ alert("1") });
-	 */
-	/*
-	 * jq("#showDetail").mouseout(function(){ alert("2") });
-	 */
 jq("#combine").click(
 			function() {
 				jq.post("/easyBuy_SSM/order/combine/" + firstId + "/"
 						+ secondId, function(data) {
 					if (data.msg == "ok") {
-						alert("订单已合并！")
+						jq("#msg").html("订单已合并！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 						window.location.reload();
 					} else if (data.msg == "same") {
-						alert("订单相同，请核实要合并的订单！")
+						jq("#msg").html("订单相同，请核实要合并的订单！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 					} else if (data.msg == "out") {
-						alert("只能合并未发货的订单！")
+						jq("#msg").html("只能合并未发货的订单！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 					} else {
-						alert("用户或订单不同，订单无法合并！")
+						jq("#msg").html("用户或订单不同，订单无法合并！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 					}
-				})
+				},"JSON");
 			});
 
 	ajax(page);
@@ -262,7 +268,6 @@ jq("#combine").click(
 	jq("#before").click(function() {
 		page.currPage = page.currPage - 1;
 		if (page.currPage == 0) {
-			alert("已经是第一页了！")
 			page.currPage = 1;
 		}
 		ajax(page);
@@ -271,7 +276,6 @@ jq("#combine").click(
 	jq("#next").click(function() {
 		page.currPage = page.currPage + 1;
 		if (page.currPage > jq("#totalPage").text()) {
-			alert("已经是最后一页了！")
 			page.currPage = jq("#totalPage").text();
 		}
 		ajax(page);

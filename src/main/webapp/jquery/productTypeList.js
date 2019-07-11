@@ -80,10 +80,16 @@ function deleteType(id){
 		
 		jq.post("/easyBuy_SSM/product/deleteType","id="+id,function(data){
 			if (data.result=="yes") {
-				alert("删除成功！");
+				jq("#msg").html("删除成功！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 				window.location.reload();
 			}else{
-				alert("删除失败！");
+				jq("#msg").html("删除失败！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 			}
 		},"json");
 		 
@@ -117,7 +123,10 @@ jq(function(){
 	jq("#insertSecType").blur(function(){
 		jq.post("/easyBuy_SSM/product/sameSecType","name="+jq("#insertSecType").val(),function(data){
 			if(data.result=="no"){
-				alert("存在同名分类！");
+				jq("#msg").html("存在同名分类！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 				jq("#insertSecType").val("");
 			}
 		},"json");
@@ -126,7 +135,10 @@ jq(function(){
 	jq("#insertThdType").blur(function(){
 		jq.post("/easyBuy_SSM/product/sameThdType","name="+jq("#insertThdType").val(),function(data){
 			if(data.result=="no"){
-				alert("存在同名分类！");
+				jq("#msg").html("存在同名分类！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 				jq("#insertThdType").val("");
 			}
 		},"json");
@@ -143,10 +155,16 @@ jq(function(){
 			jq("#insert2").click(function(){
 				jq.post("/easyBuy_SSM/product/insertType",jq("#form2").serialize(),function(data){
 					if (data.result=="yes") {
-						alert("添加成功！");
+						jq("#msg").html("添加成功！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 						location.href='/easyBuy_SSM/page/Member_productTypeList';
 					}else{
-						alert("添加失败！");
+						jq("#msg").html("添加失败！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 					}
 				},"json");
 			});
@@ -177,10 +195,16 @@ jq(function(){
 				
 				jq.post("/easyBuy_SSM/product/insertType",jq("#form3").serialize(),function(data){
 					if (data.result=="yes") {
-						alert("添加成功！");
+						jq("#msg").html("添加成功！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 						location.href='/easyBuy_SSM/page/Member_productTypeList';
 					}else{
-						alert("添加失败！");
+						jq("#msg").html("添加失败！");
+						jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+						jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+						ShowDiv('showMsgDiv','fade');
 					}
 				},"json");
 			});
@@ -207,9 +231,15 @@ function selectType1(){
 function islogin(){
 	jq.post("/easyBuy_SSM/product/islogin",null,function(data){
 		if (data.result=="yes") {
-			alert("已登录")
+			jq("#msg").html("已登录！");
+			jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+			jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+			ShowDiv('showMsgDiv','fade');
 		}else{
-			alert("请先登录");
+			jq("#msg").html("请先登录！");
+			jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+			jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+			ShowDiv('showMsgDiv','fade');
 			location.href="/easyBuy_SSM/page/login";
 		}
 	},"json");

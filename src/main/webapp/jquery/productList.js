@@ -100,10 +100,16 @@ jq(function(){
 function deletePro(id){
 		jq.post("/easyBuy_SSM/product/deletePro","id="+id,function(data){
 			if (data.result=="yes") {
-				alert("删除成功！");
+				jq("#msg").html("删除失败！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 				window.location.reload();
 			}else{
-				alert("删除失败！");
+				jq("#msg").html("删除失败！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 			}
 		},"json");
 }
@@ -189,10 +195,16 @@ jq(function(){
 		
 		jq.post("/easyBuy_SSM/product/updatePro",jq("#myform").serialize(),function(data){
 			if (data.result=="yes") {
-				alert("修改成功！");
+				jq("#msg").html("修改成功！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 				window.location.reload();
 			}else{
-				alert("修改失败！");
+				jq("#msg").html("修改失败！");
+				jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+				jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+				ShowDiv('showMsgDiv','fade');
 			}
 		},"json");
 	});	

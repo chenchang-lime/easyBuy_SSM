@@ -112,13 +112,12 @@
         </span>
         	<span class="ss">
             	<div class="ss_list">
-                	<a href="#">收藏夹</a>
+                	<a href="/easyBuy_SSM/page/member_MyLovePro">收藏夹</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
+                            	<li><a href="/easyBuy_SSM/page/member_MyLovePro">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>     
@@ -365,7 +364,8 @@
         </div>    	
     </div>
     <!--End Footer End --> 
-    <!--Begin 弹出层-没登陆 Begin-->
+    
+    <!--Begin 弹出层-代替alert弹框 Begin-->
     <div id="fade" class="black_overlay"></div>
     <div id="showMsgDiv" class="white_content">             
         <div class="white_d">
@@ -387,7 +387,7 @@
             </div>
         </div>
     </div>    
-    <!--End 弹出层-购物车没登陆 End-->   
+    <!--End 弹出层-代替alert弹框  End-->   
 </div>
 <input type="hidden" id="paymentMethod" name="paymentMethod" value="1" />
 <input type="hidden" id="orderID" value="${order.id}" />

@@ -110,13 +110,12 @@
         </span>
         	<span class="ss">
             	<div class="ss_list">
-                	<a href="#">收藏夹</a>
+                	<a href="/easyBuy_SSM/page/member_MyLovePro">收藏夹</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
+                            	<li><a href="/easyBuy_SSM/page/member_MyLovePro">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>     
@@ -270,30 +269,9 @@
     	<div class="l_history">
         	<div class="his_t">
             	<span class="fl">浏览历史</span>
-                <span class="fr"><a href="#">清空</a></span>
+<!--                 <span class="fr"><a href="#">清空</a></span> -->
             </div>
-        	<ul>
-            	<li>
-                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_1.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_2.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>768.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_3.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>680.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
+        	<ul id="myBrowse">
         	</ul>
         </div>
         <div class="l_list">
@@ -488,5 +466,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/shade.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectTopMyCart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectProByType.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectMyBrowse.js"></script>
 </body>
 </html>

@@ -121,13 +121,16 @@ function toUpdateUserByID() {
 	
 }
 
+
 function updateUserByID(state){
 	$.post("/easyBuy_SSM/user/updateUserByID",$("#myform").serialize(), function(data) {
-		alert("data-->"+data);
 		if (data.updatelist == "ok") {
-			alert("操作成功");
+			window.location.reload();
 		} else {
-			alert("操作失败！"+data.errorlist);
+			jq("#msg").html("操作失败！"+data.errorlist);
+			jq(".b_sure").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+			jq(".b_buy").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+			ShowDiv('showMsgDiv','fade');
 		}
 	}, "json");
 };

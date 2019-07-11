@@ -24,6 +24,7 @@ jq(function(){
 });
 
 jq("#selectLike").click(function(){
+	pageNum = 1;
 	selectProByTypeAJAXZhen(type1,type2,type3);
 });
 
@@ -117,6 +118,7 @@ function selectProByTypeJAX(type1,type2,type3){
 //keydown按下，keypress按着没上抬，keyup上抬键盘。
 jq(document).keyup(function(event) {
 	if (event.keyCode == 13) {
+		pageNum = 1;
 		selectProByTypeAJAXZhen(jq("#type1").val(),jq("#type2").val(),jq("#type3").val());
 	}
 });
@@ -151,8 +153,21 @@ function selectProByTypeAJAXZhen(type1,type2,type3){
 			//设置高亮
 			var proName = ""
 			if(likeName!=null&&likeName!=""){
-				var arr = pro.name.split(likeName);
-				proName = arr[0]+"<span style='color:red'>"+likeName+"</span>"+arr[1];
+				var arr = pro.name.split("");
+				var likeNames = likeName.split("");
+				jq.each(arr,function(i,s){
+					var bool = true;
+					jq.each(likeNames,function(j,l){
+						if(s==l){
+							proName+="<span style='color:red'>"+l+"</span>";
+							bool = false;
+						}
+					});
+					if(bool){
+						proName+=s;
+					}
+				});
+//				proName = arr[0]+"<span style='color:red'>"+likeName+"</span>"+arr[1];
 			}else{
 				proName=pro.name;
 			}
@@ -160,7 +175,7 @@ function selectProByTypeAJAXZhen(type1,type2,type3){
 			if(data.myLoveList!=null){
 				jq.each(data.myLoveList,function(j,myLove){
 					if(pro.id==myLove.myLoveProID){
-						shoucang = "<a href='javascript:void(0)' id='delMyLove"+pro.id+"' onclick='delMyLove("+pro.id+")' class='ss' style='background:url(/easyBuy_SSM/images/heart_h.png) no-repeat 10px center;color:#ff4e00;font-weight:bolder;'>收藏</a>";
+						shoucang = "<a href='javascript:void(0)' id='addMyLove"+pro.id+"' onclick='delMyLove("+pro.id+")' class='ss' style='background:url(/easyBuy_SSM/images/heart_h.png) no-repeat 10px center;color:#ff4e00;font-weight:bolder;'>收藏</a>";
 						return false;
 					}
 				});
@@ -232,7 +247,10 @@ function selectProByTypeAJAXZhen(type1,type2,type3){
 			}
 			n++;
 		}
-			//分页页码打印end
+		//分页页码打印end
+		type1 = jq("#type1").val();
+		type2 = jq("#type2").val();
+		type3 = jq("#type3").val();
 		html += "<div class='pages'>" +
 					"<a href='javascript:void(0);' onclick='lastPage("+type1+","+type2+","+type3+")' class='p_pre'>上一页</a>" +
 					pageList+
@@ -370,7 +388,6 @@ function selectType(){
 }
 
 function addMyLove(proID){
-	alert(proID);
 	jq.post("/easyBuy_SSM/myLove/addMyLove/"+proID,function(data){
 		console.log(data);
 		if(data.result=="ok"){

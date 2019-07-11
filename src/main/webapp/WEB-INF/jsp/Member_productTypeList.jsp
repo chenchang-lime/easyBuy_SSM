@@ -113,13 +113,12 @@
         <!----------------------------------- 头部登录注销-------------------------------- -->
         <span class="ss">
             	<div class="ss_list">
-                	<a href="#">收藏夹</a>
+                	<a href="/easyBuy_SSM/page/member_MyLovePro">收藏夹</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
+                            	<li><a href="/easyBuy_SSM/page/member_MyLovePro">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>     
@@ -424,11 +423,35 @@
             <img src="${pageContext.request.contextPath}/images/b_1.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_2.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_3.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_4.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_5.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_6.gif" width="98" height="33" />
         </div>    	
     </div>
-    <!--End Footer End -->    
+    <!--End Footer End -->   
+        <!--Begin 弹出层-代替alert弹框 Begin-->
+    <div id="fade" class="black_overlay"></div>
+    <div id="showMsgDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;"></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td id="msg" align="center">没登陆！请登录后再查看购物车哟~~~</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td align="center">
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_sure">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_buy">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-代替alert弹框  End-->   
 </div>
 <input type="hidden" id="loginName" value="${account.loginName}" />
 <input type="hidden" id="userType" value="${account.type}" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/isLoginType4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/logout.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/shade.js"></script>
 </body>
 </html>

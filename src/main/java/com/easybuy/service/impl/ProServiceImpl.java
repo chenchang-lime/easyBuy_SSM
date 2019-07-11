@@ -40,7 +40,14 @@ public class ProServiceImpl implements ProService {
 			}
 		}
 		if (likeName != null && !"".equals(likeName) && !"*".equals(likeName)) {
-			map.put("likeName", "%" + likeName + "%");
+			String likeName1 = likeName.replace(" ", "");
+			String[] list = likeName1.split("");
+			StringBuffer sb = new StringBuffer("%");
+			for (String s : list) {
+				sb.append(s+"%");
+			}
+			System.out.println("likeName-->"+sb);
+			map.put("likeName",sb.toString());
 		}
 		return mapper.selectProByType(map);
 	}
@@ -53,7 +60,14 @@ public class ProServiceImpl implements ProService {
 		map.put("minPrice", minPrice);
 		map.put("maxPrice", maxPrice);
 		if (likeName != null && !"".equals(likeName) && !"*".equals(likeName)) {
-			map.put("likeName", "%" + likeName + "%");
+			String likeName1 = likeName.replace(" ", "");
+			String[] list = likeName1.split("");
+			StringBuffer sb = new StringBuffer("%");
+			for (String s : list) {
+				sb.append(s+"%");
+			}
+			System.out.println("likeName-->"+sb);
+			map.put("likeName",sb.toString());
 		}
 		return mapper.countProByType(map);
 	}

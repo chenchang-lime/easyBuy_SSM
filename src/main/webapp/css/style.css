@@ -1,5 +1,11 @@
 ﻿@charset "utf-8";
 /* CSS Document */
+.l_mobile{
+	width:170px; height:38px; line-height:38px\9; overflow:hidden; background:url(../images/i_email.png) no-repeat 285px center; background-color:#FFF; color:#888888; font-size:14px; font-family:"Microsoft YaHei"; padding:0 40px 0 10px; border:1px solid #cccccc;
+}
+.c_btnmobile{
+	width:80px; height:26px; line-height:26px\9; background-color:#ff4e00; color:#FFF; font-size:12px; Microsoft  float:left; border:0; cursor:pointer; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;
+}
 body{
 	margin:0; padding:0; font-size:12px; font-family:"Microsoft YaHei"; line-height:25px; color:#555555;
 }
@@ -1048,9 +1054,13 @@ ul.menu_r li a:hover, ul.menu_r li a.now{
 .l_pwd{
 	width:267px; height:38px; line-height:38px\9; overflow:hidden; background:url(../images/i_pwd.png) no-repeat 285px center; background-color:#FFF; color:#888888; font-size:14px; font-family:"Microsoft YaHei"; padding:0 40px 0 10px; border:1px solid #cccccc;
 }
+/* .l_email{ */
+/* 	width:267px; height:38px; line-height:38px\9; overflow:hidden; background:url(../images/i_email.png) no-repeat 285px center; background-color:#FFF; color:#888888; font-size:14px; font-family:"Microsoft YaHei"; padding:0 40px 0 10px; border:1px solid #cccccc; */
+/* } */
 .l_email{
 	width:267px; height:38px; line-height:38px\9; overflow:hidden; background:url(../images/i_email.png) no-repeat 285px center; background-color:#FFF; color:#888888; font-size:14px; font-family:"Microsoft YaHei"; padding:0 40px 0 10px; border:1px solid #cccccc;
 }
+
 .l_tel{
 	width:267px; height:38px; line-height:38px\9; overflow:hidden; background:url(../images/i_tel.png) no-repeat 285px center; background-color:#FFF; color:#888888; font-size:14px; font-family:"Microsoft YaHei"; padding:0 40px 0 10px; border:1px solid #cccccc;
 }

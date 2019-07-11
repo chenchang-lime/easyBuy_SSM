@@ -40,18 +40,36 @@ public class UserController {
 	
 	private int code=0;
 	
+//	@ResponseBody
+//	@RequestMapping("/SmsSample")
+//	public Map<String, Object> SmsSample( User user) {
+//		String testPhones =user.getMobile();
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		code=(int)((Math.random()*9+1)*100000);
+//		 SmsSample.shou(testPhones, code);
+//		 map.put("code", code);
+//		 map.put("testPhones", testPhones);
+//		 return map;
+//	}
+	
 	@ResponseBody
 	@RequestMapping("/SmsSample")
 	public Map<String, Object> SmsSample( User user) {
 		String testPhones =user.getMobile();
 		Map<String, Object> map = new HashMap<String, Object>();
+		if (user.getMobile().length()==11) {
 		code=(int)((Math.random()*9+1)*100000);
 		 SmsSample.shou(testPhones, code);
+		System.out.println(testPhones+","+code);
 		 map.put("code", code);
+		 map.put("codes", "ok");
 		 map.put("testPhones", testPhones);
 		 return map;
+		}else {
+			map.put("codes", "no");
+			return map;
+		}
 	}
-	
 	
 	@ResponseBody
 	@RequestMapping("/login/{saveuser}")

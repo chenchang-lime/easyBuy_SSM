@@ -19,6 +19,7 @@ import com.easybuy.entity.Detail;
 import com.easybuy.entity.Order;
 import com.easybuy.entity.Product;
 import com.easybuy.entity.User;
+import com.easybuy.service.AliPayService;
 import com.easybuy.service.DetailServiceCC;
 import com.easybuy.service.OrderServiceCC;
 import com.easybuy.service.ProService;
@@ -35,6 +36,8 @@ public class OrderControllerCC {
 	private ProService pService;
 	@Autowired
 	private UserServiceCC uService;
+//	@Autowired
+//	private AliPayService aliPay;
 	
 	@ResponseBody
 	@RequestMapping("/addOrder")
@@ -81,6 +84,12 @@ public class OrderControllerCC {
 		if(obj!=null) {
 			User user = (User) session.getAttribute("account");
 			String result = oService.payOrder(paymentMethod,orderID,user.getLoginName(),payPwd,session);
+//			System.out.println("准备支付！");
+//			if(aliPay.aliPayFunction()) {
+//				System.out.println("支付成功！支付成功！支付成功！支付成功！支付成功！");
+//			}else {
+//				System.out.println("失败！！！");
+//			}
 			map.put("result",result);
 		} else {
 			map.put("result", "noLogin");

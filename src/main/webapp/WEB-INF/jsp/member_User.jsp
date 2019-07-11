@@ -119,13 +119,12 @@
         </span>
         <span class="ss">
             	<div class="ss_list">
-                	<a href="#">收藏夹</a>
+                	<a href="/easyBuy_SSM/page/member_MyLovePro">收藏夹</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
+                            	<li><a href="/easyBuy_SSM/page/member_MyLovePro">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>     
@@ -342,7 +341,6 @@
                 </table>	
             </div>
             <div id="addMoneyDiv">
-            	<img src="${pageContext.request.contextPath}/images/zhifubao.jpg" width="970px"></img>
 				<div align="center" style="width:70%;margin: 30 auto;">
 		            <ul class="pay" style="width: 100%;margin: 0 auto;">
 		                <li value="100" class="checked" style="width: 150px;">￥100<div class="ch_img"></div></li>
@@ -360,7 +358,7 @@
 		            </ul>
 		        </div>
 	        	<br/>
-		        <div id="payOrder" onclick="addMoney()" class="btn_u" style="margin:0 auto; padding:0 40px;padding-top:8px; width:120px;height:30px;" align="center">
+		        <div id="payOrder" onclick="zhifubao()" class="btn_u" style="margin:0 auto; padding:0 40px;padding-top:8px; width:120px;height:30px;" align="center">
 		        	<a href="javascript:void(0);" style="margin-top:10px">立即充值</a>
 		        </div>
 	        </div>
@@ -503,8 +501,36 @@
                   </tr>
                   <tr height="50" valign="bottom">
                     <td align="center">
-	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_sure">确定</a>
-	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_buy">取消</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_sure" id="zuo">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_buy" id="you">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出消息层 End-->   
+ <!--Begin 弹出消息层- Begin-->
+    <div id="fade" class="black_overlay"></div>
+    <div id="showzhifu" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;"></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td id="msg" align="center">
+                    	<img src='/easyBuy_SSM/images/zhifubao.jpg' width='480px'></img>
+                    </td>
+                  </tr>
+                  <tr>
+                  	<td>&nbsp;</td>
+                  </tr>
+                  <tr valign="bottom">
+                    <td align="center">
+	                    <a style="margin-left:120px;" href="javascript:void(0);" onclick="addMoney()" class="b_sure">已支付</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showzhifu','fade')" class="b_buy">取消</a>
                     </td>
                   </tr>
                 </table>

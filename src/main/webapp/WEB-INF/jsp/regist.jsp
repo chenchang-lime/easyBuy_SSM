@@ -106,7 +106,7 @@
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;手机号码 &nbsp;</td>
-                <td><input  type="text" value=""  width="150px" height="38px" name="mobile"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="btnmobile" value="获取手机验证码"/></td>
+                <td><input  type="text" value="" class="l_mobile"  name="mobile" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><input type="button" id="btnmobile1" value="获取验证码" class="c_btnmobile"/></span></td>
               </tr>
               <tr height="50">
                <td align="right"><font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
@@ -122,7 +122,7 @@
               <tr height="60">
               	<td>&nbsp;</td>
               	 <!-- class="res_btn" -->
-                <td><input class="res_btn" name="btnregit" id="btn" disabled="disabled"   type="button" value="立即注册"  /></td>
+                <td><input class="log_btn" name="btnregit" id="btn" disabled="disabled"   type="button" value="立即注册"  /></td>
               </tr>
             </table>
             </form>
@@ -138,6 +138,30 @@
     </div>    	
 </div>
 <!--End Footer End -->    
+    <!--Begin 弹出层-代替alert弹框 Begin-->
+    <div id="fade" class="black_overlay"></div>
+    <div id="showMsgDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;"></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td id="msg" align="center">没登陆！请登录后再查看购物车哟~~~</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td align="center">
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_sure">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_buy">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-代替alert弹框  End-->  
 
 </body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/shade.js"></script>
 </html>

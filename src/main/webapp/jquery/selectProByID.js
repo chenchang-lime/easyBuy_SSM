@@ -1,10 +1,19 @@
 var product;
+var stock = 0;
+var isLove = 0;
 jq("#addMyCart").click(function(){
 	var num = 1;
 	num = jq("#buyNum").val();
-	addMyCart(product.id,num);
+	if(num<=stock){
+		addMyCart(product.id,num);
+	}else{
+		jq("#msg").html("商品库存不够！悠着点买~");
+		jq("#zuo").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+		jq("#you").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+		ShowDiv('errorDiv','fade');
+	}
 });
-function selectProByTypeAJAXZhen(proID){
+function selectProByID(proID){
 	jq.post("/easyBuy_SSM/pro/selectProByID/"+proID,null,function(data){
 		console.log(data);
 		product = data.pro;
@@ -21,6 +30,7 @@ function selectProByTypeAJAXZhen(proID){
 		jq("#des_name").html(desName);
 		jq("#proPrice").html("￥"+saveDecimal2(data.pro.price));
 		jq("#stock").html(data.pro.stock+"&nbsp;(月销"+data.pro.sales+"笔)");
+		stock = data.pro.stock;
 		jq("#xinghao").html(pType+"<div class='ch_img'></div>");
 		jq("#videoPreviewPic").val(data.pro.fileName);
 		jq("#videoUrl").val(data.pro.video);
@@ -66,11 +76,44 @@ function selectProByTypeAJAXZhen(proID){
 	},"json");
 }
 
-selectProByTypeAJAXZhen(jq("#proID").val());
+selectProByID(jq("#proID").val());
 
 //当鼠标悬浮在全部商品分类时触发
 jq(".nav_t").mouseover(function(){
 	selectType();
 });
+
+jq("#addMyLove").click(function(){
+	addMyLove();
+});
+function addMyLove(){
+	var proID = jq("#proID").val();
+	if(jq("#isLogin").val()==1){
+		if(isLove==0){
+			jq.post("/easyBuy_SSM/myLove/addMyLove/"+proID,function(data){
+				console.log(data);
+				if(data.result=="ok"){
+					jq("#loveMsg").html("您已成功收藏该商品!");
+					ShowDiv('MyDiv','fade');
+				}else if(data.result=="noLogin"){
+					ShowDiv('NoLoginDiv','fade');
+				}else if(data.result=="isMyLove"){
+					jq("#loveMsg").html("您已收藏过该商品!喜欢就赶紧买下嚯~");
+					ShowDiv('MyDiv','fade');
+				}else{
+					jq("#msg").html("系统繁忙，请稍后再试！！！");
+					jq("#zuo").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("确定");
+					jq("#you").attr("href","javascript:void(0)").attr("onclick","CloseDiv('showMsgDiv','fade')").html("取消");
+					ShowDiv('errorDiv','fade');
+				}
+			},"json");
+		}else{
+			jq("#loveMsg").html("您已收藏过该商品!喜欢就赶紧买下嚯~");
+			ShowDiv('MyDiv','fade');
+		}
+	}else{
+		ShowDiv('NoLoginDiv','fade');
+	}
+}
 
 

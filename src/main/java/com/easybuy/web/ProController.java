@@ -1,20 +1,26 @@
 package com.easybuy.web;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.easybuy.entity.Browse;
 import com.easybuy.entity.MyLove;
 import com.easybuy.entity.ProType;
 import com.easybuy.entity.Product;
 import com.easybuy.entity.User;
+import com.easybuy.service.BrowseService;
 import com.easybuy.service.MyLoveService;
 import com.easybuy.service.ProService;
 import com.easybuy.service.ProTypeService;
@@ -28,6 +34,9 @@ public class ProController {
 	private ProTypeService ptService;
 	@Autowired
 	private MyLoveService lService;
+	@Autowired
+	private BrowseService bService;
+	
 	
 	@ResponseBody
 	@RequestMapping("/selectProByTypeAJAX/{pageNum}/{pageSize}/{minPrice}/{maxPrice}/{orderBy}")
@@ -83,7 +92,7 @@ public class ProController {
 	
 	@ResponseBody
 	@RequestMapping("/selectProByID/{proID}")
-	public Map<String,Object> selectProByID(@PathVariable Integer proID){
+	public Map<String,Object> selectProByID(@PathVariable Integer proID,HttpServletRequest request){
 		Map<String,Object> map = new HashMap<String,Object>();
 		Product pro = pService.selectProByID(proID);
 		ProType type1 = ptService.selectTypeByID(pro.getCategoryLevel1Id());
@@ -93,6 +102,21 @@ public class ProController {
 		map.put("type1", type1);
 		map.put("type2", type2);
 		map.put("type3", type3);
+		
+		HttpSession session = request.getSession();
+		Object obj = session.getAttribute("account");
+		if(obj!=null) {
+			User user = (User) session.getAttribute("account");
+			List<Browse> list = bService.selectMyBrowse(user.getLoginName());
+			for (Browse b : list) {
+				if(proID.equals(b.getProID())) {
+					return map;
+				}
+			}
+			if(bService.addBrowse(new Browse(user.getLoginName(), proID, new Date()))>0) {
+				System.out.println(user.getLoginName()+"的"+proID+"浏览记录+1");
+			}
+		}
 		return map;
 	}
 	

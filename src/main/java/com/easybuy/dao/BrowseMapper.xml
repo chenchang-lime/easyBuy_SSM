@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easybuy.dao.BrowseMapper">
+	<insert id="addBrowse" parameterType="Browse">
+		insert into easybuy_browse(loginName,proID,browseTime) values(#{loginName},#{proID},#{browseTime})
+	</insert>
+	
+	<select id="selectMyBrowse" resultType="Browse" parameterType="String">
+		select * from easybuy_browse where loginName=#{loginName} ORDER BY browseTime desc limit 5
+	</select>
+</mapper>
+		

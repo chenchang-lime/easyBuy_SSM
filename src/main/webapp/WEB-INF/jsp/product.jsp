@@ -120,13 +120,12 @@
         </span>
 				<span class="ss">
 					<div class="ss_list">
-						<a href="#">收藏夹</a>
+						<a href="/easyBuy_SSM/page/member_MyLovePro">收藏夹</a>
 						<div class="ss_list_bg">
 							<div class="s_city_t"></div>
 							<div class="ss_list_c">
 								<ul>
-									<li><a href="#">我的收藏夹</a></li>
-									<li><a href="#">我的收藏夹</a></li>
+									<li><a href="/easyBuy_SSM/page/member_MyLovePro">我的收藏夹</a></li>
 								</ul>
 							</div>
 						</div>
@@ -308,7 +307,7 @@
 						</div>
 					</div>
 					<div class="d_care">
-						<a onclick="ShowDiv('MyDiv','fade')">关注商品</a>
+						<a href="javascript:void(0)" id="addMyLove">关注商品</a>
 					</div>
 				</div>
 				<div class="des_join">
@@ -336,68 +335,10 @@
 		</div>
 		<div class="content mar_20">
 			<div class="l_history">
-				<div class="fav_t">用户还喜欢</div>
-				<ul>
-					<li>
-						<div class="img">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/his_1.jpg" width="185"
-								height="162" /></a>
-						</div>
-						<div class="name">
-							<a href="#">Dior/迪奥香水2件套装</a>
-						</div>
-						<div class="price">
-							<font>￥<span>368.00</span></font> &nbsp; 18R
-						</div>
-					</li>
-					<li>
-						<div class="img">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/his_2.jpg" width="185"
-								height="162" /></a>
-						</div>
-						<div class="name">
-							<a href="#">Dior/迪奥香水2件套装</a>
-						</div>
-						<div class="price">
-							<font>￥<span>768.00</span></font> &nbsp; 18R
-						</div>
-					</li>
-					<li	>
-						<div class="img">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/his_3.jpg" width="185"
-								height="162" /></a>
-						</div>
-						<div class="name">
-							<a href="#">Dior/迪奥香水2件套装</a>
-						</div>
-						<div class="price">
-							<font>￥<span>680.00</span></font> &nbsp; 18R
-						</div>
-					</li>
-					<li>
-						<div class="img">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/his_4.jpg" width="185"
-								height="162" /></a>
-						</div>
-						<div class="name">
-							<a href="#">Dior/迪奥香水2件套装</a>
-						</div>
-						<div class="price">
-							<font>￥<span>368.00</span></font> &nbsp; 18R
-						</div>
-					</li>
-					<li>
-						<div class="img">
-							<a href="#"><img src="${pageContext.request.contextPath}/images/his_5.jpg" width="185"
-								height="162" /></a>
-						</div>
-						<div class="name">
-							<a href="#">Dior/迪奥香水2件套装</a>
-						</div>
-						<div class="price">
-							<font>￥<span>368.00</span></font> &nbsp; 18R
-						</div>
-					</li>
+				<div class="his_t">
+					<span class="fl">浏览历史</span>
+				</div>
+				<ul id="myBrowse">
 				</ul>
 			</div>
 			
@@ -513,18 +454,17 @@
 						src="${pageContext.request.contextPath}/images/close.gif" /></span>
 				</div>
 				<div class="notice_c">
-
 					<table border="0" align="center" style="margin-top:;"
 						cellspacing="0" cellpadding="0">
 						<tr valign="top">
 							<td width="40"><img src="${pageContext.request.contextPath}/images/suc.png" /></td>
 							<td><span
-								style="color: #3e3e3e; font-size: 18px; font-weight: bold;">您已成功收藏该商品</span><br />
-								<a href="#">查看我的关注 >></a></td>
+								style="color: #3e3e3e; font-size: 18px; font-weight: bold;" id="loveMsg">您已成功收藏该商品</span><br />
+								<a href="${pageContext.request.contextPath}/page/member_MyLovePro">查看我的关注 >></a></td>
 						</tr>
 						<tr height="50" valign="bottom">
 							<td>&nbsp;</td>
-							<td><a href="#" class="b_sure">确定</a></td>
+							<td><a href="javascript:void(0)" class="b_sure" onclick="CloseDiv('MyDiv','fade')">确定</a></td>
 						</tr>
 					</table>
 
@@ -723,7 +663,7 @@
             <div class="notice_c">
                 <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td>没登陆！请登录后再查看购物车哟~~~</td>
+                    <td>没登陆！请登录后再操作哟~~~</td>
                   </tr>
                   <tr height="50" valign="bottom">
                     <td>
@@ -741,7 +681,7 @@
     <div id="errorDiv" class="white_content">             
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('errorDiv','fade')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
             </div>
             <div class="notice_c">
                 <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
@@ -750,8 +690,8 @@
                   </tr>
                   <tr height="50" valign="bottom">
                     <td>
-	                    <a href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_sure">确定</a>
-	                    <a href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_buy">取消</a>
+	                    <a id="zuo" href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_sure">确定</a>
+	                    <a id="you" href="javascript:void(0);" onclick="CloseDiv('errorDiv','fade')" class="b_buy">取消</a>
                     </td>
                   </tr>
                 </table>
@@ -787,6 +727,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectTopMyCart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectProByID.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/showVideo.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/selectMyBrowse.js"></script>
 
 </body>
 </html>

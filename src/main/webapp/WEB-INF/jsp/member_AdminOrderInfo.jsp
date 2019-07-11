@@ -111,13 +111,12 @@
         </span>
         	<span class="ss">
             	<div class="ss_list">
-                	<a href="#">收藏夹</a>
+                	<a href="/easyBuy_SSM/page/member_MyLovePro">收藏夹</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
+                            	<li><a href="/easyBuy_SSM/page/member_MyLovePro">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>     
@@ -268,20 +267,44 @@
                 </td>
               </tr>
             </table>
-            <table border="0" style="width:900px; margin-top:0px;" cellspacing="0" cellpadding="0">
-              <tr height="70">
+             <table border="0" style="width:900px; margin-top:0px;" cellspacing="0" cellpadding="0">
+              <tr style="height: 70px">
                 <td align="right">
                 	<b style="font-size:14px;">订单总金额：<span style="font-size:22px; color:#ff4e00;" id="orderTotalMoneyText">￥${thisOrder.cost}</span>元</b>
                 </td>
               </tr>
-              <tr height="70">
+              <tr style="height: 30px">
                 <td align="right">
-	                <!-- 返回订单中心 -->
-		            <span class="m_num fr" style="margin-top:15px;">
-		                <a href="/easyBuy_SSM/page/Member_Order">返回</a>
-		            </span>
-               </td>
-              </tr>
+                	<c:if test="${thisOrder.status==2}">
+                		<h3 align="center" style="padding-left: 310px">选择快递方式：</h3>               	
+			     </td> 
+			   </tr> 
+				<tr style="height: 30px">  
+				    <td align="right">
+				           <ul class="pay" style=" padding-left:660px ;width: 30%;height:30px margin: 15px auto;">
+				                <li class="pay"  value="1" id="kd1">顺丰<div class="ch_img"></div></li>
+				                <li class="pay" value="2" id="kd2">申通<div class="ch_img"></div></li>
+				                <li class="pay" value="3" id="kd3">邮政<div class="ch_img"></div></li>
+				            </ul> 
+				     </td>
+				 </tr>           
+				<tr style="height: 50px">  
+				    <td align="right">
+				        <h3 align="center" style="padding-left: 480px">输入快递单号：
+				        <input type="text" id="getcourierNumber" name="courierNumber"/></h3>
+				     </td>
+				 </tr>
+				<tr style="height: 50px">  
+				    <td align="right">
+				        <span class="m_num fr" style="margin-top:15px;font-size: 15px">
+		                	<a href="javascript:void(0)" onclick="deliver()">确认发货</a>
+		                </span>
+	               </c:if>
+		                <span class="m_num fr" style="margin-top:15px;font-size: 15px">
+		                	<a href="/easyBuy_SSM/page/Member_Order">返回</a>
+		                </span>
+				     </td>
+				 </tr>           		           		      
             </table>
         </div>
     </div>
@@ -370,7 +393,29 @@
         </div>    	
     </div>
     <!--End Footer End --> 
-
+<!--Begin 弹出层-代替alert弹框 Begin-->
+    <div id="fade" class="black_overlay"></div>
+    <div id="showMsgDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;"></span>
+            </div>
+            <div class="notice_c">
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td id="msg" align="center">没登陆！请登录后再查看购物车哟~~~</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td align="center">
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_sure">确定</a>
+	                    <a href="javascript:void(0);" onclick="CloseDiv('showMsgDiv','fade')" class="b_buy">取消</a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-代替alert弹框  End-->   
 
     
 <input type="hidden" id="loginName" value="${account.loginName}" />
